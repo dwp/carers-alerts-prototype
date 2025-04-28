@@ -1,0 +1,165 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+All tasks
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+{{ govukBreadcrumbs({
+items: [
+{
+text: "Team manager home",
+href: "home"
+}
+]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- Heading -->
+    <div>
+      <h1 class="govuk-heading-l">
+        Team manager Dashboard
+      </h1>
+    </div>
+
+
+    <!-- Filter -->
+    <div>
+      <label class="govuk-label" for="width-20">
+        Filter by dates
+      </label>
+      <div class="govuk-input__wrapper">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+              Day
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+              name="passport-issued-day" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+              Month
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+              name="passport-issued-month" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group ">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+              Year
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+              name="passport-issued-year" type="text" inputmode="numeric">
+          </div>
+        </div>
+
+        <a href="manage-tasks-filter-applied">
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Filter
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Box -1  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Alerts intake</h2>
+        <div class="scenario-inner-panel">
+          <div id="green-banner" class="alert-green">
+            <p style="margin-bottom:0px;">
+              <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                8921
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ////// -->
+    <!-- Box -2  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Alerts cleared</h2>
+        <div class="scenario-inner-panel">
+          <div id="green-banner" class="alert-green">
+            <p style="margin-bottom:0px;">
+              <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                3921
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ////// -->
+
+    <!-- Box - 4  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Overpayments</h2>
+        <div class="scenario-inner-panel">
+          <div id="green-banner" class="alert-green">
+            <p style="margin-bottom:0px;">
+              <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                £80,921
+              </span>
+            </p>
+          </div>
+          <br />
+          <p> <a href="details-of-what-you-owe">Avg overpayment amount- <strong><b>£8000</b></strong></a></p>
+          <p> <a href="details-of-what-you-owe">Highest overpayment amount- <strong><b>£9000</b></strong></a></p>
+        </div>
+      </div>
+    </div>
+    <!-- ////// -->
+    <!-- Box - 5  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Underpayments</h2>
+        <div class="scenario-inner-panel">
+          <div id="green-banner" class="alert-green">
+            <p style="margin-bottom:0px;">
+              <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                £60,921
+              </span>
+            </p>
+          </div>
+          <br />
+          <p> <a href="details-of-what-you-owe">Avg underpayments amount- <strong><b>£8000</b></strong></a></p>
+          <p> <a href="details-of-what-you-owe">Highest underpayments amount- <strong><b>£9000</b></strong></a></p>
+        </div>
+      </div>
+    </div>
+    <!-- //// -->
+    <!-- Box - 3  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Outstanding alerts</h2>
+        <div class="scenario-inner-panel">
+          <div id="green-banner" class="alert-green">
+            <p style="margin-bottom:0px;">
+              <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                12000
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ////// -->
+  </div>
+</div>
+
+{% endblock %}

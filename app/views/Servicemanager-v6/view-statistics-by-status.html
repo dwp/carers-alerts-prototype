@@ -1,0 +1,233 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Statistics
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Team manager home",
+      href: "home"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div> 
+ 
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+<h1 class="govuk-heading-l">
+  Statistics
+</h1>
+<h2 class="govuk-heading-m" style="color: rgb(99, 99, 99)"> 
+  Total number of tasks by status
+</h2>
+
+<div>
+<br>
+<div>
+    <p style="color:#0f0f0f;"> <strong class="govuk-tag govuk-tag--red">
+      Red - Due to expire soon </strong></p>
+    <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+      4,572
+    </span>
+</div>
+&nbsp;
+<hr width="75%" size="2" align="left">
+<br>
+
+<div>
+    <p style="color:#0f0f0f;">Unallocated</p>
+    <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+      2,921
+    </span>
+</div>
+
+</div> 
+</div>
+
+
+<!-- Filters -->
+<div class="govuk-grid-column-one-third govuk-form-group">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-fieldset__heading">
+      Filters
+    </h1>
+  </legend>
+<div class="govuk-form-group">
+  <label class="govuk-label" for="width-20">
+    Filter by critical status
+  </label>
+  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-8" type="text" spellcheck="false">
+
+    <a href="manage-tasks-filter-applied">
+    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Filter
+    </button>
+    </a>
+  </div>
+  <details class="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Help with status
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      <p>Red - Due to expire soon</p>
+      <p> Orange - 6 weeks old or over</p>
+      <p> Yellow - 4 to 6 weeks old</p>
+      <p> Grey - under 4 weeks</p>
+    </div>
+  </details>
+</div>
+</div>
+
+</div>
+
+<hr width="55%" size="2" align="left">
+<br/>
+<br/>
+<!-- ****************** -->
+
+
+<!-- Tabs for team status  -->
+<h2 class="govuk-heading-m" style="color: rgb(99, 99, 99)"> 
+  Task status by teams
+</h2>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#tasks">
+        Team A
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#on-hold-tasks">
+       Team B
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#closed-tasks">
+        Team C
+      </a>
+    </li>
+  </ul>
+
+  <!-- Tasks tab -->
+
+  <div class="govuk-tabs__panel" id="tasks">
+   
+    <table class="govuk-table">
+      <thead class="govuk-table__head"></thead>
+        <th scope="col" class="govuk-table__header">Details</th>
+        <th scope="col" class="govuk-table__header">Team leader</th>
+        <th scope="col" class="govuk-table__header">Total agents</th>
+        <th scope="col" class="govuk-table__header">Total tasks</th>
+        <th scope="col" class="govuk-table__header">Tasks assigned</th>
+        <th scope="col" class="govuk-table__header">Unallocated</th>
+        <th scope="col" class="govuk-table__header">Difficulty level</th>
+        <th scope="col" class="govuk-table__header">Avg time</th>
+        <th scope="col" class="govuk-table__header">Status</th>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="">View</a></td>
+          <td class="govuk-table__cell">John Simgla</td>
+          <td class="govuk-table__cell">50</td>
+          <td class="govuk-table__cell">1280</td>
+          <td class="govuk-table__cell">450</td>
+          <td class="govuk-table__cell">320</td>
+          <td class="govuk-table__cell">High</td>
+          <td class="govuk-table__cell">5 days</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--red">
+              Red
+            </strong>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- On hold tasks tab -->
+
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="on-hold-tasks">
+      <table class="govuk-table">
+        <thead class="govuk-table__head"></thead>
+          <th scope="col" class="govuk-table__header">Details</th>
+          <th scope="col" class="govuk-table__header">Team leader</th>
+          <th scope="col" class="govuk-table__header">Total agents</th>
+          <th scope="col" class="govuk-table__header">Total tasks</th>
+          <th scope="col" class="govuk-table__header">Tasks assigned</th>
+          <th scope="col" class="govuk-table__header">Unallocated</th>
+          <th scope="col" class="govuk-table__header">Difficulty level</th>
+          <th scope="col" class="govuk-table__header">Avg time</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </thead>
+  
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><a href="">View</a></td>
+            <td class="govuk-table__cell">Emma Hope</td>
+            <td class="govuk-table__cell">70</td>
+            <td class="govuk-table__cell">750</td>
+            <td class="govuk-table__cell">450</td>
+            <td class="govuk-table__cell">200</td>
+            <td class="govuk-table__cell">Moderate</td>
+            <td class="govuk-table__cell">3 days</td>
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--yellow">
+                Amber
+              </strong>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+  <!-- Closed tasks tab -->
+
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="closed-tasks">
+    <table class="govuk-table">
+      <thead class="govuk-table__head"></thead>
+        <th scope="col" class="govuk-table__header">Details</th>
+        <th scope="col" class="govuk-table__header">Team leader</th>
+        <th scope="col" class="govuk-table__header">Total agents</th>
+        <th scope="col" class="govuk-table__header">Total tasks</th>
+        <th scope="col" class="govuk-table__header">Tasks assigned</th>
+        <th scope="col" class="govuk-table__header">Unallocated</th>
+        <th scope="col" class="govuk-table__header">Difficulty level</th>
+        <th scope="col" class="govuk-table__header">Avg time</th>
+        <th scope="col" class="govuk-table__header">Status</th>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="">View</a></td>
+          <td class="govuk-table__cell">Anna Carlson</td>
+          <td class="govuk-table__cell">30</td>
+          <td class="govuk-table__cell">250</td>
+          <td class="govuk-table__cell">245</td>
+          <td class="govuk-table__cell">5</td>
+          <td class="govuk-table__cell">Low</td>
+          <td class="govuk-table__cell">1 days</td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Green
+            </strong>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  &nbsp;
+
+
+   </div>
+
+ {% endblock %}
