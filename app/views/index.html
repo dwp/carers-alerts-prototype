@@ -1,25 +1,56 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% block pageTitle %}
+Home – {{serviceName}} – GOV.UK Prototype Kit
+{% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
-
-
-      {{ govukButton({
-          text: "Continue",
-          href: "example/where-do-you-live"
-        }) }}
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
-  </div>
+<div class="spacer2">
 </div>
 
+    <h1 class="govuk-heading-xl">
+      Prototype
+    </h1>
+    <h2 class="govuk-heading-m">All versions</h2>
+    &nbsp;
+</div>
+<div class="govuk-grid-column-full">
+
+
+    <!-- Demos -->
+
+  <table class="govuk-table">
+    <caption class="govuk-table__caption govuk-table__caption--m">Product demo links</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header" width="25%">Date</th>
+        <th scope="col" class="govuk-table__header" width="50%">Information</th>
+        <th scope="col" class="govuk-table__header" width="25%">Links</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body"></tbody>
+        <tr class="govuk-table__row">
+        <td class="govuk-table__cell">24 March 2025</td>
+        <td class="govuk-table__cell">Demo prototype for Team manager view </td>
+        <td class="govuk-table__cell"><a href="Servicemanager-v6/home">Team manager demo</a></td>
+        </tr>
+    </tbody>
+    <tbody class="govuk-table__body"></tbody>
+        <tr class="govuk-table__row">
+        <td class="govuk-table__cell">24 March 2025</td>
+        <td class="govuk-table__cell">Demo prototype for Team Leader view </td>
+        <td class="govuk-table__cell"><a href="Servicemanager-v6/home">Team leader demo</a></td>
+        </tr>
+    </tbody>
+    <tbody class="govuk-table__body"></tbody>
+        <tr class="govuk-table__row">
+        <td class="govuk-table__cell">24 March 2025</td>
+        <td class="govuk-table__cell">Demo prototype for Agents view </td>
+        <td class="govuk-table__cell"><a href="Servicemanager-v6/home">Agents demo</a></td>
+        </tr>
+    </tbody>
+  </table>
 {% endblock %}
