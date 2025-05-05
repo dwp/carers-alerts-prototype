@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record task outcome - What is the reason for this no action required outcome?</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : No action required</p>
+        </div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h2 class="govuk-heading-m">
+                What is the reason for this no action required outcome?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcomeReason" name="outcomeReason" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="outcomeReason">
+                  All earnings under limit
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcomeReason-2" name="outcomeReason" type="radio"
+                  value="scotland">
+                <label class="govuk-label govuk-radios__label" for="outcomeReason-2">
+                  CAU already actioned
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcomeReason-3" name="outcomeReason" type="radio" value="wales">
+                <label class="govuk-label govuk-radios__label" for="outcomeReason-3">
+                  Claim not in payment
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcomeReason-4" name="outcomeReason" type="radio"
+                  value="northern-ireland">
+                <label class="govuk-label govuk-radios__label" for="outcomeReason-4">
+                  No active claim
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        <form class="form" action="no-action-outcome-summary" method="post">.
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}
