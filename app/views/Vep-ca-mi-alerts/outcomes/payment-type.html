@@ -17,7 +17,7 @@ Task types
         <h1 class="govuk-heading-l">Please select type of payment you would like to record?</h1>
         <div class="govuk-inset-text">
           <p> National Insurance number: RN0002563, Name: Davis Jones</p>
-          <p> You have selected CA outcome : No action required</p>
+          <p> You have selected CA outcome : Full disallowance</p>
         </div>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -38,14 +38,14 @@ Task types
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="outcomeReason-3" name="outcomeReason" type="radio" value="wales">
                 <label class="govuk-label govuk-radios__label" for="outcomeReason-3">
-                  Both
+                  Underpayments and overpayments
                 </label>
               </div>
           </fieldset>
         </div>
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
-        <form class="form" action="underpayment-details" method="post">
+        <form class="form" action="overpayment-details" method="post">
           {{ govukButton({
           text: "Continue"
           }) }}
