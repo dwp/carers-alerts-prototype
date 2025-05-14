@@ -17,60 +17,63 @@ Task types
           <p> National Insurance number: RN0002563, Name: Davis Jones</p>
           <p> You have selected CA outcome : Outstanding action in CAU</p>
         </div>
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h2 class="govuk-heading-m">
-                What is the reason for this outstanding action in CAU outcome?
-              </h2>
-            </legend>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="outcomeReason" name="outcomeReason" type="radio" value="england">
-                <label class="govuk-label govuk-radios__label" for="outcomeReason">
-                  Self employed
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="outcomeReason-2" name="outcomeReason" type="radio"
-                  value="scotland">
-                <label class="govuk-label govuk-radios__label" for="outcomeReason-2">
-                  Underlying entitlement
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="outcomeReason-3" name="outcomeReason" type="radio" value="wales">
-                <label class="govuk-label govuk-radios__label" for="outcomeReason-3">
-                  8 Week run on
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="outcomeReason-4" name="outcomeReason" type="radio"
-                  value="northern-ireland">
-                <label class="govuk-label govuk-radios__label" for="outcomeReason-4">
-                  Break in care
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="outcomeReason-5" name="outcomeReason" type="radio"
-                  value="northern-ireland">
-                <label class="govuk-label govuk-radios__label" for="outcomeReason-5">
-                  Irregular earner
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="outcomeReason-5" name="outcomeReason" type="radio"
-                  value="northern-ireland">
-                <label class="govuk-label govuk-radios__label" for="outcomeReason-5">
-                  Other
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
+        <form class="form" action="/outstanding-action-outcome" method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  What is the reason for this outstanding action in CAU outcome?
+                </h2>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-1"
+                    name="outstandingOutcomeAddReason" type="radio" value="Irregular earner">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-5">
+                    Irregular earner
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-2"
+                    name="outstandingOutcomeAddReason" type="radio" value="Underlying entitlement">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-2">
+                    Underlying entitlement
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-3"
+                    name="outstandingOutcomeAddReason" type="radio" value="Break in care">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-4">
+                    Break in care
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-4"
+                    name="outstandingOutcomeAddReason" type="radio" value="Self employed">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason">
+                    Self employed
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-5"
+                    name="outstandingOutcomeAddReason" type="radio" value="8 Week run on">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-3">
+                    8 Week run on
+                  </label>
+                </div>
 
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-        <form class="form" action="outcome-reason-summary" method="post">.
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-6"
+                    name="outstandingOutcomeAddReason" type="radio" value="Other">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-5">
+                    Other
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
           {{ govukButton({
           text: "Continue"
           }) }}

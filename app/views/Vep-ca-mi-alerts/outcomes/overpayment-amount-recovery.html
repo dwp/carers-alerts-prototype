@@ -19,7 +19,7 @@ Task types
           <p> National Insurance number: RN0002563, Name: Davis Jones</p>
           <p> You have selected CA outcome : Full disallowance</p>
         </div>
-        <form class="form" action="total-overpayments-summary" method="post">
+        <form class="form" action="/overpayment-amount-recovery" method="post">
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
               {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -33,7 +33,7 @@ Task types
 
               {{ govukInput({
               label: {
-              text: "Amount non recoverable"
+              text: "Amount not recoverable"
               },
               id: "amountNonRecoverable",
               name: "amountNonRecoverable"

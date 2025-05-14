@@ -17,9 +17,9 @@ Task types
         <h1 class="govuk-heading-l">Record overpayment details</h1>
         <div class="govuk-inset-text">
           <p> National Insurance number: RN0002563, Name: Davis Jones</p>
-          <p> You have selected CA outcome : Full disallowance</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
         </div>
-        <form class="form" action="overpayment-civil-penalty" method="post">
+        <form class="form" action="/overpayment-details" method="post">
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
               {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -42,11 +42,11 @@ Task types
               },
               items: [
               {
-              value: "officialError",
+              value: "Official error",
               text: "Official error"
               },
               {
-              value: "customerError",
+              value: "Customer error",
               text: "Customer error",
               selected: true
               }

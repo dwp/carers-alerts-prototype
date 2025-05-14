@@ -13,38 +13,85 @@ Task types
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
-      <h1 class="govuk-heading-l">Underpayments summary</h1>
-      <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Underpayments details</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Total amount</th>
-            <th scope="col" class="govuk-table__header govuk-table__header">Error type</th>
-            <th scope="col" class="govuk-table__header govuk-table__header"></th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell govuk-table__cell"><b>£1,20,000</b></td>
-            <td class="govuk-table__cell govuk-table__cell">Official error</td>
-            <td class="govuk-table__cell govuk-table__cell">
-              <a href="#">Change</a>
-            </td>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell govuk-table__cell"><b>£2,20,000</b></td>
-            <td class="govuk-table__cell govuk-table__cell">Customer error</td>
-            <td class="govuk-table__cell govuk-table__cell">
-              <a href="#">Change</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="govuk-button-group">
-        <a href="underpayment-details" "=""">
-          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Add underpayment</button></a>
-        <a href="total-payments-summary.html" "=""">
-          <button class="govuk-button govuk-button--primary" data-module="govuk-button">View all payments</button></a>
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Check your answers</h1>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National Insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              RN000559D
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the outcome of this task?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['outcomeReason']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has the citizen already declared a change of earnings?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['earningsDeclared']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['paymentType']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['underPaymentValue']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Error type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['underapymentErrorType']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+
+
+        </dl>
+        <p class="govuk-body">
+          <a href="underpayment-details" class="govuk-link govuk-link--no-visited-state">Add underpayment</a>
+        </p>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        <form class="form" action="additional-outcomes.html" method="post">
+          {{ govukButton({
+          text: "Record outcome"
+          }) }}
+        </form>
       </div>
     </div>
   </main>

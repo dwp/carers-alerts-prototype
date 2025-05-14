@@ -40,7 +40,7 @@ Task types
               What is the reason for this no action required outcome?
             </dt>
             <dd class="govuk-summary-list__value">
-              Claim not in payment
+              {{data['noActionOutcomeAddReason']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
@@ -50,7 +50,7 @@ Task types
         </dl>
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
-        <form class="form" action="addtional-outcomes.html" method="post">.
+        <form class="form" action="additional-outcomes.html" method="post">
           {{ govukButton({
           text: "Record outcome"
           }) }}
