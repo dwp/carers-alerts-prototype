@@ -14,16 +14,16 @@ Task types
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Record task outcome - Has the citizen already declared a change of earnings?</h1>
+        <h1 class="govuk-heading-l">Record task outcome</h1>
         <div class="govuk-inset-text">
           <p> National Insurance number: RN0002563, Name: Davis Jones</p>
-          <p> You have selected CA outcome : Full disallowance</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
         </div>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h2 class="govuk-heading-m">
-                What is the outcome of this task?
+                Has the citizen already declared a change of earnings?
               </h2>
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">

@@ -14,35 +14,33 @@ Task types
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Please select type of payment you would like to record?</h1>
+        <h1 class="govuk-heading-l">Record task outcome</h1>
         <div class="govuk-inset-text">
           <p> National Insurance number: RN0002563, Name: Davis Jones</p>
           <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
         </div>
 
-        <form class="form" action="/payment-type" method="post">
+        <form class="form" action="/full-disallowance" method="post">
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  Has the citizen already declared a change of earnings?
+                </h2>
+              </legend>
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="paymentType" name="paymentType" type="radio"
-                    value="Overpayment">
-                  <label class="govuk-label govuk-radios__label" for="paymentType">
-                    Overpayment
+                  <input class="govuk-radios__input" id="earningsDeclared" name="earningsDeclared" type="radio"
+                    value="Yes">
+                  <label class="govuk-label govuk-radios__label" for="earningsDeclared">
+                    Yes
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="paymentType-2" name="paymentType" type="radio"
-                    value="Underpayment">
-                  <label class="govuk-label govuk-radios__label" for="paymentType-2">
-                    Underpayment
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="paymentType-3" name="paymentType" type="radio"
-                    value="Underpayments and overpayments">
-                  <label class="govuk-label govuk-radios__label" for="paymentType-3">
-                    Underpayments and overpayments
+                  <input class="govuk-radios__input" id="earningsDeclared-2" name="earningsDeclared" type="radio"
+                    value="No">
+                  <label class="govuk-label govuk-radios__label" for="earningsDeclared-2">
+                    No
                   </label>
                 </div>
             </fieldset>
