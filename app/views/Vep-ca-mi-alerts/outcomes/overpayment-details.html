@@ -26,10 +26,15 @@ Task types
               {{ govukInput({
               label: {
               text: "Total overpayment",
-              classes: "govuk-label--l"
+              classes: "govuk-label"
               },
               id: "overPaymentValue",
-              name: "overPaymentValue"
+              name: "overPaymentValue",
+              prefix: {
+              text: "£"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
               }) }}
 
               {% from "govuk/components/select/macro.njk" import govukSelect %}
@@ -42,13 +47,16 @@ Task types
               },
               items: [
               {
+              value: "Choose error type",
+              text: "Choose error type"
+              },
+              {
               value: "Official error",
               text: "Official error"
               },
               {
               value: "Customer error",
-              text: "Customer error",
-              selected: true
+              text: "Customer error"
               }
               ]
               }) }}

@@ -26,10 +26,15 @@ Task types
               {{ govukInput({
               label: {
               text: "Total underpayment",
-              classes: "govuk-label--l"
+              classes: "govuk-label"
               },
               id: "underPaymentValue",
-              name: "underPaymentValue"
+              name: "underPaymentValue",
+              prefix: {
+              text: "£"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
 
               }) }}
 

@@ -54,12 +54,20 @@ router.post('/payment-type', function (req, res) {
     } if (paymentTypeVar == "Underpayment") {
         res.redirect('Vep-ca-mi-alerts/outcomes/underpayment-details')
     }
+    if (paymentTypeVar == "Underpayments and overpayments") {
+        res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-details')
+    }
 })
 
 ///////// routes for overpayment page ////////
 // routes for overpayment amount page selection page
 router.post('/overpayment-details', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-amount-recovery')
+    var errorTypeVar = req.session.data['errorType']
+    if (errorTypeVar == "Official error") {
+        res.redirect('Vep-ca-mi-alerts/outcomes/total-overpayments-summary')
+    } else {
+        res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-amount-recovery')
+    }
 })
 
 // routes for overpayment amount recovery selection page
