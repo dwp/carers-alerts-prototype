@@ -85,13 +85,10 @@ Task types
         <p class="govuk-body">
           <a href="underpayment-details" class="govuk-link govuk-link--no-visited-state">Add underpayment</a>
         </p>
-
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-        <form class="form" action="additional-outcomes.html" method="post">
-          {{ govukButton({
-          text: "Record outcome"
-          }) }}
-        </form>
+        <div class="govuk-button-group" style="margin-top: 60px;">
+          <a href="additional-outcomes.html" "=""">
+            <button class="govuk-button govuk-button--primary" data-module="govuk-button">Record outcome</button></a>
+        </div>
       </div>
     </div>
   </main>

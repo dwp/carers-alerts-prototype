@@ -4,12 +4,21 @@
 Task types
 {% endblock %}
 
+
+
 {% block beforeContent %}
 
+
 <div class="govuk-width-container">
-  <a href="#" class="govuk-back-link">Back</a>
   <main class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Outcome reason</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="govuk-grid-row" style="margin-top: 60px;">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Record task outcome - What is the outcome of this task?</h1>
         <form class="form" action="/additional-outcomes" method="post">
@@ -67,22 +76,7 @@ Task types
           text: "Continue"
           }) }}
         </form>
-        <!-- button leads to outstanding outcomes
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-        <form class="form" action="outstanding-action-outcome" method="post">.
-          {{ govukButton({
-          text: "Continue"
-          }) }}
-        </form> -->
 
-        <!-- ////////////// -->
-        <!--  button leads to no action required outcomes -->
-        <!-- {% from "govuk/components/button/macro.njk" import govukButton %}
-        <form class="form" action="no-action-outcome" method="post">.
-          {{ govukButton({
-          text: "Continue"
-          }) }}
-        </form> -->
       </div>
     </div>
   </main>

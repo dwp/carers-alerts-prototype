@@ -5,14 +5,23 @@ Task types
 {% endblock %}
 
 {% block beforeContent %}
-<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper">
-    <div class="govuk-grid-row">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="full-disallowance">{{data['outcomeReason']}}</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="govuk-grid-row" style="margin-top: 60px;">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">Record task outcome</h1>
         <div class="govuk-inset-text">
