@@ -28,6 +28,9 @@ Task types
               text: "Total underpayment",
               classes: "govuk-label"
               },
+              hint: {
+              text: "Please enter sum of all underpayment values"
+              },
               id: "underPaymentValue",
               name: "underPaymentValue",
               prefix: {
@@ -59,13 +62,17 @@ Task types
               },
               items: [
               {
-              value: "Official error",
-              text: "Official error"
+              value: "Choose error type",
+              text: "Choose error type"
               },
+
               {
               value: "Customer error",
-              text: "Customer error",
-              selected: true
+              text: "Customer error"
+              },
+              {
+              value: "Official error",
+              text: "Official error"
               }
               ]
               }) }}
