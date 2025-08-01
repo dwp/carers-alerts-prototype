@@ -153,6 +153,13 @@ font-family: Helvetica, Arial, sans-serif;
   background-color: #0b0c0c;
   border-bottom: 0;
   width: 100%;
+
+  li {
+    display: inline;
+    padding-right: 10px;
+    color: white;
+    font-size: medium;
+  }
 }
 
 .dwp-header__container {
@@ -546,5 +553,23 @@ font-family: Helvetica, Arial, sans-serif;
 
   }
 
+  /* parent */
+
+  ul {
+    background-color: white;
+
+
+  }
+
+
+  /* childs */
+
+  li {
+    display: inline;
+  }
+
+  .link-color {
+    color: white;
+  }
 
 }

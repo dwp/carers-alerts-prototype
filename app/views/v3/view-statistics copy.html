@@ -1,0 +1,128 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Statistics
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+
+  <!--  Date range filter -->
+  <div class="govuk-grid-column-one-third">
+    <!-- Heading of the page  -->
+    <h1 class="govuk-heading-l">Dashboard</h1>
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Date range
+          </h1>
+        </legend>
+        <p>Enter the date range you want statistics for, from earliest to latest.</p>
+        <div class="govuk-date-input" id="passport-issued">
+          <p><strong>Start date</strong></p>
+          <div id="passport-issued-hint" class="govuk-hint">
+            For example, 27 3 2025
+          </div>
+
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                Day
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                name="passport-issued-day" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                name="passport-issued-month" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group ">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                name="passport-issued-year" type="text" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <p><strong>End date</strong></p>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2025
+    </div>
+    <div class="govuk-form-group">
+      <div class="govuk-date-input" id="passport-issued">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+              Day
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+              name="passport-issued-day" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+              Month
+            </label>
+            <input class="govuk-input  govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+              name="passport-issued-month" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+              Year
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+              name="passport-issued-year" type="text" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+      </fieldset>
+    </div>
+    <div class="govuk-button-group">
+      <button class="govuk-button" data-module="govuk-button">
+        Filter
+      </button>
+    </div>
+  </div>
+  <!-- end of filter  -->
+
+  <!--  Alerts dashboard boxes -->
+  <div class="govuk-grid-column-two-thirds">
+    <div class="scenario-panel">
+      <h2 class="govuk-heading-s">Alerts statistics</h2>
+      <div class="scenario-inner-panel">
+        <h3 class="govuk-heading-m">
+          <strong>Alerts intake - <b>238000</b></strong>
+        </h3>
+        <h3 class="govuk-heading-m">
+          <strong>Alerts cleared - <b>18000</b></strong>
+        </h3>
+
+      </div>
+    </div>
+  </div>
+  <!-- /////////////////////// -->
+</div>
+
+{% endblock %}

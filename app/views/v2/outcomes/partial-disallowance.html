@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="full-disallowance.html">Record task outcome - Has the citizen already
+            declared a change of circumstances?</a>
+        </li>
+      </ol>
+    </nav>
+    <br />
+    <br />
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record task outcome</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+        </div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h2 class="govuk-heading-m">
+                Has the citizen already declared a change of circumstances?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcomeReason" name="outcomeReason" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="outcomeReason">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcomeReason-2" name="outcomeReason" type="radio"
+                  value="scotland">
+                <label class="govuk-label govuk-radios__label" for="outcomeReason-2">
+                  No
+                </label>
+              </div>
+          </fieldset>
+        </div>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        <form class="form" action="payment-type" method="post">
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

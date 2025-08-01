@@ -3,24 +3,26 @@ module.exports = {
   // Insert values here
   "overpayment": [
     {
-      overpaymentAmount: "£2000",
+      overpaymentAmount: "0",
       errorType: "Official error"
     },
     {
-      overpaymentAmount: "5000",
+      overpaymentAmount: "0",
       errorType: "Customer error",
-      amountRecoverable: "£1800",
-      amountNotRecoverable: "£400",
+      amountRecoverable: "0",
+      amountNotRecoverable: "0",
       civilPenaltyApplied: "yes"
     }
   ],
+  "paymentType": "error",
+  "outcomeReason": "error",
   "underPayment": [
     {
-      underPaymentAmount: "£2000",
+      underPaymentAmount: "0",
       errorType: "Official error"
     },
     {
-      underPaymentAmount: "5000",
+      underPaymentAmount: "0",
       errorType: "customer error"
     }
   ]

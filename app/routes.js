@@ -19,86 +19,226 @@ router.use((req, res, next) => {
 
     next()
 })
+////////////// ------      v1 routes ---------- ////////////////////
+
+// // routes for Outcome reason page
+// router.post('/additional-outcomes', function (req, res) {
+//     var outcomeReasonVar = req.session.data['outcomeReason']
+//     if (outcomeReasonVar == "Full disallowance") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/full-disallowance')
+//     } if (outcomeReasonVar == "Partial disallowance") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/partial-disallowance')
+//     }
+//     if (outcomeReasonVar == "outstandingCAU") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/outstanding-action-outcome')
+//     }
+//     if (outcomeReasonVar == "no-action-outcome") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/no-action-outcome')
+//     }
+// })
+
+// // routes for Full disallowance reason page
+// router.post('/full-disallowance', function (req, res) {
+//     res.redirect('Vep-ca-mi-alerts/outcomes/payment-type')
+// })
+
+// // routes for Full disallowance reason page
+// router.post('/partial-disallowance', function (req, res) {
+//     res.redirect('Vep-ca-mi-alerts/outcomes/payment-type')
+// })
+
+// // routes for payment type selection page
+// router.post('/payment-type', function (req, res) {
+//     var paymentTypeVar = req.session.data['paymentType']
+//     if (paymentTypeVar == "Overpayment") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-details')
+//     } if (paymentTypeVar == "Underpayment") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/underpayment-details')
+//     }
+//     if (paymentTypeVar == "Underpayments and overpayments") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-details')
+//     }
+// })
+
+// ///////// routes for overpayment page ////////
+// // routes for overpayment amount page selection page
+// router.post('/overpayment-details', function (req, res) {
+//     var errorTypeVar = req.session.data['errorType']
+//     if (errorTypeVar == "Official error") {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/total-overpayments-summary')
+//     } else {
+//         res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-amount-recovery')
+//     }
+// })
+
+// // routes for overpayment amount recovery selection page
+// router.post('/overpayment-amount-recovery', function (req, res) {
+//     res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-civil-penalty')
+// })
+
+// // routes for overpayment check your answer page
+// router.post('/overpayment-civil-penalty', function (req, res) {
+//     res.redirect('Vep-ca-mi-alerts/outcomes/total-overpayments-summary')
+// })
+
+// ///////// routes for underpaymemnt page ////////
+
+// // routes for underpayment check your answer page
+// router.post('/underpayment-details', function (req, res) {
+//     res.redirect('Vep-ca-mi-alerts/outcomes/total-underpayments-summary')
+// })
+
+
+
+// // routes for Outstanding action in CAU reason page
+// router.post('/outstanding-action-outcome', function (req, res) {
+//     res.redirect('Vep-ca-mi-alerts/outcomes/outcome-reason-summary')
+// })
+
+// // routes for No action in CAU reason page
+// router.post('/no-action-outcome', function (req, res) {
+//     res.redirect('Vep-ca-mi-alerts/outcomes/no-action-outcome-summary')
+// })
+
+///////////-------------    v2 routes ---------- //////////////
+
 
 // routes for Outcome reason page
 router.post('/additional-outcomes', function (req, res) {
     var outcomeReasonVar = req.session.data['outcomeReason']
     if (outcomeReasonVar == "Full disallowance") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/full-disallowance')
+        res.redirect('v2/outcomes/full-disallowance')
     } if (outcomeReasonVar == "Partial disallowance") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/partial-disallowance')
+        res.redirect('v2/outcomes/partial-disallowance')
     }
     if (outcomeReasonVar == "outstandingCAU") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/outstanding-action-outcome')
+        res.redirect('v2/outcomes/outstanding-action-outcome')
     }
     if (outcomeReasonVar == "no-action-outcome") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/no-action-outcome')
+        res.redirect('v2/outcomes/no-action-outcome')
+    }
+    if (outcomeReasonVar == "no-change-to-award") {
+        res.redirect('v2/outcomes/no-change-to-award-outcome')
     }
 })
 
 // routes for Full disallowance reason page
 router.post('/full-disallowance', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/payment-type')
+    res.redirect('v2/outcomes/payment-type')
 })
 
 // routes for Full disallowance reason page
 router.post('/partial-disallowance', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/payment-type')
+    res.redirect('v2/outcomes/payment-type')
 })
 
 // routes for payment type selection page
 router.post('/payment-type', function (req, res) {
     var paymentTypeVar = req.session.data['paymentType']
     if (paymentTypeVar == "Overpayment") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-details')
+        res.redirect('v2/outcomes/overpayment-details')
     } if (paymentTypeVar == "Underpayment") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/underpayment-details')
+        res.redirect('v2/outcomes/underpayment-details')
     }
-    if (paymentTypeVar == "Underpayments and overpayments") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-details')
+    if (paymentTypeVar == "Overpayment and arrears") {
+        res.redirect('v2/outcomes/overpayment-details')
     }
 })
 
 ///////// routes for overpayment page ////////
 // routes for overpayment amount page selection page
 router.post('/overpayment-details', function (req, res) {
-    var errorTypeVar = req.session.data['errorType']
-    if (errorTypeVar == "Official error") {
-        res.redirect('Vep-ca-mi-alerts/outcomes/total-overpayments-summary')
-    } else {
-        res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-amount-recovery')
+    var paymentTypeVar = req.session.data['paymentType']
+    if (paymentTypeVar == "Overpayment and arrears") {
+        res.redirect('v2/outcomes/underpayment-details-mixed')
     }
+    res.redirect('v2/outcomes/total-overpayments-summary')
+
 })
 
 // routes for overpayment amount recovery selection page
 router.post('/overpayment-amount-recovery', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/overpayment-civil-penalty')
+    res.redirect('v2/outcomes/overpayment-civil-penalty')
 })
 
 // routes for overpayment check your answer page
 router.post('/overpayment-civil-penalty', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/total-overpayments-summary')
+    res.redirect('v2/outcomes/total-overpayments-summary')
 })
 
 ///////// routes for underpaymemnt page ////////
 
 // routes for underpayment check your answer page
 router.post('/underpayment-details', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/total-underpayments-summary')
+    var paymentTypeVar = req.session.data['paymentType']
+    if (paymentTypeVar == "Overpayment and arrears") {
+        res.redirect('v2/outcomes/total-payments-summary')
+    }
+    res.redirect('v2/outcomes/total-underpayments-summary')
+})
+
+// routes for underpayment check your answer page
+router.post('/underpayment-details-mixed', function (req, res) {
+    res.redirect('v2/outcomes/total-payments-summary')
 })
 
 
 
 // routes for Outstanding action in CAU reason page
 router.post('/outstanding-action-outcome', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/outcome-reason-summary')
+    res.redirect('v2/outcomes/outcome-reason-summary')
 })
 
 // routes for No action in CAU reason page
 router.post('/no-action-outcome', function (req, res) {
-    res.redirect('Vep-ca-mi-alerts/outcomes/no-action-outcome-summary')
+    res.redirect('v2/outcomes/no-action-outcome-summary')
+})
+
+router.post('/no-change-to-award-outcome', function (req, res) {
+    res.redirect('v2/outcomes/no-change-to-award-summary')
 })
 
 
+// routes for error pages
 
+router.post('/additional-outcomes-error', function (req, res) {
+    var outcomeReasonVar = req.session.data['outcomeReason']
+    if (outcomeReasonVar == "Full disallowance") {
+        res.redirect('v2/error-pages/full-disallowance-error')
+    } if (outcomeReasonVar == "Partial disallowance") {
+        res.redirect('v2/error-pages/partial-disallowance-error')
+    }
+    if (outcomeReasonVar == "outstandingCAU") {
+        res.redirect('v2/error-pages/outstanding-action-outcome-error')
+    }
+    if (outcomeReasonVar == "no-action-outcome") {
+        res.redirect('v2/error-pages/no-action-outcome-error')
+    }
+    if (outcomeReasonVar == "no-change-to-award") {
+        res.redirect('v2/error-pages/no-change-to-award-outcome-error')
+    }
+})
+
+router.post('/additional-outcomes-error', function (req, res) {
+    res.redirect('v2/error-pages/full-disallowance-error')
+})
+
+router.post('/full-disallowance-error', function (req, res) {
+    res.redirect('v2/error-pages/payment-type-error')
+})
+
+router.post('/partial-disallowance-error', function (req, res) {
+    res.redirect('v2/error-pages/payment-type-error')
+})
+
+router.post('/payment-type-error', function (req, res) {
+    res.redirect('v2/error-pages/overpayment-details-error')
+})
+
+
+router.post('/overpayment-details-error', function (req, res) {
+    res.redirect('v2/outcomes/total-overpayments-summary')
+})
 module.exports = router
+
+

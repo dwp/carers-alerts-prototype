@@ -1,0 +1,126 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Team manager Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <!-- Heading -->
+    <div>
+      <h1 class="govuk-heading-l">
+        Team manager Dashboard
+      </h1>
+    </div>
+    <!-- ------ -->
+
+    <div class="govuk-form-group govuk-input__wrapper">
+      <div>
+        <label class="govuk-label" for="sort">
+          Filter by alerts age
+        </label>
+
+        <form method="post">
+          <select class="govuk-select" id="sort" name="sort">
+            <option>Gray tasks - 4 weeks old</option>
+            <option>Yellow tasks - 4 to 6 weeks old</option>
+            <option>Orange tasks - 6 weeks old and over</option>
+            <option>Red tasks - due to expire</option>
+            <option>Priority, low to critical</option>
+            <option>Priority, critical to low</option>
+          </select>
+        </form>
+      </div>
+      &nbsp; &nbsp;
+      <div>
+        <!-- Filter -->
+
+        <label class="govuk-label" for="width-20">
+          Filter by date
+        </label>
+        <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-10" type="text"
+            spellcheck="false">
+
+          <a href="manage-tasks-filter-applied">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+              Filter
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------- -->
+    <!-- Box -1  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Alerts statistics</h2>
+        <div class="scenario-inner-panel">
+          <h3 class="govuk-heading-m">
+            <strong>Alerts intake - <b>238000</b></strong>
+          </h3>
+          <h3 class="govuk-heading-m">
+            <strong>Alerts cleared - <b>18000</b></strong>
+          </h3>
+
+        </div>
+      </div>
+    </div>
+    <!-- ////// -->
+    <!-- Box - 2  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Outstanding alerts</h2>
+        <div class="scenario-inner-panel">
+          <h3 class="govuk-heading-m">
+            <strong>Alerts in queue - <b>238000</b></strong>
+          </h3>
+          <h3 class="govuk-heading-m">
+            <strong>Alerts B/F notes - <b>18000</b></strong>
+          </h3>
+
+        </div>
+      </div>
+    </div>
+    <!-- ////// -->
+
+
+    <!-- Box - 3  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Overpayments</h2>
+        <div class="scenario-inner-panel">
+          <h3 class="govuk-heading-s">
+            <strong>Avg overpayment amount- £238000</strong>
+          </h3>
+          <h3 class="govuk-heading-s">
+            <strong>Highest overpayment amount- £18000</strong>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!-- ////// -->
+    <!-- Box - 5  -->
+    <div class="govuk-grid-column-one-half">
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Underpayments</h2>
+        <div class="scenario-inner-panel">
+          <h3 class="govuk-heading-s">
+            <strong>Avg underpayment amount- £278000</strong>
+          </h3>
+          <h3 class="govuk-heading-s">
+            <strong>Highest underpayment amount- £8000</strong>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <!-- //// -->
+
+  </div>
+</div>
+
+{% endblock %}

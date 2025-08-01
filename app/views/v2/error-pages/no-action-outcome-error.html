@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#noActionOutcomeAddReason-2">Select the outcome reason</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record task outcome - What is the reason for this no action required outcome?</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : No action required</p>
+        </div>
+
+        <form class="form" action="/no-action-outcome" method="post">
+          <div class="govuk-form-group govuk-form-group--error">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  What is the reason for this no action required outcome?
+                </h2>
+              </legend>
+              <p id="outcomeReason-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Select the outcome reason
+              </p>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noActionOutcomeAddReason-2" name="noActionOutcomeAddReason"
+                    type="radio" value="With CAU for action">
+                  <label class="govuk-label govuk-radios__label" for="noActionOutcomeAddReason-2">
+                    With CAU for Action
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noActionOutcomeAddReason-3" name="noActionOutcomeAddReason"
+                    type="radio" value="Dormant case">
+                  <label class="govuk-label govuk-radios__label" for="noActionOutcomeAddReason-3">
+                    Dormant case
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

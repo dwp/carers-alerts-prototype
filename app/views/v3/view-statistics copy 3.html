@@ -1,0 +1,374 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+CA Dashboard
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-full">
+
+  <!-- Heading of the page  -->
+  <h1 class="govuk-heading-l">CA Dashboard</h1>
+  <!-- ------- -->
+
+  <!--  Tabs  -->
+  <div class="govuk-tabs" data-module="govuk-tabs">
+    <h2 class="govuk-tabs__title">
+      Contents
+    </h2>
+    <ul class="govuk-tabs__list">
+      <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+        <a class="govuk-tabs__tab" href="#overall-alerts">
+          Overall alerts statistics
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item">
+        <a class="govuk-tabs__tab" href="#past-week">
+          Alerts Intake and Cleared
+        </a>
+      </li>
+    </ul>
+    <!-- overall alerts status box -->
+    <div class="govuk-tabs__panel" id="overall-alerts">
+      <h2 class="govuk-heading-l">Overall outstanding alerts</h2>
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Alerts statistics</h2>
+        <div class="scenario-inner-panel">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <p style="color:#0f0f0f;">Alerts Queued</p>
+              <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                4,572
+              </span>
+            </div>
+            <div class="govuk-grid-column-one-half">
+              <p style="color:#0f0f0f;">Alerts In progress</p>
+              <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                3,572
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- table of alerts profile -->
+
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Age profile of alerts</h2>
+        <div class="scenario-inner-panel">
+          <table class="govuk-table govuk-table--small-text-until-tablet">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Alerts type/age</th>
+                <th scope="col" class="govuk-table__header">0-4 weeks</th>
+                <th scope="col" class="govuk-table__header">5-8 weeks</th>
+                <th scope="col" class="govuk-table__header">9-12 weeks</th>
+                <th scope="col" class="govuk-table__header">13-26 weeks</th>
+                <th scope="col" class="govuk-table__header">27-52 weeks</th>
+                <th scope="col" class="govuk-table__header">Over 52 weeks</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">Alerts outstanding</td>
+                <td class="govuk-table__cell">2000</td>
+                <td class="govuk-table__cell">3010</td>
+                <td class="govuk-table__cell">4562</td>
+                <td class="govuk-table__cell">1000</td>
+                <td class="govuk-table__cell">2000</td>
+                <td class="govuk-table__cell">3010</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <br />
+      <!-- table of Oldest alerts queues -->
+      <div class="scenario-panel">
+        <h2 class="govuk-heading-s">Oldest alerts</h2>
+        <div class="scenario-inner-panel">
+
+          <table class="govuk-table govuk-table--small-text-until-tablet">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Date</th>
+                <th scope="col" class="govuk-table__header">National Insurance Number</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">09/05/2017</td>
+                <td class="govuk-table__cell">NR*******</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">17/02/2019</td>
+                <td class="govuk-table__cell">ND*******</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">03/10/2020</td>
+                <td class="govuk-table__cell">NM*******</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">12/07/2021</td>
+                <td class="govuk-table__cell">NY*******</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">15/05/2023</td>
+                <td class="govuk-table__cell">NE*******</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <p> Click here to download the oldest alerts list.</p>
+          <div class="govuk-button-group">
+            <a target="_blank"
+              href="https://dwpeng-my.sharepoint.com/:x:/g/personal/priya_maurya_engineering_digital_dwp_gov_uk/EauOMkvvgtBNqyUjAgyAXsUBeInwivB1IsFN2uArEKiOhA?e=GUmI4K"
+              class="govuk-button govuk-button--secondary" data-module="govuk-button">
+              Download
+            </a>
+          </div>
+
+        </div>
+      </div><br /><br />
+
+    </div>
+    <!--  Tab 2 -   Filter alerts based on date range-------------- -->
+
+
+    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+      <h2 class="govuk-heading-l">Alerts Intake and Cleared</h2>
+      <br />
+      <br />
+      <br />
+      <!-- date filter -->
+      <div class="govuk-grid-row">
+        <div>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Date range
+            </h1>
+          </legend>
+          <p>Enter the date range you want statistics for, from earliest to latest.</p>
+        </div>
+        <div class="govuk-form-group">
+          <div class="govuk-grid-column-one-half">
+
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <div class="govuk-date-input" id="passport-issued">
+                <p><strong>From</strong></p>
+                <div id="passport-issued-hint" class="govuk-hint">
+                  For example, 27 3 2025
+                </div>
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                      name="passport-issued-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                      name="passport-issued-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group ">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                      name="passport-issued-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <div class="govuk-date-input" id="passport-issued">
+                <p><strong>From</strong></p>
+                <div id="passport-issued-hint" class="govuk-hint">
+                  For example, 27 3 2025
+                </div>
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                      name="passport-issued-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                      name="passport-issued-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group ">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                      name="passport-issued-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <!-- Heading of the page  -->
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Date range
+                </h1>
+              </legend>
+              <p>Enter the date range you want statistics for, from earliest to latest.</p>
+              <div class="govuk-date-input" id="passport-issued">
+                <p><strong>From</strong></p>
+                <div id="passport-issued-hint" class="govuk-hint">
+                  For example, 27 3 2025
+                </div>
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                      name="passport-issued-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                      name="passport-issued-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group ">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                      name="passport-issued-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <p><strong>To</strong></p>
+          <div id="passport-issued-hint" class="govuk-hint">
+            For example, 27 3 2025
+          </div>
+          <div class="govuk-form-group">
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                    name="passport-issued-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input  govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                    name="passport-issued-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                    name="passport-issued-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+            </fieldset>
+          </div>
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Filter
+            </button>
+          </div>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          <div class="scenario-panel">
+            <h2 class="govuk-heading-s">Alerts statistics for week - (23/06/2025 - 29/06/2025)</h2>
+            <div class="scenario-inner-panel">
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                  <p style="color:#0f0f0f;">Alerts Intake</p>
+                  <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                    4,572
+                  </span>
+                </div>
+                <div class="govuk-grid-column-one-half">
+                  <p style="color:#0f0f0f;">Alerts Cleared</p>
+                  <span class="govuk-!-font-size-80 govuk-!-font-weight-bold govuk-body" style="color:#0f0f0f;">
+                    3,572
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- ------ -->
+</div>
+</div>
+
+{% endblock %}

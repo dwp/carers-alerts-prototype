@@ -1,0 +1,110 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="full-disallowance.html">Record task outcome - Has the citizen already
+            declared a change of circumstances?</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="payment-type.html">Payment type</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record overpayment details</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+        </div>
+        <form class="form" action="/overpayment-details" method="post">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              {% from "govuk/components/input/macro.njk" import govukInput %}
+              {{ govukInput({
+              label: {
+              text: "Official error amount",
+              classes: "govuk-label"
+              },
+              id: "overPaymentOffcialErrorValue",
+              name: "overPaymentOffcialErrorValue",
+              prefix: {
+              text: "£"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
+              }) }}
+
+              {{ govukInput({
+              label: {
+              text: "Customer error amount",
+              classes: "govuk-label"
+              },
+              id: "overPaymentCustomerErrorValue",
+              name: "overPaymentCustomerErrorValue",
+              prefix: {
+              text: "£"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
+              }) }}
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                  <fieldset class="govuk-fieldset" aria-describedby="civilPenalty-hint">
+                    <legend class="govuk-fieldset__legend">
+                      Civil penalty applied?
+                    </legend>
+                    <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="civilPenalty" name="civilPenalty" type="radio"
+                          value="Yes">
+                        <label class="govuk-label govuk-radios__label" for="civilPenalty">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="civilPenalty-2" name="civilPenalty" type="radio"
+                          value="No">
+                        <label class="govuk-label govuk-radios__label" for="civilPenalty-2">
+                          No
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

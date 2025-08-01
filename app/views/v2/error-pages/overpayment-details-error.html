@@ -1,0 +1,122 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#overPaymentOffcialErrorValue">Both Customer Error & Official Error cannot be blank</a>
+            </li>
+            <!-- <li>
+              <a href="#overPaymentCustomerErrorValue">Enter a value, example 0 for no amount.</a>
+            </li> -->
+            <li>
+              <a href="#civilPenalty-error">Select if civil penalty applied or not</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record overpayment details</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+        </div>
+        <form class="form" action="/overpayment-details-error" method="post">
+          <div class="govuk-form-group">
+            <div class="govuk-grid-row govuk-form-group--error">
+              {% from "govuk/components/input/macro.njk" import govukInput %}
+              {{ govukInput({
+              label: {
+              text: "Official error amount",
+              classes: "govuk-label"
+              },
+              id: "overPaymentOffcialErrorValue",
+              name: "overPaymentOffcialErrorValue",
+              prefix: {
+              text: "£"
+              },
+              errorMessage: {
+              text: "Both Customer Error & Official Error cannot be blank"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
+              }) }}
+
+              {{ govukInput({
+              label: {
+              text: "Customer error amount",
+              classes: "govuk-label"
+              },
+              id: "overPaymentCustomerErrorValue",
+              name: "overPaymentCustomerErrorValue",
+              prefix: {
+              text: "£"
+              },
+              errorMessage: {
+              text: "Both Customer Error & Official Error cannot be blank"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
+              }) }}
+
+              <fieldset class="govuk-fieldset" aria-describedby="civilPenalty-error">
+                <legend class="govuk-fieldset__legend">
+                  Civil penalty applied?
+                </legend>
+                <p id="civilPenalty-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Select if civil penalty applied or not
+                </p>
+                <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="civilPenalty" name="civilPenalty" type="radio" value="Yes">
+                    <label class="govuk-label govuk-radios__label" for="civilPenalty">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="civilPenalty-2" name="civilPenalty" type="radio" value="No">
+                    <label class="govuk-label govuk-radios__label" for="civilPenalty-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="govuk-button-group">
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </div>
+    </form>
+</div>
+</div>
+</main>
+</div>
+
+
+
+{% endblock %}

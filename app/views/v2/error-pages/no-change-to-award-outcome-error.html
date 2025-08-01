@@ -1,0 +1,99 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#noChangeAward-2">Select the outcome reason</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record task outcome - What is the reason for this no action required outcome?</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : No action required</p>
+        </div>
+
+        <form class="form" action="/no-change-to-award-outcome-error" method="post">
+          <div class="govuk-form-group govuk-form-group--error">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  What is the reason for this no change to award outcome?
+                </h2>
+              </legend>
+              <p id="outcomeReason-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Select the outcome reason
+              </p>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-2" name="noChangeAward" type="radio"
+                    value="Earnings Declared - Allowable Expenses">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-2">
+                    Earnings Declared - Allowable Expenses
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-3" name="noChangeAward" type="radio"
+                    value="Earnings Not Declared - Allowable Expenses">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-3">
+                    Earnings Not Declared - Allowable Expenses
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-4" name="noChangeAward" type="radio"
+                    value="Existing Fraud">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-4">
+                    Existing Fraud
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-4" name="noChangeAward" type="radio"
+                    value="New Fraud">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-4">
+                    New Fraud
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-5" name="noChangeAward" type="radio"
+                    value="All Earnings Under Limit">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-5">
+                    All Earnings Under Limit
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

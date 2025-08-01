@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-error-summary" data-module="govuk-error-summary">
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="#paymentType">Select the payment type</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Please select type of payment you would like to record</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+        </div>
+
+        <form class="form" action="/payment-type-error" method="post">
+          <div class="govuk-form-group govuk-form-group--error">
+            <fieldset class="govuk-fieldset" aria-describedby="paymentType-error">
+              <p id="paymentType-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Select the payment type
+              </p>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="paymentType" name="paymentType" type="radio"
+                    value="Overpayment">
+                  <label class="govuk-label govuk-radios__label" for="paymentType">
+                    Overpayment
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="paymentType-2" name="paymentType" type="radio"
+                    value="Underpayment">
+                  <label class="govuk-label govuk-radios__label" for="paymentType-2">
+                    Arrears
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="paymentType-3" name="paymentType" type="radio"
+                    value="Overpayment and arrears">
+                  <label class="govuk-label govuk-radios__label" for="paymentType-3">
+                    Overpayment and arrears
+                  </label>
+                </div>
+            </fieldset>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

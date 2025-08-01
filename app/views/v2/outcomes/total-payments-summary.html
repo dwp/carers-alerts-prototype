@@ -1,0 +1,157 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="full-disallowance.html">Record task outcome - Has the citizen already
+            declared a change of circumstances?</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="payment-type.html">Payment type</a>
+        </li>
+
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="overpayment-details.html">Overpayment details</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="underpayment-details.html">Arrears</a>
+        </li>
+      </ol>
+    </nav>
+    <br />
+    <br />
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Check your answers before recording the outcome</h1>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National Insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              RN000559D
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the outcome of this task?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['outcomeReason']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has the citizen already declared a change of circumstances?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['earningsDeclared']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['paymentType']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+
+        </dl>
+
+        <h2 class="govuk-heading-m"> Overpayment details</h2>
+        <dl class="govuk-summary-list">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Official error amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £{{data['overPaymentOffcialErrorValue']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Customer error amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £{{data['overPaymentCustomerErrorValue']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Civil penalty applied?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['civilPenalty']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+
+        </dl>
+
+        <h2 class="govuk-heading-m"> Arrears details</h2>
+        <dl class="govuk-summary-list">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Arrears paid
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £{{data['underPaymentOffcialErrorValue']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change</a>
+            </dd>
+          </div>
+
+        </dl>
+
+
+        <div class="govuk-button-group" style="margin-top: 60px;">
+          <a href="additional-outcomes.html">
+            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Cancel</button></a>
+          <a href="closed-task.html">
+            <button class="govuk-button govuk-button--primary" data-module="govuk-button">Record outcome</button></a>
+        </div>
+      </div>
+    </div>
+</div>
+</main>
+</div>
+
+
+
+{% endblock %}

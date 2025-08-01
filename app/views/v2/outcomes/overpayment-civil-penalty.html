@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Overpayment - civil penalty applied?</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+        </div>
+        <form class="form" action="/overpayment-civil-penalty" method="post">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <fieldset class="govuk-fieldset" aria-describedby="civilPenalty-hint">
+                <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="civilPenalty" name="civilPenalty" type="radio" value="Yes">
+                    <label class="govuk-label govuk-radios__label" for="civilPenalty">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="civilPenalty-2" name="civilPenalty" type="radio" value="No">
+                    <label class="govuk-label govuk-radios__label" for="civilPenalty-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <br>
+          <br>
+
+
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}
