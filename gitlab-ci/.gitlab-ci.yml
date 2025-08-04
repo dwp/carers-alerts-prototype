@@ -20,4 +20,4 @@ todo-check:
 heroku-site-publish:
   extends: .heroku-site-publish-template
   variables:
-    HEROKU_APP_NAME: VEP-CA-Alerts-Prototype
+    HEROKU_APP_NAME: vep-ca-alerts-prototype
