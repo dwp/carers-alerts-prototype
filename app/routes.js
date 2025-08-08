@@ -132,6 +132,10 @@ router.post('/partial-disallowance', function (req, res) {
     res.redirect('v2/outcomes/payment-type')
 })
 
+// routes for Full disallowance reason page
+router.post('/task-list-tab', function (req, res) {
+    res.redirect('v2/alerts-profile/task-list-tab')
+})
 // routes for payment type selection page
 router.post('/payment-type', function (req, res) {
     var paymentTypeVar = req.session.data['paymentType']
