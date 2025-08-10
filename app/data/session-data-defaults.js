@@ -25,9 +25,7 @@ module.exports = {
       underPaymentAmount: "0",
       errorType: "customer error"
     }
-  ],
-  "alertsSort": "",
-  "nino": ""
+  ]
 
 
 }

@@ -55,33 +55,6 @@ All tasks
 
 <!--  this Javascript logic will handle showing alerts based on selected value from dropdown. Example - Showing oldest alerts when it is selected in Open tasks -->
 
-<!-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const dropdown = document.getElementById("alertsSort");
-    const button = document.querySelector(".govuk-button");
-
-    button.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent form submission if needed
-
-      const selectedValue = dropdown.value;
-
-      // Hide all tables first
-      document.querySelectorAll(".alerts-table").forEach(table => {
-        table.style.display = "none";
-      });
-
-      // Show the relevant table based on selection
-      if (selectedValue === "Oldest Alerts") {
-        document.getElementById("oldestAlertsTable").style.display = "table";
-      } else if (selectedValue === "Newest Alerts") {
-        document.getElementById("newestAlertsTable").style.display = "table";
-      } else if (selectedValue === "Highest Score Alerts") {
-        document.getElementById("highestScoreAlertsTable").style.display = "table";
-      }
-    });
-  });
-</script> -->
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
