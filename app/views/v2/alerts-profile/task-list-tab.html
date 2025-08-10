@@ -18,6 +18,158 @@ All tasks
 {% endblock %}
 
 {% block content %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".govuk-tabs__tab");
+    const header = document.getElementById("openHeader");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Remove selected class from all tabs
+        tabs.forEach(t => t.parentElement.classList.remove("govuk-tabs__list-item--selected"));
+
+        // Add selected class to clicked tab
+        this.parentElement.classList.add("govuk-tabs__list-item--selected");
+
+        // Get tab text and normalize it
+        const tabText = this.textContent.trim().toLowerCase();
+
+        // Update header based on tab text
+        if (tabText === "open tasks") {
+          header.textContent = "My open tasks";
+        } else if (tabText === "search tasks") {
+          header.textContent = "Search tasks by National Insurance Number";
+        } else if (tabText === "closed tasks") {
+          header.textContent = "Closed tasks";
+        } else if (tabText === "transfer a task") {
+          header.textContent = "Transfer a task";
+        } else {
+          header.textContent = "My tasks";
+        }
+      });
+    });
+  });
+</script>
+
+<!--  this Javascript logic will handle showing alerts based on selected value from dropdown. Example - Showing oldest alerts when it is selected in Open tasks -->
+
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdown = document.getElementById("alertsSort");
+    const button = document.querySelector(".govuk-button");
+
+    button.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent form submission if needed
+
+      const selectedValue = dropdown.value;
+
+      // Hide all tables first
+      document.querySelectorAll(".alerts-table").forEach(table => {
+        table.style.display = "none";
+      });
+
+      // Show the relevant table based on selection
+      if (selectedValue === "Oldest Alerts") {
+        document.getElementById("oldestAlertsTable").style.display = "table";
+      } else if (selectedValue === "Newest Alerts") {
+        document.getElementById("newestAlertsTable").style.display = "table";
+      } else if (selectedValue === "Highest Score Alerts") {
+        document.getElementById("highestScoreAlertsTable").style.display = "table";
+      }
+    });
+  });
+</script> -->
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdown = document.getElementById("alertsSort");
+    const button = document.querySelector(".govuk-button");
+
+    button.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent form submission
+
+      const selectedValue = dropdown.value;
+
+      // Hide all tables first
+      document.querySelectorAll(".alerts-table").forEach(table => {
+        table.style.display = "none";
+      });
+
+      // Determine which table to show and add a row to
+      let tableId = "";
+      if (selectedValue === "Oldest Alerts") {
+        tableId = "oldestAlertsTable";
+      } else if (selectedValue === "Newest Alerts") {
+        tableId = "newestAlertsTable";
+      } else if (selectedValue === "Highest Score Alerts") {
+        tableId = "highestScoreAlertsTable";
+      }
+
+      const table = document.getElementById(tableId);
+      if (table) {
+        table.style.display = "table";
+
+        const tbody = table.querySelector("tbody");
+        const newRow = document.createElement("tr");
+        newRow.className = "govuk-table__row";
+        newRow.innerHTML = `
+          <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">ST 62 97 84 9</a></td>
+          <td class="govuk-table__cell">Mr Anita Johnson</td>
+          <td class="govuk-table__cell">Task opened today</td>
+        `;
+        tbody.appendChild(newRow);
+      }
+    });
+  });
+</script>
+<!-- Search task by nino functionality JS code  -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const ninoInput = document.getElementById("event-name");
+    const button = document.querySelector("#search-tasks .govuk-button");
+    const resultsTable = document.querySelector("#search-tasks .govuk-table");
+
+    // Initially hide the results table
+    if (resultsTable) {
+      resultsTable.style.display = "none";
+    }
+
+    // Handle tab switch: hide results when tab is shown
+    const searchTabLink = document.querySelector('a[href="#search-tasks"]');
+    if (searchTabLink) {
+      searchTabLink.addEventListener("click", function () {
+        if (resultsTable) {
+          resultsTable.style.display = "none";
+        }
+        ninoInput.value = ""; // Optionally clear input
+      });
+    }
+
+    // Handle button click to show results if input is not empty
+    button.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent form submission
+
+      const ninoValue = ninoInput.value.trim();
+      if (ninoValue !== "") {
+        if (resultsTable) {
+          resultsTable.style.display = "table";
+        }
+      } else {
+        if (resultsTable) {
+          resultsTable.style.display = "none";
+        }
+      }
+    });
+  });
+</script>
+
+
+<!--  -->
+
 
 <div class="govuk-grid-full">
   <h1 class="govuk-heading-l">
@@ -31,26 +183,26 @@ All tasks
 
 <div class="govuk-tabs" data-module="govuk-tabs">
 
-  <form class="form" action="/task-list-tab" method="post">
+  <form class="form" action="/task-list" method="post">
     <div class="govuk-form-group">
       <ul class="govuk-tabs__list">
         <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-          <a class="govuk-tabs__tab" href="#tasks">
-            Open task
+          <a class="govuk-tabs__tab" id="alerts-tabs" name="alerts-tabs" href="#tasks">
+            Open tasks
           </a>
         </li>
         <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="#search-tasks">
-            Search task
+          <a class="govuk-tabs__tab" id="alerts-tabs" name="alerts-tabs" href="#search-tasks">
+            Search tasks
           </a>
         </li>
         <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="#on-hold-tasks">
+          <a class="govuk-tabs__tab" id="alerts-tabs" name="alerts-tabs" href="#on-hold-tasks">
             Closed tasks
           </a>
         </li>
         <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="#closed-tasks">
+          <a class="govuk-tabs__tab" id="alerts-tabs" name="alerts-tabs" href="#closed-tasks">
             Transfer a task
           </a>
         </li>
@@ -71,24 +223,20 @@ All tasks
     <!-- -----   radio buttons for alerts age profile  -->
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <form class="form" action="/task-list-tab" method="post">
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="sort">
-              Select from
-            </label>
-            <select class="govuk-select" id="alertsSort" name="alertsSort">
-              <option value="Oldest Alerts">Oldest Alerts list</option>
-              <option value="Newest Alerts">Newest Alerts list</option>
-              <option value="Highest Score Alerts">Highest valued alerts list</option>
-            </select>
-          </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <button type="submit" class="govuk-button" data-module="govuk-button" style="margin-top: 30px;">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sort">
+            Select from
+          </label>
+          <select class="govuk-select" id="alertsSort" name="alertsSort">
+            <option value="Oldest Alerts">Oldest Alerts list</option>
+            <option value="Newest Alerts">Newest Alerts list</option>
+            <option value="Highest Score Alerts">Highest valued alerts list</option>
+          </select>
+        </div>
+        <button type="submit" class="govuk-button" data-module="govuk-button">
           Add new task
         </button>
       </div>
-      </form>
     </div>
 
 
@@ -97,31 +245,34 @@ All tasks
     <hr class="govuk-section-break govuk-section-break--visible">
     <br />
 
-    <!-- <h2 class="govuk-heading-m">
-      My open tasks
-    </h2> -->
-    <table class="govuk-table">
+    <table id="oldestAlertsTable" class="govuk-table alerts-table" style="display: none;">
       <thead class="govuk-table__head">
         <th scope="col" class="govuk-table__header">National Insurance number</th>
         <th scope="col" class="govuk-table__header">Name</th>
         <th scope="col" class="govuk-table__header">Notes</th>
       </thead>
-
-      {% if data['alertsSort'] == "Oldest Alerts" %}
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">HD 62 93 84 O</a></td>
           <td class="govuk-table__cell">Mr John Smith</td>
           <td class="govuk-table__cell">Task opened today</td>
         </tr>
+        <!-- More rows -->
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">HD 62 93 84 O</a></td>
-          <td class="govuk-table__cell">Mr John Smith</td>
+          <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">PQ 98 93 84 5</a></td>
+          <td class="govuk-table__cell">Mr Jack Hollway</td>
           <td class="govuk-table__cell">Task opened today</td>
         </tr>
       </tbody>
-      {% endif %}
-      {% if data['alertsSort'] == "Newest Alerts" %}
+    </table>
+
+    <table id="newestAlertsTable" class="govuk-table alerts-table" style="display: none;">
+      <thead class="govuk-table__head">
+        <th scope="col" class="govuk-table__header">National Insurance number</th>
+        <th scope="col" class="govuk-table__header">Name</th>
+        <th scope="col" class="govuk-table__header">Notes</th>
+      </thead>
+      <!-- Newest alerts rows -->
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">AB 14 93 48 7</a></td>
@@ -129,9 +280,15 @@ All tasks
           <td class="govuk-table__cell">Task opened today</td>
         </tr>
       </tbody>
-      {% endif %}
+    </table>
 
-      {% if data['alertsSort'] == "Highest Score Alerts" %}
+    <table id="highestScoreAlertsTable" class="govuk-table alerts-table" style="display: none;">
+      <thead class="govuk-table__head">
+        <th scope="col" class="govuk-table__header">National Insurance number</th>
+        <th scope="col" class="govuk-table__header">Name</th>
+        <th scope="col" class="govuk-table__header">Notes</th>
+      </thead>
+      <!-- Highest score alerts rows -->
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">ST 62 97 84 9</a></td>
@@ -139,8 +296,9 @@ All tasks
           <td class="govuk-table__cell">Task opened today</td>
         </tr>
       </tbody>
-      {% endif %}
     </table>
+
+
 
   </div>
 
@@ -192,12 +350,12 @@ All tasks
   <div class="govuk-tabs__panel" id="search-tasks">
 
     <h2 class="govuk-heading-m">
-      Select a task by to assign it to my list
+      Search a task to assign it to my list
     </h2>
     <!-- -----   radio buttons for alerts age profile  -->
     <div class="govuk-grid-row">
 
-      <form class="form" action="/task-list-tab" method="post">
+      <form class="form" method="post">
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-form-group">
             <label class="govuk-label govuk-label--s" for="event-name">
@@ -208,10 +366,8 @@ All tasks
             </div>
             <input class="govuk-input" id="event-name" name="nino" type="text">
           </div>
-        </div>
-        <div class="govuk-grid-column-one-third">
 
-          <button type="submit" class="govuk-button" data-module="govuk-button" style="margin-top: 90px;">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
             Add new task
           </button>
         </div>
