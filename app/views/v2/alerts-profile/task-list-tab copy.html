@@ -20,6 +20,10 @@ All tasks
 {% endblock %}
 
 {% block content %}
+
+
+<!--  this Javascript logic will handle showing header of the page on selected tabs -->
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const tabs = document.querySelectorAll(".govuk-tabs__tab");
@@ -56,170 +60,160 @@ All tasks
 </script>
 
 <!--  this Javascript logic will handle showing alerts based on selected value from dropdown. Example - Showing oldest alerts when it is selected in Open tasks -->
-
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const dropdown = document.getElementById("alertsSort");
     const button = document.querySelector(".govuk-button");
+    const openTabLink = document.querySelector('a[href="#tasks"]');
+    const unifiedTable = document.getElementById("openTasksTable");
+    const tbody = unifiedTable.querySelector("tbody");
+
+    let taskCounter = 1;
+
+    // Show one default alert when Open Task tab is opened
+    openTabLink.addEventListener("click", function () {
+      unifiedTable.style.display = "table";
+
+      if (tbody && tbody.querySelectorAll("tr").length === 0) {
+        const defaultRow = document.createElement("tr");
+        defaultRow.className = "govuk-table__row";
+        defaultRow.innerHTML = `
+          <td class="govuk-table__cell"><a href="task-details">AA 11 22 33 A</a></td>
+          <td class="govuk-table__cell">Ms Default Task</td>
+          <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Default alert</td>
+        `;
+        tbody.appendChild(defaultRow);
+      }
+    });
 
     button.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent form submission
+      e.preventDefault();
 
       const selectedValue = dropdown.value;
+      let alertType = "";
 
-      // Hide all tables first
-      document.querySelectorAll(".alerts-table").forEach(table => {
-        table.style.display = "none";
-      });
-
-      // Determine which table to show and add a row to
-      let tableId = "";
       if (selectedValue === "Oldest Alerts") {
-        tableId = "oldestAlertsTable";
+        alertType = "Oldest alert";
       } else if (selectedValue === "Newest Alerts") {
-        tableId = "newestAlertsTable";
+        alertType = "Newest alert";
       } else if (selectedValue === "Highest Score Alerts") {
-        tableId = "highestScoreAlertsTable";
+        alertType = "Highest value one";
       }
 
-      const table = document.getElementById(tableId);
-      if (table) {
-        table.style.display = "table";
+      // Generate unique name and NINO
+      const name = `Mr/Ms Alert ${taskCounter}`;
+      const nino = `XY ${taskCounter.toString().padStart(2, '0')} ${Math.floor(Math.random() * 90 + 10)} ${Math.floor(Math.random() * 90 + 10)} ${String.fromCharCode(65 + (taskCounter % 26))}`;
 
-        const tbody = table.querySelector("tbody");
-        const newRow = document.createElement("tr");
-        newRow.className = "govuk-table__row";
-        newRow.innerHTML = `
-          <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">ST 62 97 84 9</a></td>
-          <td class="govuk-table__cell">Mr Anita Johnson</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Oldest alert</td>
-        `;
+      const newRow = document.createElement("tr");
+      newRow.className = "govuk-table__row";
+      newRow.innerHTML = `
+        <td class="govuk-table__cell"><a href="task-details">${nino}</a></td>
+        <td class="govuk-table__cell">${name}</td>
+        <td class="govuk-table__cell">Task opened today</td>
+        <td class="govuk-table__cell">${alertType}</td>
+      `;
+
+      // Insert at top of table
+      if (tbody.firstChild) {
+        tbody.insertBefore(newRow, tbody.firstChild);
+      } else {
         tbody.appendChild(newRow);
       }
+
+      unifiedTable.style.display = "table";
+      taskCounter++;
     });
   });
 </script>
-<!-- Search task by nino functionality JS code  -->
 
+
+<!-- Search task by nino functionality JS code  -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const ninoInput = document.getElementById("event-name");
     const button = document.querySelector("#search-tasks .govuk-button");
-    const resultsTable = document.querySelector("#search-tasks .govuk-table");
+    const openTabLink = document.querySelector('a[href="#tasks"]');
+    const openTasksTable = document.getElementById("openTasksTable");
+    const openTasksBody = openTasksTable.querySelector("tbody");
+    const gridFull = document.querySelector(".govuk-grid-full");
 
-    // Initially hide the results table
-    if (resultsTable) {
-      resultsTable.style.display = "none";
-    }
+    // Regex for valid NINO format
+    const validNinoRegex = /^[A-CEGHJ-PR-TW-Z]{2}\s?\d{2}\s?\d{2}\s?\d{2}\s?[A-D]$/;
 
-    // Handle tab switch: hide results when tab is shown
-    const searchTabLink = document.querySelector('a[href="#search-tasks"]');
-    if (searchTabLink) {
-      searchTabLink.addEventListener("click", function () {
-        if (resultsTable) {
-          resultsTable.style.display = "none";
-        }
-        ninoInput.value = ""; // Optionally clear input
-      });
-    }
-
-    // Handle button click to show results if input is not empty
     button.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent form submission
+      e.preventDefault();
 
       const ninoValue = ninoInput.value.trim();
-      if (ninoValue !== "") {
-        if (resultsTable) {
-          resultsTable.style.display = "table";
-        }
-      } else {
-        if (resultsTable) {
-          resultsTable.style.display = "none";
-        }
+
+      // Remove previous success banner
+      const existingBanner = document.getElementById("govuk-success-banner");
+      if (existingBanner) existingBanner.remove();
+
+      // Validate NINO format
+      if (!validNinoRegex.test(ninoValue)) {
+        alert("Please enter a valid National Insurance number in the correct format.");
+        return;
       }
+
+      // Switch to Open Task tab
+      if (openTabLink) openTabLink.click();
+
+      // Add new row to top of table
+      const newRow = document.createElement("tr");
+      newRow.className = "govuk-table__row";
+      newRow.innerHTML = `
+        <td class="govuk-table__cell"><a href="task-details">${ninoValue}</a></td>
+        <td class="govuk-table__cell">Search result</td>
+        <td class="govuk-table__cell">Task opened today</td>
+        <td class="govuk-table__cell">Search by NINO</td>
+      `;
+      openTasksBody.insertBefore(newRow, openTasksBody.firstChild);
+      openTasksTable.style.display = "table";
+
+      // Show success banner above heading
+      const successBanner = document.createElement("div");
+      successBanner.className = "govuk-notification-banner govuk-notification-banner--success";
+      successBanner.id = "govuk-success-banner";
+      successBanner.setAttribute("role", "alert");
+      successBanner.setAttribute("aria-labelledby", "govuk-notification-banner-title");
+      successBanner.setAttribute("data-module", "govuk-notification-banner");
+      successBanner.innerHTML = `
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            Task added successfully
+          </h3>
+        </div>
+      `;
+      gridFull.parentNode.insertBefore(successBanner, gridFull);
     });
   });
 </script>
 
 <!--   error scenario notification bar  -->
-<!-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const ninoInput = document.getElementById("event-name");
-    const button = document.querySelector("#search-tasks .govuk-button");
-    const formGroup = ninoInput.closest(".govuk-form-group");
-    const gridFull = document.querySelector(".govuk-grid-full");
-    const openTabLink = document.querySelector('a[href="#tasks"]');
-
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const ninoValue = ninoInput.value.trim();
-
-      // Remove previous error state
-      formGroup.classList.remove("govuk-form-group--error");
-      ninoInput.classList.remove("govuk-input--error");
-      ninoInput.removeAttribute("aria-describedby");
-
-      const existingError = document.getElementById("event-name-error");
-      if (existingError) existingError.remove();
-
-      const existingSummary = document.getElementById("govuk-error-summary");
-      if (existingSummary) existingSummary.remove();
-
-      if (ninoValue === "12345678") {
-        // Show error summary and field error
-        formGroup.classList.add("govuk-form-group--error");
-        ninoInput.classList.add("govuk-input--error");
-        ninoInput.setAttribute("aria-describedby", "event-name-error");
-
-        const errorMessage = document.createElement("p");
-        errorMessage.className = "govuk-error-message";
-        errorMessage.id = "event-name-error";
-        errorMessage.innerHTML = `<span class="govuk-visually-hidden">Error:</span> No open task held for this National Insurance number`;
-        formGroup.insertBefore(errorMessage, ninoInput);
-
-        const errorSummary = document.createElement("div");
-        errorSummary.className = "govuk-error-summary";
-        errorSummary.id = "govuk-error-summary";
-        errorSummary.setAttribute("data-module", "govuk-error-summary");
-        errorSummary.innerHTML = `
-          <div role="alert">
-            <h2 class="govuk-error-summary__title">There is a problem</h2>
-            <div class="govuk-error-summary__body">
-              <ul class="govuk-list govuk-error-summary__list">
-                <li><a href="#event-name">No open task held for this National Insurance number</a></li>
-              </ul>
-            </div>
-          </div>
-        `;
-        gridFull.parentNode.insertBefore(errorSummary, gridFull);
-      } else {
-        // Switch to "Open task" tab
-        if (openTabLink) {
-          openTabLink.click();
-        }
-      }
-    });
-  });
-</script> -->
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const ninoInput = document.getElementById("event-name");
     const button = document.querySelector("#search-tasks .govuk-button");
     const formGroup = ninoInput.closest(".govuk-form-group");
     const gridFull = document.querySelector(".govuk-grid-full");
-    const openTabLink = document.querySelector('a[href="#tasks"]');
-    const newestAlertsTable = document.getElementById("newestAlertsTable");
+
+    // Simulated data for demo purposes
+    const openTasks = ["QQ 12 34 56 C", "AB 12 34 56 CD"];
+    const closedTasks = ["ZX 98 76 54 A"];
+    const validFormatRegex = /^[A-CEGHJ-PR-TW-Z]{2}\s?\d{2}\s?\d{2}\s?\d{2}\s?[A-D]$/;
 
     button.addEventListener("click", function (e) {
       e.preventDefault();
 
       const ninoValue = ninoInput.value.trim();
 
-      // Clear previous error states
+      // Clear previous errors
       formGroup.classList.remove("govuk-form-group--error");
       ninoInput.classList.remove("govuk-input--error");
       ninoInput.removeAttribute("aria-describedby");
@@ -230,20 +224,41 @@ All tasks
       const existingSummary = document.getElementById("govuk-error-summary");
       if (existingSummary) existingSummary.remove();
 
-      const existingBanner = document.getElementById("govuk-success-banner");
-      if (existingBanner) existingBanner.remove();
+      let errorMessage = "";
+      let errorSummaryText = "";
 
-      // If input is blank
+      // Scenario 2: Blank input
       if (ninoValue === "") {
+        errorMessage = "Enter a National Insurance Number in the correct format.";
+        errorSummaryText = errorMessage;
+      }
+      // Scenario 1: Invalid format
+      else if (!validFormatRegex.test(ninoValue)) {
+        errorMessage = "Enter a National Insurance Number in the correct format.";
+        errorSummaryText = errorMessage;
+      }
+      // Scenario 3: Valid format but not a real NINO
+      else if (ninoValue === "AB 12 34 56 C") {
+        errorMessage = "Check you've entered the correct National Insurance number. If you're sure the National Insurance number is correct then refer to the instructions.";
+        errorSummaryText = errorMessage;
+      }
+      // Scenario 4: Already in open or closed list
+      else if (openTasks.includes(ninoValue) || closedTasks.includes(ninoValue)) {
+        errorMessage = "No open task held for this National Insurance number.";
+        errorSummaryText = errorMessage;
+      }
+
+      // If any error, show error summary and field error
+      if (errorMessage !== "") {
         formGroup.classList.add("govuk-form-group--error");
         ninoInput.classList.add("govuk-input--error");
         ninoInput.setAttribute("aria-describedby", "event-name-error");
 
-        const errorMessage = document.createElement("p");
-        errorMessage.className = "govuk-error-message";
-        errorMessage.id = "event-name-error";
-        errorMessage.innerHTML = `<span class="govuk-visually-hidden">Error:</span> Enter a National Insurance Number in the correct format.`;
-        formGroup.insertBefore(errorMessage, ninoInput);
+        const errorMsg = document.createElement("p");
+        errorMsg.className = "govuk-error-message";
+        errorMsg.id = "event-name-error";
+        errorMsg.innerHTML = `<span class="govuk-visually-hidden">Error:</span> ${errorMessage}`;
+        formGroup.insertBefore(errorMsg, ninoInput);
 
         const errorSummary = document.createElement("div");
         errorSummary.className = "govuk-error-summary";
@@ -254,76 +269,17 @@ All tasks
             <h2 class="govuk-error-summary__title">There is a problem</h2>
             <div class="govuk-error-summary__body">
               <ul class="govuk-list govuk-error-summary__list">
-                <li><a href="#event-name">Enter a National Insurance Number in the correct format.</a></li>
+                <li><a href="#event-name">${errorSummaryText}</a></li>
               </ul>
             </div>
           </div>
         `;
-        formGroup.parentNode.insertBefore(errorSummary, formGroup);
-        return;
-      }
-      if (ninoValue === "12345678") {
-        // Show error summary and field error
-        formGroup.classList.add("govuk-form-group--error");
-        ninoInput.classList.add("govuk-input--error");
-        ninoInput.setAttribute("aria-describedby", "event-name-error");
-
-        const errorMessage = document.createElement("p");
-        errorMessage.className = "govuk-error-message";
-        errorMessage.id = "event-name-error";
-        errorMessage.innerHTML = `<span class="govuk-visually-hidden">Error:</span> No open task held for this National Insurance number`;
-        formGroup.insertBefore(errorMessage, ninoInput);
-
-        const errorSummary = document.createElement("div");
-        errorSummary.className = "govuk-error-summary";
-        errorSummary.id = "govuk-error-summary";
-        errorSummary.setAttribute("data-module", "govuk-error-summary");
-        errorSummary.innerHTML = `
-          <div role="alert">
-            <h2 class="govuk-error-summary__title">There is a problem</h2>
-            <div class="govuk-error-summary__body">
-              <ul class="govuk-list govuk-error-summary__list">
-                <li><a href="#event-name">No open task held for this National Insurance number</a></li>
-              </ul>
-            </div>
-          </div>
-        `;
-        formGroup.parentNode.insertBefore(errorSummary, formGroup);
-        return;
-      }
-
-      // If valid NINO entered
-      if (ninoValue === "AB 12 34 56 CD") {
-        // Switch to Open Task tab
-        if (openTabLink) openTabLink.click();
-
-        // Show the table
-        if (newestAlertsTable) newestAlertsTable.style.display = "table";
-
-        // Add success banner above heading
-        const successBanner = document.createElement("div");
-        successBanner.className = "govuk-notification-banner govuk-notification-banner--success";
-        successBanner.id = "govuk-success-banner";
-        successBanner.setAttribute("role", "alert");
-        successBanner.setAttribute("aria-labelledby", "govuk-notification-banner-title");
-        successBanner.setAttribute("data-module", "govuk-notification-banner");
-        successBanner.innerHTML = `
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Success
-            </h2>
-          </div>
-          <div class="govuk-notification-banner__content">
-            <h3 class="govuk-notification-banner__heading">
-              Task added successfully
-            </h3>
-          </div>
-        `;
-        gridFull.parentNode.insertBefore(successBanner, gridFull);
+        gridFull.parentNode.insertBefore(errorSummary, gridFull);
       }
     });
   });
 </script>
+
 
 
 
@@ -404,121 +360,17 @@ All tasks
     <hr class="govuk-section-break govuk-section-break--visible">
     <br />
 
-    <table id="oldestAlertsTable" class="govuk-table alerts-table" style="display: none;">
+    <table id="openTasksTable" class="govuk-table alerts-table" style="display: none;">
       <thead class="govuk-table__head">
-        <th scope="col" class="govuk-table__header">National Insurance number</th>
-        <th scope="col" class="govuk-table__header">Name</th>
-        <th scope="col" class="govuk-table__header">Notes</th>
-        <th scope="col" class="govuk-table__header">Alert type</th>
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">National Insurance number</th>
+          <th scope="col" class="govuk-table__header">Name</th>
+          <th scope="col" class="govuk-table__header">Notes</th>
+          <th scope="col" class="govuk-table__header">Alert type</th>
+        </tr>
       </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
-          <td class="govuk-table__cell">Mr John Smith</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Oldest alert</td>
-        </tr>
-        <!-- More rows -->
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
-          <td class="govuk-table__cell">Mr Jack Hollway</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Oldest alert</td>
-        </tr>
-      </tbody>
+      <tbody class="govuk-table__body"></tbody>
     </table>
-
-    <table id="newestAlertsTable" class="govuk-table alerts-table" style="display: none;">
-      <thead class="govuk-table__head">
-        <th scope="col" class="govuk-table__header">National Insurance number</th>
-        <th scope="col" class="govuk-table__header">Name</th>
-        <th scope="col" class="govuk-table__header">Notes</th>
-        <th scope="col" class="govuk-table__header">Alert type</th>
-
-      </thead>
-      <!-- Newest alerts rows -->
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
-          <td class="govuk-table__cell">Mr John Smith</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Oldest alert</td>
-        </tr>
-        <!-- More rows -->
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
-          <td class="govuk-table__cell">Mr Jack Hollway</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Oldest alert</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">AB 12 34 56 CD</a></td>
-          <td class="govuk-table__cell">Mr John Smith</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Newest alerts</td>
-        </tr>
-        <!-- More rows -->
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
-          <td class="govuk-table__cell">Mr Jack Hollway</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Newest alerts</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <table id="highestScoreAlertsTable" class="govuk-table alerts-table" style="display: none;">
-      <thead class="govuk-table__head">
-        <th scope="col" class="govuk-table__header">National Insurance number</th>
-        <th scope="col" class="govuk-table__header">Name</th>
-        <th scope="col" class="govuk-table__header">Notes</th>
-        <th scope="col" class="govuk-table__header">Alert type</th>
-      </thead>
-      <!-- Highest score alerts rows -->
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
-          <td class="govuk-table__cell">Mr John Smith</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Oldest alert</td>
-        </tr>
-        <!-- More rows -->
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
-          <td class="govuk-table__cell">Mr Jack Hollway</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Oldest alert</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">AB 12 34 56 CD</a></td>
-          <td class="govuk-table__cell">Mr John Smith</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Newest alerts</td>
-        </tr>
-        <!-- More rows -->
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
-          <td class="govuk-table__cell">Mr Jack Hollway</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Newest alerts</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
-          <td class="govuk-table__cell">Mr John Smith</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Highest score alert</td>
-        </tr>
-        <!-- More rows -->
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
-          <td class="govuk-table__cell">Mr Jack Hollway</td>
-          <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Highest score alert</td>
-
-        </tr>
-      </tbody>
-    </table>
-
 
 
   </div>
