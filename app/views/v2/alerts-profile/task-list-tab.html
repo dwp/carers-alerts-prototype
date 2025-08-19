@@ -94,6 +94,7 @@ All tasks
           <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">ST 62 97 84 9</a></td>
           <td class="govuk-table__cell">Mr Anita Johnson</td>
           <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Oldest alert</td>
         `;
         tbody.appendChild(newRow);
       }
@@ -408,18 +409,21 @@ All tasks
         <th scope="col" class="govuk-table__header">National Insurance number</th>
         <th scope="col" class="govuk-table__header">Name</th>
         <th scope="col" class="govuk-table__header">Notes</th>
+        <th scope="col" class="govuk-table__header">Alert type</th>
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
           <td class="govuk-table__cell">Mr John Smith</td>
           <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Oldest alert</td>
         </tr>
         <!-- More rows -->
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
           <td class="govuk-table__cell">Mr Jack Hollway</td>
           <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Oldest alert</td>
         </tr>
       </tbody>
     </table>
@@ -429,26 +433,38 @@ All tasks
         <th scope="col" class="govuk-table__header">National Insurance number</th>
         <th scope="col" class="govuk-table__header">Name</th>
         <th scope="col" class="govuk-table__header">Notes</th>
+        <th scope="col" class="govuk-table__header">Alert type</th>
+
       </thead>
       <!-- Newest alerts rows -->
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="task-details">AB 12 34 56 CD</a></td>
+          <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
           <td class="govuk-table__cell">Mr John Smith</td>
           <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Oldest alert</td>
         </tr>
         <!-- More rows -->
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
           <td class="govuk-table__cell">Mr Jack Hollway</td>
           <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Oldest alert</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="task-details">AB 12 34 56 CD</a></td>
+          <td class="govuk-table__cell">Mr John Smith</td>
+          <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Newest alerts</td>
+        </tr>
+        <!-- More rows -->
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
+          <td class="govuk-table__cell">Mr Jack Hollway</td>
+          <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Newest alerts</td>
         </tr>
       </tbody>
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">AB 14 93 48 7</a></td>
-        <td class="govuk-table__cell">Mrs Justine Chai</td>
-        <td class="govuk-table__cell">Task opened today</td>
-      </tr>
     </table>
 
     <table id="highestScoreAlertsTable" class="govuk-table alerts-table" style="display: none;">
@@ -456,6 +472,7 @@ All tasks
         <th scope="col" class="govuk-table__header">National Insurance number</th>
         <th scope="col" class="govuk-table__header">Name</th>
         <th scope="col" class="govuk-table__header">Notes</th>
+        <th scope="col" class="govuk-table__header">Alert type</th>
       </thead>
       <!-- Highest score alerts rows -->
       <tbody class="govuk-table__body">
@@ -463,19 +480,43 @@ All tasks
           <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
           <td class="govuk-table__cell">Mr John Smith</td>
           <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Oldest alert</td>
         </tr>
         <!-- More rows -->
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
           <td class="govuk-table__cell">Mr Jack Hollway</td>
           <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Oldest alert</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="task-details">AB 12 34 56 CD</a></td>
+          <td class="govuk-table__cell">Mr John Smith</td>
+          <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Newest alerts</td>
+        </tr>
+        <!-- More rows -->
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
+          <td class="govuk-table__cell">Mr Jack Hollway</td>
+          <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Newest alerts</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="task-details">HD 62 93 84 O</a></td>
+          <td class="govuk-table__cell">Mr John Smith</td>
+          <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Highest score alert</td>
+        </tr>
+        <!-- More rows -->
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="task-details">PQ 98 93 84 5</a></td>
+          <td class="govuk-table__cell">Mr Jack Hollway</td>
+          <td class="govuk-table__cell">Task opened today</td>
+          <td class="govuk-table__cell">Highest score alert</td>
+
         </tr>
       </tbody>
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell"><a href="task-details-on-hold-assigned">ST 62 97 84 9</a></td>
-        <td class="govuk-table__cell">Mrs Sharon Stonehouse</td>
-        <td class="govuk-table__cell">Task opened today</td>
-      </tr>
     </table>
 
 
@@ -491,6 +532,7 @@ All tasks
         <th scope="col" class="govuk-table__header">National Insurance number</th>
         <th scope="col" class="govuk-table__header">Name</th>
         <th scope="col" class="govuk-table__header">Notes</th>
+        <th scope="col" class="govuk-table__header">Alert type</th>
       </thead>
 
       <tbody class="govuk-table__body">
