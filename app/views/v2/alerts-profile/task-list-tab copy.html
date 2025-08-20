@@ -79,9 +79,9 @@ All tasks
         defaultRow.className = "govuk-table__row";
         defaultRow.innerHTML = `
           <td class="govuk-table__cell"><a href="task-details">AA 11 22 33 A</a></td>
-          <td class="govuk-table__cell">Ms Default Task</td>
+          <td class="govuk-table__cell">Ms John Smith</td>
           <td class="govuk-table__cell">Task opened today</td>
-          <td class="govuk-table__cell">Default alert</td>
+          <td class="govuk-table__cell">Oldest alert</td>
         `;
         tbody.appendChild(defaultRow);
       }
@@ -129,7 +129,7 @@ All tasks
 
 
 <!-- Search task by nino functionality JS code  -->
-<script>
+<!-- <script>
   document.addEventListener("DOMContentLoaded", function () {
     const ninoInput = document.getElementById("event-name");
     const button = document.querySelector("#search-tasks .govuk-button");
@@ -193,10 +193,10 @@ All tasks
       gridFull.parentNode.insertBefore(successBanner, gridFull);
     });
   });
-</script>
+</script> -->
 
 <!--   error scenario notification bar  -->
-<script>
+<!-- <script>
   document.addEventListener("DOMContentLoaded", function () {
     const ninoInput = document.getElementById("event-name");
     const button = document.querySelector("#search-tasks .govuk-button");
@@ -204,8 +204,8 @@ All tasks
     const gridFull = document.querySelector(".govuk-grid-full");
 
     // Simulated data for demo purposes
-    const openTasks = ["QQ 12 34 56 C", "AB 12 34 56 CD"];
-    const closedTasks = ["ZX 98 76 54 A"];
+    const openTasks = ["AA 11 22 33 A", "AB 12 34 56 A"];
+    const closedTasks = ["ZX 98 76 54 B"];
     const validFormatRegex = /^[A-CEGHJ-PR-TW-Z]{2}\s?\d{2}\s?\d{2}\s?\d{2}\s?[A-D]$/;
 
     button.addEventListener("click", function (e) {
@@ -278,10 +278,195 @@ All tasks
       }
     });
   });
+</script> -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const ninoInput = document.getElementById("event-name");
+    const button = document.querySelector("#search-tasks .govuk-button");
+    const formGroup = ninoInput.closest(".govuk-form-group");
+    const gridFull = document.querySelector(".govuk-grid-full");
+    const openTabLink = document.querySelector('a[href="#tasks"]');
+    const openTasksTable = document.getElementById("openTasksTable");
+    const openTasksBody = openTasksTable.querySelector("tbody");
+
+    const openTasks = ["AA 11 22 33 A", "AB 12 34 56 A"];
+    const closedTasks = ["ZX 98 76 54 B"];
+    const validFormatRegex = /^[A-CEGHJ-PR-TW-Z]{2}\s?\d{2}\s?\d{2}\s?\d{2}\s?[A-D]$/;
+
+    // Clear banners on tab switch
+    document.querySelectorAll(".govuk-tabs__tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        const existingSummary = document.getElementById("govuk-error-summary");
+        const existingBanner = document.getElementById("govuk-success-banner");
+        if (existingSummary) existingSummary.remove();
+        if (existingBanner) existingBanner.remove();
+      });
+    });
+
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const ninoValue = ninoInput.value.trim();
+
+      // Clear previous errors and banners
+      formGroup.classList.remove("govuk-form-group--error");
+      ninoInput.classList.remove("govuk-input--error");
+      ninoInput.removeAttribute("aria-describedby");
+
+      const existingError = document.getElementById("event-name-error");
+      if (existingError) existingError.remove();
+
+      const existingSummary = document.getElementById("govuk-error-summary");
+      if (existingSummary) existingSummary.remove();
+
+      const existingBanner = document.getElementById("govuk-success-banner");
+      if (existingBanner) existingBanner.remove();
+
+      let errorMessage = "";
+      let errorSummaryText = "";
+
+      // Validation scenarios
+      if (ninoValue === "") {
+        errorMessage = "Enter a National Insurance Number in the correct format.";
+        errorSummaryText = errorMessage;
+      } else if (!validFormatRegex.test(ninoValue)) {
+        errorMessage = "Enter a National Insurance Number in the correct format.";
+        errorSummaryText = errorMessage;
+      } else if (ninoValue === "AB 12 34 56 C") {
+        errorMessage = "Check you've entered the correct National Insurance number. If you're sure the National Insurance number is correct then refer to the instructions.";
+        errorSummaryText = errorMessage;
+      } else if (openTasks.includes(ninoValue) || closedTasks.includes(ninoValue)) {
+        errorMessage = "No open task held for this National Insurance number.";
+        errorSummaryText = errorMessage;
+      }
+
+      // Show error if needed (stay on Search Task tab)
+      if (errorMessage !== "") {
+        formGroup.classList.add("govuk-form-group--error");
+        ninoInput.classList.add("govuk-input--error");
+        ninoInput.setAttribute("aria-describedby", "event-name-error");
+
+        const errorMsg = document.createElement("p");
+        errorMsg.className = "govuk-error-message";
+        errorMsg.id = "event-name-error";
+        errorMsg.innerHTML = `<span class="govuk-visually-hidden">Error:</span> ${errorMessage}`;
+        formGroup.insertBefore(errorMsg, ninoInput);
+
+        const errorSummary = document.createElement("div");
+        errorSummary.className = "govuk-error-summary";
+        errorSummary.id = "govuk-error-summary";
+        errorSummary.setAttribute("data-module", "govuk-error-summary");
+        errorSummary.innerHTML = `
+          <div role="alert">
+            <h2 class="govuk-error-summary__title">There is a problem</h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li><a href="#event-name">${errorSummaryText}</a></li>
+              </ul>
+            </div>
+          </div>
+        `;
+        gridFull.parentNode.insertBefore(errorSummary, gridFull);
+        return; // ✅ Prevent tab switch and task addition
+      }
+
+      // ✅ Success: Switch to Open Task tab and add task
+      if (openTabLink) openTabLink.click();
+
+      const newRow = document.createElement("tr");
+      newRow.className = "govuk-table__row";
+      newRow.innerHTML = `
+        <td class="govuk-table__cell"><a href="task-details">${ninoValue}</a></td>
+        <td class="govuk-table__cell">Search result</td>
+        <td class="govuk-table__cell">Task opened today</td>
+        <td class="govuk-table__cell">National Insurance Number Based</td>
+      `;
+      openTasksBody.insertBefore(newRow, openTasksBody.firstChild);
+      openTasksTable.style.display = "table";
+
+      const successBanner = document.createElement("div");
+      successBanner.className = "govuk-notification-banner govuk-notification-banner--success";
+      successBanner.id = "govuk-success-banner";
+      successBanner.setAttribute("role", "alert");
+      successBanner.setAttribute("aria-labelledby", "govuk-notification-banner-title");
+      successBanner.setAttribute("data-module", "govuk-notification-banner");
+      successBanner.innerHTML = `
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            Task added successfully
+          </h3>
+        </div>
+      `;
+      gridFull.parentNode.insertBefore(successBanner, gridFull);
+    });
+  });
 </script>
 
 
+<!--  Handling error sceanrio for Dropdown for alert list  -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdown = document.getElementById("alertsSort");
+    const button = document.querySelector(".govuk-button");
+    const formGroup = dropdown.closest(".govuk-form-group");
+    const gridFull = document.querySelector(".govuk-grid-full");
 
+    button.addEventListener("click", function (e) {
+      const selectedValue = dropdown.value.trim();
+
+      // Remove previous error state
+      formGroup.classList.remove("govuk-form-group--error");
+      dropdown.classList.remove("govuk-select--error");
+      dropdown.removeAttribute("aria-describedby");
+
+      const existingError = document.getElementById("alertsSort-error");
+      if (existingError) existingError.remove();
+
+      const existingSummary = document.getElementById("govuk-error-summary");
+      if (existingSummary) existingSummary.remove();
+
+      // If no value selected
+      if (selectedValue === "") {
+        e.preventDefault();
+
+        // Add error classes
+        formGroup.classList.add("govuk-form-group--error");
+        dropdown.classList.add("govuk-select--error");
+        dropdown.setAttribute("aria-describedby", "alertsSort-error");
+
+        // Inline error message
+        const errorMessage = document.createElement("p");
+        errorMessage.className = "govuk-error-message";
+        errorMessage.id = "alertsSort-error";
+        errorMessage.innerHTML = `<span class="govuk-visually-hidden">Error:</span> Select the Alert list`;
+        formGroup.insertBefore(errorMessage, dropdown);
+
+        // Error summary at top
+        const errorSummary = document.createElement("div");
+        errorSummary.className = "govuk-error-summary";
+        errorSummary.id = "govuk-error-summary";
+        errorSummary.setAttribute("data-module", "govuk-error-summary");
+        errorSummary.innerHTML = `
+          <div role="alert">
+            <h2 class="govuk-error-summary__title">There is a problem</h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li><a href="#alertsSort">Select the Alert list</a></li>
+              </ul>
+            </div>
+          </div>
+        `;
+        gridFull.parentNode.insertBefore(errorSummary, gridFull);
+      }
+    });
+  });
+</script>
 
 <!-- --- -->
 
@@ -339,10 +524,8 @@ All tasks
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-form-group">
-          <label class="govuk-label" for="sort">
-            Select from
-          </label>
           <select class="govuk-select" id="alertsSort" name="alertsSort">
+            <option value="">Select an alert list</option>
             <option value="Oldest Alerts">Oldest Alerts list</option>
             <option value="Newest Alerts">Newest Alerts list</option>
             <option value="Highest Score Alerts">Highest valued alerts list</option>
