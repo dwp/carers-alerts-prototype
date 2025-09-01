@@ -17,15 +17,9 @@ Task types
           <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="full-disallowance.html">Record task outcome - Has the citizen already
-            declared a change of circumstances?</a>
+          <a class="govuk-breadcrumbs__link" href="no-change-to-award-outcome">Record outcome</a>
         </li>
-        <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="payment-type.html">Payment type</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="underpayment-details.html">Arrears</a>
-        </li>
+
       </ol>
     </nav>
     <br />
@@ -47,45 +41,24 @@ Task types
               What is the outcome of this task?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['outcomeReason']}}
+              No action required
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change</a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Has the claimant already declared a change of circumstances?
+              What is the reason for this no change to award outcome?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['earningsDeclared']}}
+              {{data['noChangeAward']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change</a>
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Payment type
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Arrears
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change</a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Arrears paid
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £{{data['underPaymentOffcialErrorValue']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change</a>
-            </dd>
-          </div>
+
         </dl>
         <div class="govuk-button-group" style="margin-top: 60px;">
           <a href="additional-outcomes.html">
@@ -93,6 +66,7 @@ Task types
           <a href="closed-task.html">
             <button class="govuk-button govuk-button--primary" data-module="govuk-button">Record outcome</button></a>
         </div>
+        </form>
       </div>
     </div>
   </main>

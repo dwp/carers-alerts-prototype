@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="full-disallowance.html">Record task outcome - Has the citizen already
+            declared a change of circumstances?</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="overpayment-details.html">Overpayment details</a>
+        </li>
+      </ol>
+    </nav>
+    <br />
+    <br />
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record arrears details</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+        </div>
+        <form class="form" action="/underpayment-details" method="post">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              {% from "govuk/components/input/macro.njk" import govukInput %}
+              {{ govukInput({
+              label: {
+              text: "Arrears paid",
+              classes: "govuk-label"
+              },
+              id: "underPaymentOffcialErrorValue",
+              name: "underPaymentOffcialErrorValue",
+              prefix: {
+              text: "£"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
+              }) }}
+
+
+
+
+            </div>
+          </div>
+
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

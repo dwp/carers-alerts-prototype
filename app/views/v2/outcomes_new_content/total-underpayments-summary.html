@@ -23,10 +23,6 @@ Task types
         <li class="govuk-breadcrumbs__list-item">
           <a class="govuk-breadcrumbs__link" href="payment-type.html">Payment type</a>
         </li>
-
-        <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="overpayment-details.html">Overpayment details</a>
-        </li>
         <li class="govuk-breadcrumbs__list-item">
           <a class="govuk-breadcrumbs__link" href="underpayment-details.html">Arrears</a>
         </li>
@@ -59,7 +55,7 @@ Task types
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Has the claimant already declared a change of circumstances?
+              Has the citizen already declared a change of circumstances?
             </dt>
             <dd class="govuk-summary-list__value">
               {{data['earningsDeclared']}}
@@ -73,58 +69,12 @@ Task types
               Payment type
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['paymentType']}}
+              Arrears
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#">Change</a>
             </dd>
           </div>
-
-        </dl>
-
-        <h2 class="govuk-heading-m"> Overpayment details</h2>
-        <dl class="govuk-summary-list">
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Official error amount
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £{{data['overPaymentOffcialErrorValue']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change</a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Customer error amount
-            </dt>
-            <dd class="govuk-summary-list__value">
-              £{{data['overPaymentCustomerErrorValue']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change</a>
-            </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Civil penalty applied?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{data['civilPenalty']}}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change</a>
-            </dd>
-          </div>
-
-        </dl>
-
-        <h2 class="govuk-heading-m"> Arrears details</h2>
-        <dl class="govuk-summary-list">
-
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Arrears paid
@@ -136,10 +86,7 @@ Task types
               <a class="govuk-link" href="#">Change</a>
             </dd>
           </div>
-
         </dl>
-
-
         <div class="govuk-button-group" style="margin-top: 60px;">
           <a href="additional-outcomes.html">
             <button class="govuk-button govuk-button--secondary" data-module="govuk-button">Cancel</button></a>
@@ -148,8 +95,7 @@ Task types
         </div>
       </div>
     </div>
-</div>
-</main>
+  </main>
 </div>
 
 

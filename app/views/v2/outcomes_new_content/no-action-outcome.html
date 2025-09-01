@@ -17,8 +17,7 @@ Task types
           <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="full-disallowance.html">Has the claimant already declared a change of
-            circumstances?</a>
+          <a class="govuk-breadcrumbs__link" href="">Record outcome</a>
         </li>
       </ol>
     </nav>
@@ -26,37 +25,37 @@ Task types
     <br />
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Select Payment type</h1>
+        <h1 class="govuk-heading-l">Record task outcome - What is the reason for this no action required outcome?</h1>
         <div class="govuk-inset-text">
           <p> National Insurance number: RN0002563, Name: Davis Jones</p>
-          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+          <p> You have selected CA outcome : No action required</p>
         </div>
 
-        <form class="form" action="/payment-type" method="post">
+        <form class="form" action="/no-action-outcome" method="post">
           <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" data-required data-error="error">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  What is the reason for this no action required outcome?
+                </h2>
+              </legend>
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="paymentType" name="paymentType" type="radio"
-                    value="Overpayment">
-                  <label class="govuk-label govuk-radios__label" for="paymentType">
-                    Overpayment
+                  <input class="govuk-radios__input" id="noActionOutcomeAddReason-2" name="noActionOutcomeAddReason"
+                    type="radio" value="With CAU for action">
+                  <label class="govuk-label govuk-radios__label" for="noActionOutcomeAddReason-2">
+                    With CAU for Action
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="paymentType-2" name="paymentType" type="radio"
-                    value="Underpayment">
-                  <label class="govuk-label govuk-radios__label" for="paymentType-2">
-                    Arrears
+                  <input class="govuk-radios__input" id="noActionOutcomeAddReason-3" name="noActionOutcomeAddReason"
+                    type="radio" value="Dormant case">
+                  <label class="govuk-label govuk-radios__label" for="noActionOutcomeAddReason-3">
+                    Dormant case
                   </label>
                 </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="paymentType-3" name="paymentType" type="radio"
-                    value="Overpayment and arrears">
-                  <label class="govuk-label govuk-radios__label" for="paymentType-3">
-                    Overpayment and arrears
-                  </label>
-                </div>
+
+              </div>
             </fieldset>
           </div>
 
