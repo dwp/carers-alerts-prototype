@@ -279,7 +279,7 @@ All tasks
         errorMessage = "No record found in Customer Information System. Check you've entered the correct National Insurance number";
         errorSummaryText = errorMessage;
       } else if (openTasks.includes(ninoValue) || closedTasks.includes(ninoValue)) {
-        errorMessage = "No open task held for this National Insurance number.";
+        errorMessage = "No queued task held for this National Insurance number";
         errorSummaryText = errorMessage;
       }
 
@@ -380,7 +380,7 @@ All tasks
         </li>
         <li class="govuk-tabs__list-item">
           <a class="govuk-tabs__tab" id="alerts-tabs" name="alerts-tabs" href="#search-tasks">
-            Search tasks
+            Search by National Insurance number
           </a>
         </li>
         <li class="govuk-tabs__list-item">
@@ -405,7 +405,7 @@ All tasks
   <div class="govuk-tabs__panel" id="tasks">
 
     <h2 class="govuk-heading-m">
-      Alert List:
+      Alert list:
     </h2>
     <!-- -----   radio buttons for alerts age profile  -->
     <div class="govuk-grid-row">
@@ -415,7 +415,7 @@ All tasks
             <option value="">Select an alert list</option>
             <option value="Oldest">Oldest</option>
             <option value="Newest">Newest</option>
-            <option value="Highest value">Highest value</option>
+            <option value="Priority">Priority</option>
           </select>
         </div>
         <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -494,7 +494,7 @@ All tasks
   <div class="govuk-tabs__panel" id="search-tasks">
 
     <h2 class="govuk-heading-m">
-      Search a task to assign it to my list
+      Search for a queued task to assign it to my list
     </h2>
     <!-- -----   radio buttons for alerts age profile  -->
     <div class="govuk-grid-row">
