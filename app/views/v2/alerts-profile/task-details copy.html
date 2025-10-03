@@ -5,9 +5,6 @@ All tasks
 {% endblock %}
 
 {% block beforeContent %}
-
-
-
 {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 <div class=spacer1></div>
 <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
@@ -24,8 +21,6 @@ All tasks
     </li>
   </ol>
 </nav>
-
-
 {% endblock %}
 
 {% block content %}
@@ -113,15 +108,7 @@ All tasks
               Notes
             </dt>
             <dd class="govuk-summary-list__value">
-
-              <p class="govuk-body">
-                <span id="notesColumn"></span>
-                <br />
-                <br />
-                <a href="edit-notes.html" class="govuk-link">Edit notes</a>
-
-              </p>
-            </dd>
+              Task opened today
           </div>
       </div>
     </div>
@@ -244,11 +231,8 @@ All tasks
 </div>
 </div>
 </div>
-
-
-<script>
-  const latestNote = localStorage.getItem('latestNote');
-  document.getElementById('notesColumn').textContent = latestNote || 'No notes yet.';
-</script>
-
 {% endblock %}
+
+
+<!-- to make a table row clickable using javascript
+   tr onclick="window.location='task-info#'" class = -->
