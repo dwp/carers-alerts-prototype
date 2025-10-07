@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: prototype.interface.carers-alerts-prototype
-  title: carers-alerts-prototype
+  name: carers-alerts-prototype
+  title: Carers-Alerts-Prototype
   description: |
     TODO: add description for carers-alerts-prototype.
 
