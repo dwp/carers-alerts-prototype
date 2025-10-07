@@ -1,13 +1,13 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: prototype.interface.carers-allowance-alerts-prototype
-  title: carers-allowance-alerts-prototype
+  name: prototype.interface.carers-alerts-prototype
+  title: carers-alerts-prototype
   description: |
-    TODO: add description for carers-allowance-alerts-prototype.
+    TODO: add description for carers-alerts-prototype.
 
   annotations:
-    gitlab.com/project-slug: dwp/user-centred-design/carers-allowance-alerts-prototype
+    gitlab.com/project-slug: dwp/user-centred-design/carers-alerts-prototype
 
   labels:
     dwp.gov.uk/version: 1.0.0
@@ -31,7 +31,7 @@ metadata:
   links:
     - icon: externalLink
       title: Repository
-      url: https://gitlab.com/dwp/user-centred-design/carers-allowance-alerts-prototype
+      url: https://gitlab.com/dwp/user-centred-design/carers-alerts-prototype
 
 spec:
   owner: group:default/backstage.group.user-centred-design
