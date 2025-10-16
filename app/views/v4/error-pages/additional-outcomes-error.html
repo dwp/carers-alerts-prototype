@@ -1,0 +1,112 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#outcomeReason">Select the outcome reason</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Outcome reason</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="govuk-grid-row" style="margin-top: 60px;">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record task outcome - What is the outcome of this task?</h1>
+        <form class="form" action="/additional-outcomes-error" method="post">
+          <div class="govuk-form-group govuk-form-group--error">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="outcomeReason-error">
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  What is the outcome of this task?
+                </h2>
+              </legend>
+              <p id="outcomeReason-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Select the outcome reason
+              </p>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outcomeReason" name="outcomeReason" type="radio"
+                    value="Full disallowance">
+                  <label class="govuk-label govuk-radios__label" for="outcomeReason">
+                    Full disallowance
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outcomeReason-2" name="outcomeReason" type="radio"
+                    value="Partial disallowance">
+                  <label class="govuk-label govuk-radios__label" for="outcomeReason-2">
+                    Partial disallowance
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outcomeReason-3" name="outcomeReason" type="radio"
+                    value="no-change-to-award">
+                  <label class="govuk-label govuk-radios__label" for="outcomeReason-3">
+                    No change to award
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outcomeReason-4" name="outcomeReason" type="radio"
+                    value="outstandingCAU">
+                  <label class="govuk-label govuk-radios__label" for="outcomeReason-4">
+                    Outstanding action in CAU
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outcomeReason-5" name="outcomeReason" type="radio"
+                    value="no-action-outcome">
+                  <label class="govuk-label govuk-radios__label" for="outcomeReason-5">
+                    No action required
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- //button leads to U/O payment pages -->
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Overpayments- recovery amount details</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : {{data['outcomeReason']}}</p>
+        </div>
+        <form class="form" action="/overpayment-amount-recovery" method="post">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              {% from "govuk/components/input/macro.njk" import govukInput %}
+              {{ govukInput({
+              label: {
+              text: "Amount recoverable"
+              },
+              id: "amountRecoverable",
+              name: "amountRecoverable",
+              prefix: {
+              text: "£"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
+              }) }}
+
+              {{ govukInput({
+              label: {
+              text: "Amount not recoverable"
+              },
+              id: "amountNonRecoverable",
+              name: "amountNonRecoverable",
+              prefix: {
+              text: "£"
+              },
+              classes: "govuk-input govuk-!-width-one-half",
+              spellcheck: false
+              }) }}
+
+            </div>
+          </div>
+
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

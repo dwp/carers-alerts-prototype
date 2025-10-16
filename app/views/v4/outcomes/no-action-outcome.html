@@ -1,0 +1,69 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="">Record outcome</a>
+        </li>
+      </ol>
+    </nav>
+    <br />
+    <br />
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">What is the reason for no action required?</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : No action required</p>
+        </div>
+
+        <form class="form" action="/no-action-outcome" method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noActionOutcomeAddReason-2" name="noActionOutcomeAddReason"
+                    type="radio" value="With CAU for action">
+                  <label class="govuk-label govuk-radios__label" for="noActionOutcomeAddReason-2">
+                    With CAU for Action
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noActionOutcomeAddReason-3" name="noActionOutcomeAddReason"
+                    type="radio" value="Dormant case">
+                  <label class="govuk-label govuk-radios__label" for="noActionOutcomeAddReason-3">
+                    Dormant case
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

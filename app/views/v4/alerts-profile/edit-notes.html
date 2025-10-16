@@ -1,0 +1,148 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+All tasks
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+<nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="">Home</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="task-list-tab.html" id="openHeader">My open tasks</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="task-details.html" id="openHeader">Citizen - HD 62 93 84 O - John Smith -
+        Task Details</a>
+    </li>
+  </ol>
+</nav>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-full">
+  <h1 class="govuk-heading-l">
+    <span id="openHeader">Citizen - HD 62 93 84 O - John Smith - Edit note</span>
+  </h1>
+  <br />
+  <br />
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h1 class="govuk-heading-m">Edit Note</h1>
+      <br />
+
+
+      <label class="govuk-label" for="noteInput">Note (max 200 characters)</label>
+      <textarea class="govuk-textarea" id="noteInput" maxlength="200" placeholder="Enter your note..."></textarea>
+
+      <div class="govuk-button-group">
+        <button class="govuk-button" onclick="saveNote()">Save</button>
+        <button class="govuk-button govuk-button--secondary" onclick="cancelNote()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m">Notes history</h2>
+      <br />
+      <div class="dwp-timeline">
+        <ol class="dwp-timeline__items" id="timeline">
+          <!-- Notes will be added here -->
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const noteInput = document.getElementById('noteInput');
+    const charCount = document.getElementById('charCount');
+    const timeline = document.getElementById('timeline');
+
+    noteInput.addEventListener('input', () => {
+      charCount.textContent = `${noteInput.value.length} / 200`;
+    });
+
+    function saveNote() {
+      const noteText = noteInput.value.trim();
+      if (noteText === '') {
+        alert('Note cannot be empty.');
+        return;
+      }
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      const timeStr = now.toLocaleTimeString('en-GB', { hour: 'numeric', minute: '2-digit' });
+
+      const noteData = {
+        text: noteText,
+        date: dateStr,
+        time: timeStr,
+        author: 'Priya Maurya'
+      };
+
+      // Save to localStorage
+      let notes = JSON.parse(localStorage.getItem('notes')) || [];
+      notes.unshift(noteData); // Add to top
+      localStorage.setItem('notes', JSON.stringify(notes));
+      localStorage.setItem('latestNote', noteText); // For Open Task tab
+
+      renderTimeline(notes);
+
+      noteInput.value = '';
+      charCount.textContent = '0 / 200';
+
+      console.log(`Latest note for Open Task tab: "${noteText}"`);
+    }
+
+    function cancelNote() {
+      noteInput.value = '';
+      charCount.textContent = '0 / 200';
+    }
+
+    function renderTimeline(notes) {
+      timeline.innerHTML = '';
+      notes.forEach(note => {
+        const noteItem = document.createElement('li');
+        noteItem.className = 'dwp-timeline__item';
+        noteItem.innerHTML = `
+          <h3 class="dwp-timeline__content">${note.text}</h3>
+          <p class="dwp-timeline__by-line">by ${note.author}</p>
+          <p class="dwp-timeline__datetime">${note.date} at ${note.time}</p>
+          <br/>
+        `;
+        timeline.appendChild(noteItem);
+      });
+    }
+
+    // Load notes on page load
+    window.onload = () => {
+      const savedNotes = JSON.parse(localStorage.getItem('notes')) || [];
+      renderTimeline(savedNotes);
+    };
+  </script>
+
+  <script>
+    function cancelNote() {
+      window.location.href = "task-details.html";
+    }
+  </script>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

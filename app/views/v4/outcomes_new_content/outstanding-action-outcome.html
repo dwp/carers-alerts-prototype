@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="">Record outcome</a>
+        </li>
+      </ol>
+    </nav>
+    <br />
+    <br />
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record task outcome - What is the reason for this outstanding action in CAU outcome?
+        </h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : Outstanding action in CAU</p>
+        </div>
+        <form class="form" action="/outstanding-action-outcome" method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  What is the reason for this outstanding action in CAU outcome?
+                </h2>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-1"
+                    name="outstandingOutcomeAddReason" type="radio" value="Irregular earner">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-5">
+                    Irregular earner
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-2"
+                    name="outstandingOutcomeAddReason" type="radio" value="Underlying entitlement">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-2">
+                    Underlying entitlement
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-3"
+                    name="outstandingOutcomeAddReason" type="radio" value="Break in care">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-4">
+                    Break in care
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-4"
+                    name="outstandingOutcomeAddReason" type="radio" value="Self employed">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason">
+                    Self employed
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-5"
+                    name="outstandingOutcomeAddReason" type="radio" value="8 Week run on">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-3">
+                    8 Week run on
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="outstandingOutcomeAddReason-6"
+                    name="outstandingOutcomeAddReason" type="radio" value="Other">
+                  <label class="govuk-label govuk-radios__label" for="outstandingOutcomeAddReason-5">
+                    Other
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

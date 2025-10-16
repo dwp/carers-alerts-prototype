@@ -1,0 +1,94 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Task types
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="additional-outcomes">Outcome reason</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="">Record outcome</a>
+        </li>
+      </ol>
+    </nav>
+    <br />
+    <br />
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Record task outcome - What is the reason for this no change to award outcome?</h1>
+        <div class="govuk-inset-text">
+          <p> National Insurance number: RN0002563, Name: Davis Jones</p>
+          <p> You have selected CA outcome : No change to award</p>
+        </div>
+
+        <form class="form" action="/no-change-to-award-outcome" method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-heading-m">
+                  What is the reason for this no change to award outcome?
+                </h2>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-2" name="noChangeAward" type="radio"
+                    value="Earnings previously Declared-customer has allowable Expenses">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-2">
+                    Earnings previously Declared-customer has allowable Expenses
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-3" name="noChangeAward" type="radio"
+                    value="Earnings not previously Declared-customer has allowable Expenses">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-3">
+                    Earnings not previously Declared-customer has allowable Expenses
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-4" name="noChangeAward" type="radio"
+                    value="Fraud referral form completed - new fraud case">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-4">
+                    Fraud referral form completed - new fraud case
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-4" name="noChangeAward" type="radio"
+                    value="Fraud referral form completed - existing fraud case">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-4">
+                    Fraud referral form completed - existing fraud case
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noChangeAward-5" name="noChangeAward" type="radio"
+                    value="All Earnings Under Limit">
+                  <label class="govuk-label govuk-radios__label" for="noChangeAward-5">
+                    All Earnings Under Limit
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+{% endblock %}

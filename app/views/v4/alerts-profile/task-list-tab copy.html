@@ -45,14 +45,14 @@ All tasks
         // Update header based on tab text
         if (tabText === "open tasks") {
           header.textContent = "My open tasks";
-        } else if (tabText === "Search by National Insurance number") {
+        } else if (tabText === "search tasks") {
           header.textContent = "Search tasks by National Insurance Number";
         } else if (tabText === "closed tasks") {
           header.textContent = "Closed tasks";
         } else if (tabText === "transfer a task") {
           header.textContent = "Transfer a task";
         } else {
-          header.textContent = "Search by National Insurance number";
+          header.textContent = "My tasks";
         }
       });
     });
@@ -113,7 +113,7 @@ All tasks
       // Auto-dismiss after 5 seconds
       setTimeout(() => {
         banner.remove();
-      }, 2000);
+      }, 5000);
     }
 
     button.addEventListener("click", function (e) {
@@ -176,7 +176,7 @@ All tasks
       newRow.innerHTML = `
         <td class="govuk-table__cell"><a href="task-details">${nino}</a></td>
         <td class="govuk-table__cell">${name}</td>
-        <td id="notesColumn">${latestNote}</td>
+        <td class="govuk-table__cell">Task opened today</td>
         <td class="govuk-table__cell">${selectedValue}</td>
       `;
 
@@ -201,14 +201,14 @@ All tasks
 
         if (tabText === "open tasks") {
           header.textContent = "My open tasks";
-        } else if (tabText === "Search by National Insurance number") {
+        } else if (tabText === "search tasks") {
           header.textContent = "Search tasks by National Insurance Number";
         } else if (tabText === "closed tasks") {
           header.textContent = "Closed tasks";
         } else if (tabText === "transfer a task") {
           header.textContent = "Transfer a task";
         } else {
-          header.textContent = "Search by National Insurance number";
+          header.textContent = "My tasks";
         }
       });
     });
@@ -357,12 +357,14 @@ All tasks
 
 <!-- --- -->
 
+
 <div class="govuk-grid-full">
   <h1 class="govuk-heading-l">
     <span id="openHeader">My open tasks</span>
   </h1>
   &nbsp;
 </div>
+
 
 <!-- Tab labels -->
 
@@ -527,11 +529,6 @@ All tasks
 </div>
 </div>
 </div>
-
-<script>
-  const latestNote = localStorage.getItem('latestNote');
-  document.getElementById('notesColumn').textContent = latestNote || 'No notes yet.';
-</script>
 {% endblock %}
 
 
