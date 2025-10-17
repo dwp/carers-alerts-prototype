@@ -84,7 +84,7 @@ All tasks
 
     function generateRandomName() {
       const firstNames = ["John", "Priya", "Alex", "Sam", "Emily", "Chris", "Zara", "Liam"];
-      const lastNames = ["Smith", "Maurya", "Taylor", "Brown", "Patel", "Jones", "Khan", "Lee"];
+      const lastNames = ["Smith", "Chris", "Taylor", "Brown", "Johnson", "Jones", "Lee", "Lee"];
       const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
       const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
       return `${firstName} ${lastName}`;
@@ -413,7 +413,12 @@ All tasks
             <option value="">Select an alert list</option>
             <option value="Oldest">Oldest</option>
             <option value="Newest">Newest</option>
-            <option value="Priority">Priority</option>
+            <option value="Standard">Standard</option>
+            <option value="1-4 weeks old">1-4 weeks old</option>
+            <option value="5-12 weeks old">5-12 weeks old</option>
+            <option value="13-26 weeks old">13-26 weeks old</option>
+            <option value="27-52 weeks old">27-52 weeks old</option>
+            <option value="Over 52 weeks old">Over 52 weeks old</option>
           </select>
         </div>
         <button type="submit" class="govuk-button" data-module="govuk-button">
