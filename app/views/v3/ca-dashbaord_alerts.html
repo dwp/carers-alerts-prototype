@@ -1,0 +1,128 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+CA Dashboard
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-full">
+  <h2 class="govuk-heading-l">Alerts Intake and Cleared</h2>
+
+  <section id="alerts-intake" class="section-content">
+    <!-- Date Filter Section with smaller heading and horizontal layout -->
+    <form method="get" action="">
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="date-range-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          Enter the date range for statistics
+        </legend>
+        <div id="date-range-hint" class="govuk-hint">For example, 27 3 2025</div>
+
+        <div class="govuk-form-group">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="from-date-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">From</legend>
+                <div class="govuk-date-input" id="from-date">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="from-day">Day</label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="from-day"
+                        name="from-day" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="from-month">Month</label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="from-month"
+                        name="from-month" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="from-year">Year</label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="from-year"
+                        name="from-year" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="govuk-grid-column-one-half">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="to-date-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">To</legend>
+                <div class="govuk-date-input" id="to-date">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="to-day">Day</label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="to-day" name="to-day"
+                        type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="to-month">Month</label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="to-month"
+                        name="to-month" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="to-year">Year</label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="to-year"
+                        name="to-year" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+
+        <button class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">Filter</button>
+      </fieldset>
+    </form>
+
+    <hr width="75%" size="2" align="left">
+    <!-- Results Summary Section -->
+    <div class="govuk-!-margin-top-6">
+      <h3 class="govuk-heading-m">CA alerts statistics for dates 23/06/2025 - 29/06/2025</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Intake</dt>
+          <dd class="govuk-summary-list__value">4,572</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Cleared</dt>
+          <dd class="govuk-summary-list__value">3,572</dd>
+        </div>
+      </dl>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="govuk-!-margin-top-6">
+      <h3 class="govuk-heading-m">PC alerts statistics for dates 23/06/2025 - 29/06/2025</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Intake</dt>
+          <dd class="govuk-summary-list__value">2,572</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Cleared</dt>
+          <dd class="govuk-summary-list__value">1,572</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}
