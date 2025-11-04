@@ -102,7 +102,7 @@ All tasks
       banner.setAttribute("data-module", "govuk-notification-banner");
       banner.innerHTML = `
         <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="success-banner-title">Success</h2>
+          <h2 class="govuk-notification-banner__title" id="success-banner-title">Important</h2>
         </div>
         <div class="govuk-notification-banner__content">
           <p class="govuk-notification-banner__heading">New task added</p>
@@ -115,6 +115,33 @@ All tasks
         banner.remove();
       }, 2000);
     }
+
+    function showImportantBanner(message) {
+      const existingBanner = document.getElementById("success-banner");
+      if (existingBanner) existingBanner.remove();
+
+      const banner = document.createElement("div");
+      banner.id = "success-banner";
+      banner.className = "govuk-notification-banner";
+      banner.setAttribute("role", "alert");
+      banner.setAttribute("aria-labelledby", "success-banner-title");
+      banner.setAttribute("data-module", "govuk-notification-banner");
+      banner.innerHTML = `
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="success-banner-title">Important</h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">Alerts are not available for this age profile.</p>
+        </div>
+      `;
+      header.parentNode.insertBefore(banner, header);
+
+      // Auto-dismiss after 5 seconds
+      setTimeout(() => {
+        banner.remove();
+      }, 2000);
+    }
+
 
     button.addEventListener("click", function (e) {
       const selectedValue = dropdown.value.trim();
@@ -184,7 +211,13 @@ All tasks
       tableBody.insertBefore(newRow, tableBody.firstChild);
 
       // Show success banner
-      showSuccessBanner("New task added");
+      if (selectedValue === "5-12 weeks old") {
+        e.preventDefault();
+        showImportantBanner("New task added");
+      }
+      else {
+        showSuccessBanner("New task added");
+      }
     });
 
     // Tab interaction logic
@@ -328,15 +361,15 @@ All tasks
       openTasksTable.style.display = "table";
 
       const successBanner = document.createElement("div");
-      successBanner.className = "govuk-notification-banner govuk-notification-banner--success";
-      successBanner.id = "govuk-success-banner";
+      successBanner.className = "govuk-notification-banner";
+      successBanner.id = "govuk-notification-banner";
       successBanner.setAttribute("role", "alert");
       successBanner.setAttribute("aria-labelledby", "govuk-notification-banner-title");
       successBanner.setAttribute("data-module", "govuk-notification-banner");
       successBanner.innerHTML = `
         <div class="govuk-notification-banner__header">
           <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Success
+            Important
           </h2>
         </div>
         <div class="govuk-notification-banner__content">

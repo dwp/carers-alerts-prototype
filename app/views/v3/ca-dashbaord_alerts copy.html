@@ -1,0 +1,113 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+CA Dashboard
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" hidden>
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list" id="error-summary-list">
+      <!-- JS will populate this -->
+    </ul>
+  </div>
+</div>
+<div class="govuk-grid-full">
+  <h2 class="govuk-heading-l">Alerts Intake and Cleared</h2>
+
+  <section id="alerts-intake" class="section-content">
+    <!-- Date Filter Section with smaller heading and horizontal layout -->
+
+    <div class="govuk-form-group govuk-form-group--error">
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint passport-issued-error">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            When was your passport issued?
+          </h1>
+        </legend>
+        <div id="passport-issued-hint" class="govuk-hint">
+          For example, 27 3 2007
+        </div>
+        <p id="passport-issued-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> The date your passport was issued must include a year
+        </p>
+        <div class="govuk-date-input" id="passport-issued">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                Day
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                name="passport-issued-day" type="text" value="6" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                name="passport-issued-month" type="text" value="3" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error"
+                id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    // Alerts details
+
+    <hr width="100%" size="2" align="left">
+    <!-- Results Summary Section -->
+    <div class="govuk-!-margin-top-6">
+      <h3 class="govuk-heading-m">CA alerts statistics for dates 23/06/2025 - 29/06/2025</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Intake</dt>
+          <dd class="govuk-summary-list__value">4,572</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Cleared</dt>
+          <dd class="govuk-summary-list__value">3,572</dd>
+        </div>
+      </dl>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="govuk-!-margin-top-6">
+      <h3 class="govuk-heading-m">PC alerts statistics for dates 23/06/2025 - 29/06/2025</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Intake</dt>
+          <dd class="govuk-summary-list__value">2,572</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Cleared</dt>
+          <dd class="govuk-summary-list__value">1,572</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</div>
+
+
+{% endblock %}

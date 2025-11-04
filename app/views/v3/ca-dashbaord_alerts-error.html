@@ -1,0 +1,349 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+CA Dashboard
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class="spacer1"></div>
+{% endblock %}
+
+{% block content %}
+
+<!-- GOV.UK Error Summary -->
+<div class="govuk-error-summary" data-module="govuk-error-summary" style="display:none;" role="alert"
+  aria-labelledby="error-summary-title" tabindex="-1">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">There is a problem</h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list"></ul>
+  </div>
+</div>
+
+<div class="govuk-grid-full">
+  <h2 class="govuk-heading-l">Alerts Intake and Cleared</h2>
+
+  <!-- Date Filter Section -->
+  <form method="get" action="" novalidate>
+    <fieldset class="govuk-fieldset" role="group" aria-describedby="date-range-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Enter the date range for statistics
+      </legend>
+      <div id="date-range-hint" class="govuk-hint">For example, 27 3 2025</div>
+
+      <div class="govuk-form-group">
+        <div class="govuk-grid-row">
+
+          <!-- Start Date -->
+          <div class="govuk-grid-column-one-half">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="start-date-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">From</legend>
+              <div id="start-date-error"></div> <!-- Inline error placeholder -->
+              <div class="govuk-date-input" id="start-date">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="from-day">Day</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="from-day"
+                      name="from-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="from-month">Month</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="from-month"
+                      name="from-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="from-year">Year</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="from-year"
+                      name="from-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- End Date -->
+          <div class="govuk-grid-column-one-half">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="end-date-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">To</legend>
+              <div id="end-date-error"></div> <!-- Inline error placeholder -->
+              <div class="govuk-date-input" id="end-date">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="to-day">Day</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="to-day" name="to-day"
+                      type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="to-month">Month</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="to-month"
+                      name="to-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="to-year">Year</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="to-year" name="to-year"
+                      type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">Filter</button>
+    </fieldset>
+  </form>
+
+  <hr width="100%" size="2" align="left">
+  <!-- Results Summary Section -->
+  <div id="stats-section" style="display:none;">
+    <div class="govuk-!-margin-top-6">
+      <h3 class="govuk-heading-m" id="ca-heading">CA alerts statistics for dates</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Intake</dt>
+          <dd class="govuk-summary-list__value">4,572</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Cleared</dt>
+          <dd class="govuk-summary-list__value">3,572</dd>
+        </div>
+      </dl>
+    </div>
+
+    <br><br>
+
+    <div class="govuk-!-margin-top-6">
+      <h3 class="govuk-heading-m" id="pc-heading">PC alerts statistics for dates</h3>
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Intake</dt>
+          <dd class="govuk-summary-list__value">2,572</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Alerts Cleared</dt>
+          <dd class="govuk-summary-list__value">1,572</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<!-- Validation Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const errorSummary = document.querySelector(".govuk-error-summary");
+    const errorList = errorSummary.querySelector(".govuk-error-summary__list");
+    const startErrorContainer = document.getElementById("start-date-error");
+    const endErrorContainer = document.getElementById("end-date-error");
+
+    form.addEventListener("submit", function (e) {
+      // Reset errors
+      errorList.innerHTML = "";
+      errorSummary.style.display = "none";
+      startErrorContainer.innerHTML = "";
+      endErrorContainer.innerHTML = "";
+      clearErrorClasses();
+
+      const startDay = document.getElementById("from-day").value.trim();
+      const startMonth = document.getElementById("from-month").value.trim();
+      const startYear = document.getElementById("from-year").value.trim();
+      const endDay = document.getElementById("to-day").value.trim();
+      const endMonth = document.getElementById("to-month").value.trim();
+      const endYear = document.getElementById("to-year").value.trim();
+
+      let hasError = false;
+
+      function isValidDate(day, month, year) {
+        if (!day || !month || !year) return false;
+        const date = new Date(year, month - 1, day);
+        return (
+          date.getDate() === parseInt(day) &&
+          date.getMonth() === parseInt(month) - 1 &&
+          date.getFullYear() === parseInt(year)
+        );
+      }
+
+      // Scenario 3: Real date validation
+      if (!isValidDate(startDay, startMonth, startYear)) {
+        addError("Start date must be a real date.", startErrorContainer);
+        highlightError("from-day", "from-month", "from-year");
+        hasError = true;
+      }
+      if (!isValidDate(endDay, endMonth, endYear)) {
+        addError("End date must be a real date.", endErrorContainer);
+        highlightError("to-day", "to-month", "to-year");
+        hasError = true;
+      }
+
+      if (!hasError) {
+        const startDate = new Date(startYear, startMonth - 1, startDay);
+        const endDate = new Date(endYear, endMonth - 1, endDay);
+        const minAllowedDate = new Date(2025, 8, 29); // 29/09/2025
+
+        // Scenario 1: Start date cannot be before minAllowedDate
+        if (startDate < minAllowedDate) {
+          addError("Start date cannot be before 29/09/2025.", startErrorContainer);
+          highlightError("from-day", "from-month", "from-year");
+          hasError = true;
+        }
+
+        // Scenario 2: Start date must be same as or before end date
+        if (startDate > endDate) {
+          addError("Start date must be the same as or before end date.", startErrorContainer);
+          highlightError("from-day", "from-month", "from-year");
+          hasError = true;
+        }
+      }
+
+      if (hasError) {
+        e.preventDefault(); // ✅ Only block submission if errors exist
+        errorSummary.style.display = "block";
+        errorSummary.focus();
+      }
+
+      function addError(message, container) {
+        const li = document.createElement("li");
+        li.textContent = message; // ✅ No hash
+        errorList.appendChild(li);
+        container.innerHTML = `<p class="govuk-error-message"><span class="govuk-visually-hidden">Error:</span> ${message}</p>`;
+        container.closest(".govuk-fieldset").classList.add("govuk-form-group--error");
+      }
+
+      function highlightError(...ids) {
+        ids.forEach(id => {
+          document.getElementById(id).classList.add("govuk-input--error");
+        });
+      }
+
+      function clearErrorClasses() {
+        document.querySelectorAll(".govuk-fieldset").forEach(group => {
+          group.classList.remove("govuk-form-group--error");
+        });
+        document.querySelectorAll(".govuk-input").forEach(input => {
+          input.classList.remove("govuk-input--error");
+        });
+      }
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const errorSummary = document.querySelector(".govuk-error-summary");
+    const errorList = errorSummary.querySelector(".govuk-error-summary__list");
+    const startErrorContainer = document.getElementById("start-date-error");
+    const endErrorContainer = document.getElementById("end-date-error");
+    const statsSection = document.getElementById("stats-section"); // Wrap stats in a container
+    const caHeading = document.getElementById("ca-heading");
+    const pcHeading = document.getElementById("pc-heading");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      errorList.innerHTML = "";
+      errorSummary.style.display = "none";
+      startErrorContainer.innerHTML = "";
+      endErrorContainer.innerHTML = "";
+      clearErrorClasses();
+
+      const startDay = document.getElementById("from-day").value.trim();
+      const startMonth = document.getElementById("from-month").value.trim();
+      const startYear = document.getElementById("from-year").value.trim();
+      const endDay = document.getElementById("to-day").value.trim();
+      const endMonth = document.getElementById("to-month").value.trim();
+      const endYear = document.getElementById("to-year").value.trim();
+
+      let hasError = false;
+
+      function isValidDate(day, month, year) {
+        if (!day || !month || !year) return false;
+        const date = new Date(year, month - 1, day);
+        return (
+          date.getDate() === parseInt(day) &&
+          date.getMonth() === parseInt(month) - 1 &&
+          date.getFullYear() === parseInt(year)
+        );
+      }
+
+      // Validate real dates
+      if (!isValidDate(startDay, startMonth, startYear)) {
+        addError("Start date must be a real date.", startErrorContainer);
+        highlightError("from-day", "from-month", "from-year");
+        hasError = true;
+      }
+      if (!isValidDate(endDay, endMonth, endYear)) {
+        addError("End date must be a real date.", endErrorContainer);
+        highlightError("to-day", "to-month", "to-year");
+        hasError = true;
+      }
+
+      if (!hasError) {
+        const startDate = new Date(startYear, startMonth - 1, startDay);
+        const endDate = new Date(endYear, endMonth - 1, endDay);
+        const minAllowedDate = new Date(2025, 8, 29); // 29/09/2025
+
+        if (startDate < minAllowedDate) {
+          addError("Start date cannot be before 29/09/2025.", startErrorContainer);
+          highlightError("from-day", "from-month", "from-year");
+          hasError = true;
+        }
+
+        if (startDate > endDate) {
+          addError("Start date must be the same as or before end date.", startErrorContainer);
+          highlightError("from-day", "from-month", "from-year");
+          hasError = true;
+        }
+      }
+
+      if (hasError) {
+        errorSummary.style.display = "block";
+        errorSummary.focus();
+        statsSection.style.display = "none"; // Hide stats if invalid
+        return false;
+      }
+
+      // ✅ If valid, show stats and update headings
+      const formattedStart = `${startDay.padStart(2, '0')}/${startMonth.padStart(2, '0')}/${startYear}`;
+      const formattedEnd = `${endDay.padStart(2, '0')}/${endMonth.padStart(2, '0')}/${endYear}`;
+      caHeading.textContent = `CA alerts statistics for dates ${formattedStart} - ${formattedEnd}`;
+      pcHeading.textContent = `PC alerts statistics for dates ${formattedStart} - ${formattedEnd}`;
+      statsSection.style.display = "block";
+
+      function addError(message, container) {
+        const li = document.createElement("li");
+        li.textContent = message;
+        errorList.appendChild(li);
+        container.innerHTML = `<p class="govuk-error-message"><span class="govuk-visually-hidden">Error:</span> ${message}</p>`;
+        container.closest(".govuk-fieldset").classList.add("govuk-form-group--error");
+      }
+
+      function highlightError(...ids) {
+        ids.forEach(id => {
+          document.getElementById(id).classList.add("govuk-input--error");
+        });
+      }
+
+      function clearErrorClasses() {
+        document.querySelectorAll(".govuk-fieldset").forEach(group => {
+          group.classList.remove("govuk-form-group--error");
+        });
+        document.querySelectorAll(".govuk-input").forEach(input => {
+          input.classList.remove("govuk-input--error");
+        });
+      }
+    });
+  });
+</script>
+
+{% endblock %}
