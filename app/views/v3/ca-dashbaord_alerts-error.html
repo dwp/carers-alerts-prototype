@@ -34,7 +34,7 @@ CA Dashboard
       <div class="govuk-form-group">
         <div class="govuk-grid-row">
 
-          <!-- Start Date -->
+          <!-- From date -->
           <div class="govuk-grid-column-one-half">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="start-date-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">From</legend>
@@ -65,7 +65,7 @@ CA Dashboard
             </fieldset>
           </div>
 
-          <!-- End Date -->
+          <!-- To date -->
           <div class="govuk-grid-column-one-half">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="end-date-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">To</legend>
@@ -176,12 +176,12 @@ CA Dashboard
 
       // Scenario 3: Real date validation
       if (!isValidDate(startDay, startMonth, startYear)) {
-        addError("Start date must be a real date.", startErrorContainer);
+        addError("From date must be a real date.", startErrorContainer);
         highlightError("from-day", "from-month", "from-year");
         hasError = true;
       }
       if (!isValidDate(endDay, endMonth, endYear)) {
-        addError("End date must be a real date.", endErrorContainer);
+        addError("To date must be a real date.", endErrorContainer);
         highlightError("to-day", "to-month", "to-year");
         hasError = true;
       }
@@ -191,16 +191,16 @@ CA Dashboard
         const endDate = new Date(endYear, endMonth - 1, endDay);
         const minAllowedDate = new Date(2025, 8, 29); // 29/09/2025
 
-        // Scenario 1: Start date cannot be before minAllowedDate
+        // Scenario 1: From date cannot be before minAllowedDate
         if (startDate < minAllowedDate) {
-          addError("Start date cannot be before 29/09/2025.", startErrorContainer);
+          addError("From date cannot be before 29/09/2025.", startErrorContainer);
           highlightError("from-day", "from-month", "from-year");
           hasError = true;
         }
 
-        // Scenario 2: Start date must be same as or before end date
+        // Scenario 2: From date must be same as or before To date
         if (startDate > endDate) {
-          addError("Start date must be the same as or before end date.", startErrorContainer);
+          addError("From date must be the same as or before to date.", startErrorContainer);
           highlightError("from-day", "from-month", "from-year");
           hasError = true;
         }
@@ -278,12 +278,12 @@ CA Dashboard
 
       // Validate real dates
       if (!isValidDate(startDay, startMonth, startYear)) {
-        addError("Start date must be a real date.", startErrorContainer);
+        addError("From date must be a real date.", startErrorContainer);
         highlightError("from-day", "from-month", "from-year");
         hasError = true;
       }
       if (!isValidDate(endDay, endMonth, endYear)) {
-        addError("End date must be a real date.", endErrorContainer);
+        addError("To date must be a real date.", endErrorContainer);
         highlightError("to-day", "to-month", "to-year");
         hasError = true;
       }
@@ -294,13 +294,13 @@ CA Dashboard
         const minAllowedDate = new Date(2025, 8, 29); // 29/09/2025
 
         if (startDate < minAllowedDate) {
-          addError("Start date cannot be before 29/09/2025.", startErrorContainer);
+          addError("From date cannot be before 29/09/2025.", startErrorContainer);
           highlightError("from-day", "from-month", "from-year");
           hasError = true;
         }
 
         if (startDate > endDate) {
-          addError("Start date must be the same as or before end date.", startErrorContainer);
+          addError("From date must be the same as or before to date.", startErrorContainer);
           highlightError("from-day", "from-month", "from-year");
           hasError = true;
         }
