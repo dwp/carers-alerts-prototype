@@ -176,12 +176,12 @@ CA Dashboard
 
       // Scenario 3: Real date validation
       if (!isValidDate(startDay, startMonth, startYear)) {
-        addError("From date must be a real date.", startErrorContainer);
+        addError("From date must be a valid date.", startErrorContainer);
         highlightError("from-day", "from-month", "from-year");
         hasError = true;
       }
       if (!isValidDate(endDay, endMonth, endYear)) {
-        addError("To date must be a real date.", endErrorContainer);
+        addError("To date must be a valid date.", endErrorContainer);
         highlightError("to-day", "to-month", "to-year");
         hasError = true;
       }
@@ -278,12 +278,12 @@ CA Dashboard
 
       // Validate real dates
       if (!isValidDate(startDay, startMonth, startYear)) {
-        addError("From date must be a real date.", startErrorContainer);
+        addError("From date must be a valid date.", startErrorContainer);
         highlightError("from-day", "from-month", "from-year");
         hasError = true;
       }
       if (!isValidDate(endDay, endMonth, endYear)) {
-        addError("To date must be a real date.", endErrorContainer);
+        addError("To date must be a valid date.", endErrorContainer);
         highlightError("to-day", "to-month", "to-year");
         hasError = true;
       }
