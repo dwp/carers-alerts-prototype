@@ -19,7 +19,7 @@ All tasks
       <a class="govuk-breadcrumbs__link" href="task-list-tab.html" id="openHeader">My open tasks</a>
     </li>
     <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="task-details.html" id="openHeader">Citizen - HD 62 93 84 O - John Smith -
+      <a class="govuk-breadcrumbs__link" href="task-details.html" id="openHeader">
         Task Details</a>
     </li>
   </ol>
@@ -33,12 +33,15 @@ All tasks
 
 <div class="govuk-grid-full">
   <h1 class="govuk-heading-l">
-    <span id="openHeader">Citizen - HD 62 93 84 O - John Smith - Task Details</span>
+    <span id="openHeader">Task Details</span>
   </h1>
-  &nbsp;
+  <div class="govuk-inset-text">
+    <p> National Insurance number: QQ 123456 A, Name: xxxx xxxxx</p>
+  </div>
 </div>
 
-
+<br />
+<br />
 <!-- Tab labels -->
 
 <div class="govuk-tabs" data-module="govuk-tabs">
@@ -53,17 +56,17 @@ All tasks
         </li>
         <li class="govuk-tabs__list-item">
           <a class="govuk-tabs__tab" href="#search-tasks">
-            History
+            Task History
           </a>
         </li>
         <li class="govuk-tabs__list-item">
           <a class="govuk-tabs__tab" href="#on-hold-tasks">
-            Alerts
+            Task Alerts
           </a>
         </li>
         <li class="govuk-tabs__list-item">
           <a class="govuk-tabs__tab" href="#closed-tasks">
-            Earnings Summary
+            Task Earnings Summary
           </a>
         </li>
 
@@ -249,6 +252,45 @@ All tasks
 <script>
   const latestNote = localStorage.getItem('latestNote');
   document.getElementById('notesColumn').textContent = latestNote || 'No notes yet.';
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.govuk-tabs__tab');
+    const header = document.querySelector('h1 span#openHeader');
+    const breadcrumbItems = document.querySelectorAll('.govuk-breadcrumbs__list-item');
+    const lastBreadcrumb = breadcrumbItems[breadcrumbItems.length - 1].querySelector('.govuk-breadcrumbs__link');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        const selectedText = this.textContent.trim();
+
+        // Update header text
+        if (header) {
+          header.textContent = selectedText;
+        }
+
+        // Update last breadcrumb text
+        if (lastBreadcrumb) {
+          lastBreadcrumb.textContent = selectedText;
+        }
+
+        // Switch tab panels
+        document.querySelectorAll('.govuk-tabs__panel').forEach(panel => {
+          panel.classList.add('govuk-tabs__panel--hidden');
+        });
+        const targetPanel = document.querySelector(this.getAttribute('href'));
+        if (targetPanel) {
+          targetPanel.classList.remove('govuk-tabs__panel--hidden');
+        }
+
+        // Update selected tab styling
+        tabs.forEach(t => t.parentElement.classList.remove('govuk-tabs__list-item--selected'));
+        this.parentElement.classList.add('govuk-tabs__list-item--selected');
+      });
+    });
+  });
 </script>
 
 {% endblock %}
