@@ -1,0 +1,34 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Set up your team
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class="spacer1"></div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <!-- Heading of the page -->
+        <h1 class="govuk-heading-l">Set up your team</h1>
+
+        <!-- Form to create team -->
+        <form method="get" action="motherwell-team.html">
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="team-name">Team name</label>
+                <input class="govuk-input" id="team-name" name="team-name" type="text" value="Motherwell">
+            </div>
+
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="member-name">Team owner</label>
+                <input class="govuk-input" id="member-name" name="member-name" type="text">
+            </div>
+
+            <button class="govuk-button" type="submit">Create team</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

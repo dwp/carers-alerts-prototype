@@ -1,0 +1,160 @@
+{% extends "layouts/main.html" %}
+{% block pageTitle %}Motherwell team{% endblock %}
+{% block beforeContent %}
+<div class="spacer1"></div>
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">Team dashboard</h1>
+        <p class="govuk-body-l">Motherwell team</p>
+
+        <!-- Filter section -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="filter-name">Filter by team member name</label>
+                    <input class="govuk-input" id="filter-name" type="text" placeholder="Enter name">
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" type="checkbox" id="filter-fav">
+                    <label class="govuk-label govuk-checkboxes__label" for="filter-fav">Show only favourites</label>
+                </div>
+                <br />
+                <br />
+                <button class="govuk-button" id="apply-filter" data-module="govuk-button">Apply filter</button>
+            </div>
+        </div>
+        <div class="spacer1"></div>
+
+        <!-- Summary table -->
+        <table class="govuk-table" id="dashboard-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">User</th>
+                    <th scope="col" class="govuk-table__header">Tasks open</th>
+                    <th scope="col" class="govuk-table__header">Grey tasks</th>
+                    <th scope="col" class="govuk-table__header">Yellow tasks</th>
+                    <th scope="col" class="govuk-table__header">Orange tasks</th>
+                    <th scope="col" class="govuk-table__header">Red tasks</th>
+                    <th scope="col" class="govuk-table__header">Tasks with outcomes</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row" data-name="Julia Nguyen" data-fav="true">
+                    <td class="govuk-table__cell">Julia Nguyen</td>
+                    <td class="govuk-table__cell">12</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">4</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">2</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Alex Smith" data-fav="false">
+                    <td class="govuk-table__cell">Alex Smith</td>
+                    <td class="govuk-table__cell">8</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">2</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Maria Lopez" data-fav="true">
+                    <td class="govuk-table__cell">Maria Lopez</td>
+                    <td class="govuk-table__cell">10</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">2</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Chris Taylor" data-fav="false">
+                    <td class="govuk-table__cell">Chris Taylor</td>
+                    <td class="govuk-table__cell">7</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">2</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Emma Brown" data-fav="true">
+                    <td class="govuk-table__cell">Emma Brown</td>
+                    <td class="govuk-table__cell">9</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Liam Johnson" data-fav="false">
+                    <td class="govuk-table__cell">Liam Johnson</td>
+                    <td class="govuk-table__cell">6</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">2</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Sophia Wilson" data-fav="true">
+                    <td class="govuk-table__cell">Sophia Wilson</td>
+                    <td class="govuk-table__cell">11</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">3</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="James White" data-fav="false">
+                    <td class="govuk-table__cell">James White</td>
+                    <td class="govuk-table__cell">5</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">1</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Olivia Harris" data-fav="true">
+                    <td class="govuk-table__cell">Olivia Harris</td>
+                    <td class="govuk-table__cell">13</td>
+                    <td class="govuk-table__cell">4</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">3</td>
+                </tr>
+                <tr class="govuk-table__row" data-name="Ethan Clark" data-fav="false">
+                    <td class="govuk-table__cell">Ethan Clark</td>
+                    <td class="govuk-table__cell">4</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.getElementById('apply-filter').addEventListener('click', function () {
+        const nameFilter = document.getElementById('filter-name').value.toLowerCase();
+        const favFilter = document.getElementById('filter-fav').checked;
+
+        document.querySelectorAll('#dashboard-table tbody tr').forEach(row => {
+            const name = row.getAttribute('data-name').toLowerCase();
+            const isFav = row.getAttribute('data-fav') === 'true';
+
+            let show = true;
+            if (nameFilter && !name.includes(nameFilter)) {
+                show = false;
+            }
+            if (favFilter && !isFav) {
+                show = false;
+            }
+
+            row.style.display = show ? '' : 'none';
+        });
+    });
+</script>
+{% endblock %}
