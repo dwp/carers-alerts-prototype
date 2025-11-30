@@ -12,10 +12,11 @@
 
         <!-- Input to add team member -->
         <div class="govuk-form-group">
-            <label class="govuk-label" for="member-name">Add team member</label>
+            <label class="govuk-label" for="member-name">Enter team member's staff number</label>
             <input class="govuk-input" id="member-name" type="text">
         </div>
-        <button class="govuk-button" id="add-member-btn" data-module="govuk-button">Add member</button>
+        <button class="govuk-button govuk-button--secondary" id="add-member-btn" data-module="govuk-button">Add
+            member</button>
         <br />
         <br />
         <!-- Table of team members -->
@@ -23,14 +24,14 @@
         <table class="govuk-table" id="team-table">
             <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Staff number</th>
                     <th scope="col" class="govuk-table__header">Name</th>
-                    <th scope="col" class="govuk-table__header">Favourite</th>
                     <th scope="col" class="govuk-table__header">Action</th>
                 </tr>
             </thead>
             <tbody class="govuk-table__body"></tbody>
         </table>
-        <form method="get" action="team-dashboard.html">
+        <form method="get" action="user-summary-success.html">
             <button class="govuk-button" type="submit">Save team</button>
         </form>
     </div>
@@ -47,13 +48,8 @@
         row.className = 'govuk-table__row';
 
         row.innerHTML = `
-    <td class="govuk-table__cell">${name}</td>
-    <td class="govuk-table__cell">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" type="checkbox" id="fav-${name}" name="favourite">
-        <label class="govuk-label govuk-checkboxes__label" for="fav-${name}">Favourite</label>
-      </div>
-    </td>
+        <td class="govuk-table__cell">${name}</td>
+    <td class="govuk-table__cell">James</td>
     <td class="govuk-table__cell">
       <button class="govuk-button govuk-button--secondary delete-btn" data-module="govuk-button">Delete</button>
     </td>

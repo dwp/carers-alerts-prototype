@@ -1,0 +1,184 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+User summary
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{{ govukBreadcrumbs({
+items: [
+{ text: "Home", href: "#" },
+{ text: "Task statistics", href: "#" },
+{ text: "User summary" }
+]
+}) }}
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">User summary</h1>
+<p class="govuk-body">Query Date - 08/07/2022 to 08/07/2022</p>
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+    <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item">Task statuses</a></li>
+        <li class="govuk-tabs__list-item">Outcome summary</a></li>
+        <li class="govuk-tabs__list-item">Outcome breakdown</a></li>
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">User summary</a></li>
+    </ul>
+
+    <div class="govuk-tabs__panel" id="user-summary">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="team-filter">Filter by team</label>
+            <select class="govuk-select" id="team-filter" name="team">
+                <option value="All">All</option>
+                <option value="Team A">Team A</option>
+                <option value="Team B">Team B</option>
+                <option value="Team C">Team C</option>
+
+            </select>
+            <button class="govuk-button" id="filter-button" data-module="govuk-button">Filter</button>
+        </div>
+
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header">User</th>
+                    <th class="govuk-table__header">Team</th>
+                    <th class="govuk-table__header">Tasks open</th>
+                    <th class="govuk-table__header">Grey tasks</th>
+                    <th class="govuk-table__header">Yellow tasks</th>
+                    <th class="govuk-table__header">Orange tasks</th>
+                    <th class="govuk-table__header">Red tasks</th>
+                    <th class="govuk-table__header">Tasks with outcomes</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Alice Johnson</td>
+                    <td class="govuk-table__cell">Team A</td>
+                    <td class="govuk-table__cell">12</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">5</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Bob Smith</td>
+                    <td class="govuk-table__cell">Team B</td>
+                    <td class="govuk-table__cell">8</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">3</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Charlie Brown</td>
+                    <td class="govuk-table__cell">Team A</td>
+                    <td class="govuk-table__cell">15</td>
+                    <td class="govuk-table__cell">4</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">6</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Diana Prince</td>
+                    <td class="govuk-table__cell">Team C</td>
+                    <td class="govuk-table__cell">10</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">4</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Ethan Hunt</td>
+                    <td class="govuk-table__cell">Team B</td>
+                    <td class="govuk-table__cell">9</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">3</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Fiona Gallagher</td>
+                    <td class="govuk-table__cell">Team A</td>
+                    <td class="govuk-table__cell">11</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">5</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">George Miller</td>
+                    <td class="govuk-table__cell">Team C</td>
+                    <td class="govuk-table__cell">7</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">2</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Hannah Davis</td>
+                    <td class="govuk-table__cell">Team B</td>
+                    <td class="govuk-table__cell">13</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">6</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Ian Wright</td>
+                    <td class="govuk-table__cell">Team C</td>
+                    <td class="govuk-table__cell">6</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">0</td>
+                    <td class="govuk-table__cell">2</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Julia Roberts</td>
+                    <td class="govuk-table__cell">Team A</td>
+                    <td class="govuk-table__cell">14</td>
+                    <td class="govuk-table__cell">4</td>
+                    <td class="govuk-table__cell">3</td>
+                    <td class="govuk-table__cell">2</td>
+                    <td class="govuk-table__cell">1</td>
+                    <td class="govuk-table__cell">7</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const filterButton = document.getElementById('filter-button');
+                const teamSelect = document.getElementById('team-filter');
+                const rows = document.querySelectorAll('.govuk-table__body .govuk-table__row');
+
+                filterButton.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const selectedTeam = teamSelect.value;
+
+                    rows.forEach(row => {
+                        const teamCell = row.querySelectorAll('.govuk-table__cell')[1];
+                        if (selectedTeam === 'All' || teamCell.textContent.trim() === selectedTeam) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+</div>
+{% endblock %}
