@@ -4,10 +4,37 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+{% block beforeContent %}
 
+
+
+{% endblock %}
 {% block header %}
 
-
+<!-- GOV.UK Cookie Banner -->
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on {{ serviceName }}">
+  <div class="govuk-cookie-banner__message govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+          Cookies on {{ serviceName }}
+        </h2>
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">We use some essential cookies to make this service work.</p>
+          <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and
+            make improvements.</p>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-button-group">
+      <button type="button" class="govuk-button" data-module="govuk-button" id="accept-cookies">Accept analytics
+        cookies</button>
+      <button type="button" class="govuk-button" data-module="govuk-button" id="reject-cookies">Reject analytics
+        cookies</button>
+      <a class="govuk-link" href="../v4/cookies/cookie-settings.html">View cookies</a>
+    </div>
+  </div>
+</div>
 <header class="dwp-header">
   <div class="dwp-header__content govuk-width-container">
     <div class="dwp-header__service-name dwp-header__service-name--with-action">
@@ -64,9 +91,13 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     <ul class="govuk-footer__inline-list">
       <li class="govuk-footer__inline-list-item">
         <a class="govuk-footer__link" href="accessibility-statement">Accessibility</a>
+        <a class="govuk-footer__link" href="accessibility-statement">Accessibility</a>
       </li>
       <li class="govuk-footer__inline-list-item">
         <a class="govuk-footer__link" href="contact">Contact</a>
+      </li>
+      <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="../v4/cookies/cookie-settings.html">Cookies</a>
       </li>
       <li class="govuk-footer__inline-list-item">
         <a class="govuk-footer__link" href="https://intranet.dwp.gov.uk/page/dwp-employee-privacy-notice" target="blank"
@@ -79,5 +110,49 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     
     </div>
     </footer>
+  
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const banner = document.getElementById('cookie-banner');
+    const confirmation = document.getElementById('cookie-confirmation');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const rejectBtn = document.getElementById('reject-cookies');
+    const hideConfirmationBtn = document.getElementById('hide-confirmation');
+
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+    }
+
+    function hideBanner() {
+      banner.style.display = 'none';
+    }
+
+    function showConfirmation() {
+      confirmation.style.display = 'block';
+    }
+
+    acceptBtn.addEventListener('click', function () {
+      setCookie('analytics_consent', 'true', 365);
+      hideBanner();
+      showConfirmation();
+    });
+
+    rejectBtn.addEventListener('click', function () {
+      setCookie('analytics_consent', 'false', 365);
+      hideBanner();
+    });
+
+    hideConfirmationBtn.addEventListener('click', function () {
+      confirmation.style.display = 'none';
+    });
+
+    if (document.cookie.indexOf('analytics_consent') !== -1) {
+      hideBanner();
+    }
+  });
+</script>
+
   
   {% endblock %}
