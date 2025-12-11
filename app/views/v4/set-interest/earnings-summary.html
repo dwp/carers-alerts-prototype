@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+All tasks
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+<nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="task-list-tab.html" id="openHeader">Make a new request</a>
+        </li>
+    </ol>
+</nav>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-full">
+
+    <h1 class="govuk-heading-l">
+        Earnings Summary
+    </h1>
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+        <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item">Earnings summary</a></li>
+        </ul>
+
+        <div class="govuk-tabs__panel" id="user-summary">
+
+            <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Download Earnings PDF
+            </button>
+
+            <h3 class="govuk-heading-s">
+                What date do you want earning to start from?
+            </h3>
+
+
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        Enter a differnt earnings start date
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                    We need to know your nationality so we can work out which elections you’re entitled to vote in. If
+                    you cannot provide your nationality, you’ll have to send copies of identity documents through the
+                    post.
+                </div>
+            </details>
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th class="govuk-table__header">Organisation</th>
+                        <th class="govuk-table__header">Start date</th>
+                        <th class="govuk-table__header">End date</th>
+                        <th class="govuk-table__header">Earning type</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Employer</td>
+                        <td class="govuk-table__cell">Unkonwn</td>
+                        <td class="govuk-table__cell">Ongoing</td>
+                        <td class="govuk-table__cell">Employment</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

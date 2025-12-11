@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+All tasks
+{% endblock %}
+
+{% block beforeContent %}
+
+
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+<nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="task-list-tab.html" id="openHeader">Make a new request</a>
+        </li>
+    </ol>
+</nav>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-full">
+
+    <h1 class="govuk-heading-l">
+        Real Time Information (RTI) request – RTI data found
+    </h1>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <!-- Info panel (to mirror the grey callout shown in the image) -->
+            <div class="govuk-inset-text" style="border-left: 8px solid #b1b4b6;">
+                <p class="govuk-body">
+                    Real Time Information (RTI) data found – Check this is the correct<br>
+                    National Insurance number
+                </p>
+            </div>
+
+            <!-- Key details (Name, NINO, DOB) -->
+            <dl class="govuk-summary-list govuk-!-margin-bottom-6">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Name</dt>
+                    <dd class="govuk-summary-list__value">Sophie Catling</dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">National Insurance number</dt>
+                    <dd class="govuk-summary-list__value">RN000848A</dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">Date of Birth</dt>
+                    <dd class="govuk-summary-list__value">05/10/1976</dd>
+                </div>
+            </dl>
+
+            <!-- Primary action (green in the screenshot; GOV.UK uses blue primary, but if you need green, keep the custom class) -->
+            <a href="./earnings-summary.html" role="button" draggable="false" class="govuk-button">View Real Time
+                Information
+                (RTI) data</a>
+            <br />
+            <br />
+            <a class="govuk-link">View your recent set interest requests</a>
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
