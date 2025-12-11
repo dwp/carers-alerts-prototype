@@ -1,86 +1,58 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Real Time Information (RTI) request – Earnings summary
+All tasks
 {% endblock %}
 
 {% block beforeContent %}
 
-{# Breadcrumbs: use the GOV.UK macro instead of raw HTML for consistency and accessibility #}
-{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{{ govukBreadcrumbs({
-collapseOnMobile: true,
-items: [
-{ text: "Home", href: "/" },
-{ text: "Make a new request", href: "/requests" }
-]
-}) }}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+<div class=spacer1></div>
+<nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="task-list-tab.html" id="openHeader">Make a new request</a>
+        </li>
+    </ol>
+</nav>
+
 
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
 
-        {# Page heading #}
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
-            Real Time Information (RTI) request
-        </h1>
+<div class="govuk-grid-full">
 
-        <h2 class="govuk-heading-m">Earnings summary</h2>
 
-        {# Primary action button #}
-        {% from "govuk/components/button/macro.njk" import govukButton %}
-        {{ govukButton({
-        text: "Download earnings PDF",
-        href: "/rti/earnings-summary.pdf",
-        classes: "govuk-!-margin-bottom-5"
-        }) }}
+    <h1 class="govuk-heading-l">Real Time Information (RTI) request</h1>
 
-        {# Optional guidance using the Details component #}
-        {% from "govuk/components/details/macro.njk" import govukDetails %}
-        {{ govukDetails({
-        summaryText: "What date do you want the earnings to start from?",
-        html: '<p class="govuk-body">You can set a different earnings start date if required.</p>
-        <p class="govuk-body"><a class="govuk-link" href="/ra different earnings start date</a></p>'
-    }) }}
-
-    {# Accessible table with caption and scoped headers #}
-    <table class=" govuk-table">
-                <caption class="govuk-table__caption govuk-table__caption--m">
-                    Current earnings
-                </caption>
-
-                <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                        <th scope="col" class="govuk-table__header">Organisation</th>
-                        <th scope="col" class="govuk-table__header">Start date</th>
-                        <th scope="col" class="govuk-table__header">End date</th>
-                        <th scope="col" class="govuk-table__header">Earning type</th>
-                    </tr>
-                </thead>
-
-                <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                        <th scope="row" class="govuk-table__header">
-                            <a class="govuk-link" href/a>
-                        </th>
-                        <td class="govuk-table__cell">Unknown</td>
-                        <td class="govuk-table__cell">Ongoing</td>
-                        <td class="govuk-table__cell">Employment</td>
-                    </tr>
-                </tbody>
-                </table>
-
-                {# Footer links, if you want them inline (or switch to the GOV.UK footer component in layout) #}
-                <ul class="govuk-list govuk-list--inline govuk-!-margin-top-6">
-                    <li><a class="govuk-link" href="/accessnt</a></li>
-      <li><a class=" govuk-link/li>
-                </ul>
-
-    </div>
+    <form method="" action="">
+        <label class="govuk-label" for="national-insurance-number">National Insurance number</label>
+        <div id="national-insurance-number-hint" class="govuk-hint">
+            Enter a National Insurance number to set an interest against the citizen and search for Real Time
+            Information data.<br>
+            For example, ‘QQ 12 34 56 C’
+        </div>
+        <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing"
+            id="national-insurance-number" name="nationalInsuranceNumber" type="text" spellcheck="false"
+            autocomplete="off" aria-describedby="national-insurance-number-hint">
 </div>
+<br />
+<br />
+
+</form>
+
+<a href="./setInterest-data.html" role="button" draggable="false" class="govuk-button">Search</a>
+<p class="govuk-body">
+    <a class="govuk-link" href=""> View your recent set interest requests</a>
+</p>
+</div>
+
 
 {% endblock %}
