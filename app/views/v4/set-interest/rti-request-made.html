@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Real Time Information (RTI) request – Request made
+{% endblock %}
+
+{% block beforeContent %}
+
+{# Breadcrumbs: HTML version, collapses on mobile. Place before <main>.
+    [1](https://github.com/gunjam/govuk-frontend-html/blob/main/components/notification-banner/README.md) #}
+    <nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__item">
+                <aome< /a>
+            </li>
+            <li class="govuk-breadcrumbs__item">
+                /requestsMake a new request</a>
+            </li>
+            <li class="govuk-breadcrumbs__item">
+                Real Time Information (RTI) request – Request made
+            </li>
+        </ol>
+    </nav>
+
+    {% endblock %}
+
+    {% block content %}
+
+    {# Success notification banner (green). Position directly above H1.
+    [2](https://design-system.service.gov.uk/components/notification-banner/) #}
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="region"
+        aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+
+        <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">Success</h2>
+        </div>
+
+        <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+                Request for RTI data has been sent
+            </p>
+        </div>
+    </div>
+
+    <h1 class="govuk-heading-l">Real Time Information (RTI) request – Request made</h1>
+
+    <div class="govuk-inset-text">
+        <p class="govuk-body">
+            Your RTI data request for <strong>Richard Burrow (RN000166A)</strong> has been sent.
+        </p>
+        <p class="govuk-body">
+            To view the earnings information immediately please click on this <a href="">Link</a>”
+        </p>
+    </div>
+
+    <ul class="govuk-list govuk-list--inline govuk-!-margin-top-6">
+        <li><a class="govuk-linkibility statement</a></li>
+  <li><a class=" govuk</a></li>
+    </ul>
+
+    {% endblock %}

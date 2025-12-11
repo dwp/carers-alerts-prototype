@@ -1,0 +1,107 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Real Time Information (RTI) request – Set interest
+{% endblock %}
+
+{% block beforeContent %}
+
+<nav class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__item">
+            <aome< /a>
+        </li>
+        <li class="govuk-breadcrumbs__item">
+            <a class="govuk-breadcrumbs__link"> </a>
+        <li class="govuk-breadcrumbs__item">
+            Real Time Information (RTI) request – Set interest
+        </li>
+    </ol>
+</nav>
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">Real Time Information (RTI) request – Set interest</h1>
+<h2 class="govuk-heading-m">Enter a LA interest date</h2>
+
+<!-- Inset text: short supporting info. Use sparingly. [2](https://design.homeoffice.gov.uk/) -->
+<div class="govuk-inset-text">
+    <p class="govuk-body">
+        National Insurance number <strong>RN000156A</strong> not registered – complete<br>
+        LA interest date to request this information
+    </p>
+</div>
+
+<!-- Person details (summary list) -->
+<dl class="govuk-summary-list govuk-!-margin-bottom-6">
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">First name</dt>
+        <dd class="govuk-summary-list__value">Richard</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Second name</dt>
+        <dd class="govuk-summary-list__value">–</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Surname</dt>
+        <dd class="govuk-summary-list__value">Burrow</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Date of Birth</dt>
+        <dd class="govuk-summary-list__value">05/10/1976</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Gender</dt>
+        <dd class="govuk-summary-list__value">MALE</dd>
+    </div>
+</dl>
+
+<form method="post  <!-- Form group for Date input. Pattern follows GOV.UK Date input component HTML. [3](https://govukvue.org/components/breadcrumbs) -->
+  <div class=" govuk-form-group">
+    <fieldset class="govuk-fieldset" role="group" aria-describedby="la-interest-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h3 class="govuk-fieldset__heading">LA interest date (for reviews enter effective date)</h3>
+        </legend>
+        <div id="la-interest-hint" class="govuk-hint">
+            For example, <strong>12 03 2021</strong>
+        </div>
+
+        <div class="govuk-date-input" id="la-interest-date">
+            <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="la-interest-day">Day</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="la-interest-day"
+                        name="laInterestDay" type="text" inputmode="numeric" pattern="[0-9]*">
+                </div>
+            </div>
+
+            <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="la-interest-month">Month</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="la-interest-month"
+                        name="laInterestMonth" type="text" inputmode="numeric" pattern="[0-9]*">
+                </div>
+            </div>
+
+            <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="la-interest-year">Year</label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="la-interest-year"
+                        name="laInterestYear" type="text" inputmode="numeric" pattern="[0-9]*">
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+
+
+    <a href="./rti-request-made.html" role="button" draggable="false" class="govuk-button">Send request</a>
+    </div>
+
+</form>
+
+</div>
+
+{% endblock %}
