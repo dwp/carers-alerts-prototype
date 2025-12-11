@@ -6,8 +6,9 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
 {% block header %}
 
-<!-- GOV.UK Cookie Banner -->
-<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on {{ serviceName }}">
+
+<div id="cookie-banner" class="govuk-cookie-banner" data-nosnippet role="region"
+  aria-label="Cookies on {{ serviceName }}">
   <div class="govuk-cookie-banner__message govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
@@ -16,20 +17,54 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
         </h2>
         <div class="govuk-cookie-banner__content">
           <p class="govuk-body">We use some essential cookies to make this service work.</p>
-          <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and
-            make improvements.</p>
+          <p class="govuk-body">
+            We’d also like to use analytics cookies so we can understand how you use the service and make improvements.
+          </p>
         </div>
       </div>
     </div>
     <div class="govuk-button-group">
-      <button type="button" class="govuk-button" data-module="govuk-button" id="accept-cookies">Accept analytics
-        cookies</button>
-      <button type="button" class="govuk-button" data-module="govuk-button" id="reject-cookies">Reject analytics
-        cookies</button>
-      <a class="govuk-link" href="../v4/cookies/cookie-settings.html">View cookies</a>
+      <button type="button" class="govuk-button" data-module="govuk-button" id="accept-cookies">
+        Accept analytics cookies
+      </button>
+      <button type="button" class="govuk-button" data-module="govuk-button" id="reject-cookies">
+        Reject analytics cookies
+      </button>
+      <a class="govuk-link" href="../v4/cookies/cookie-settings">view cookies
+      </a>
+      <a class="govuk-link" href="#"
+        onclick="document.cookie='cookie_preferences=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'; location.reload();">Reset
+        cookie banner</a>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div id="cookie-banner-accepted" class="govuk-cookie-banner" data-nosnippet role="region"
+  aria-label="Cookies on {{ serviceName }}" hidden>
+  <div class="govuk-cookie-banner__message govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">
+            You’ve accepted additional cookies. You can
+            <a class="govuk-link" href="../v4/cookies/cookie-settings">our cookie settings
+            </a>
+            at any time.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class=" govuk-button-group">
+      <button value="yes" type="button" name="cookies[hide]" class="govuk-button" data-module="govuk-button"
+        id="hide-accepted-banner">
+        Hide cookie message
+      </button>
     </div>
   </div>
 </div>
+
 <header class="dwp-header">
   <div class="dwp-header__content govuk-width-container">
     <div class="dwp-header__service-name dwp-header__service-name--with-action">
@@ -105,49 +140,95 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     
     </div>
     </footer>
-  
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const banner = document.getElementById('cookie-banner');
-    const confirmation = document.getElementById('cookie-confirmation');
-    const acceptBtn = document.getElementById('accept-cookies');
-    const rejectBtn = document.getElementById('reject-cookies');
-    const hideConfirmationBtn = document.getElementById('hide-confirmation');
+  (function () {
+    var PREF_COOKIE_NAME = 'cookie_preferences';
+    var PREF_COOKIE_DAYS = 365;
+
+    var originalBanner = document.getElementById('cookie-banner');
+    var acceptedBanner = document.getElementById('cookie-banner-accepted');
+    var btnAccept = document.getElementById('accept-cookies');
+    var btnReject = document.getElementById('reject-cookies');
+    var btnHideAccepted = document.getElementById('hide-accepted-banner');
 
     function setCookie(name, value, days) {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+      var expires = '';
+      if (days) {
+        var d = new Date();
+        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + d.toUTCString();
+      }
+      document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/; SameSite=Lax';
+      // If your site is HTTPS, you can append '; Secure'
     }
 
-    function hideBanner() {
-      banner.style.display = 'none';
+    function getCookie(name) {
+      var nameEQ = name + '=';
+      var parts = document.cookie.split(';');
+      for (var i = 0; i < parts.length; i++) {
+        var c = parts[i].trim();
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length));
+      }
+      return null;
     }
 
-    function showConfirmation() {
-      confirmation.style.display = 'block';
+    function show(el) { if (el) el.hidden = false; }
+    function hide(el) { if (el) el.hidden = true; }
+
+    function savePreferences(opts) {
+      try { setCookie(PREF_COOKIE_NAME, JSON.stringify(opts), PREF_COOKIE_DAYS); } catch (e) { }
     }
 
-    acceptBtn.addEventListener('click', function () {
-      setCookie('analytics_consent', 'true', 365);
-      hideBanner();
-      showConfirmation();
-    });
-
-    rejectBtn.addEventListener('click', function () {
-      setCookie('analytics_consent', 'false', 365);
-      hideBanner();
-    });
-
-    hideConfirmationBtn.addEventListener('click', function () {
-      confirmation.style.display = 'none';
-    });
-
-    if (document.cookie.indexOf('analytics_consent') !== -1) {
-      hideBanner();
+    function readPreferences() {
+      var raw = getCookie(PREF_COOKIE_NAME);
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch (e) { return null; }
     }
-  });
+
+    function onAccept() {
+      savePreferences({ analytics: true });
+      hide(originalBanner);
+      show(acceptedBanner);
+      if (acceptedBanner) {
+        acceptedBanner.setAttribute('tabindex', '-1');
+        acceptedBanner.focus();
+      }
+      // Load analytics here if needed
+    }
+
+    function onReject() {
+      savePreferences({ analytics: false });
+      hide(originalBanner);
+      hide(acceptedBanner);
+      // Ensure analytics are not loaded
+    }
+
+    function onHideAccepted() {
+      hide(acceptedBanner);
+    }
+
+    if (btnAccept) btnAccept.addEventListener('click', onAccept);
+    if (btnReject) btnReject.addEventListener('click', onReject);
+    if (btnHideAccepted) btnHideAccepted.addEventListener('click', onHideAccepted);
+
+    var prefs = readPreferences();
+    if (prefs && typeof prefs.analytics === 'boolean') {
+      hide(originalBanner);
+      if (prefs.analytics) {
+        show(acceptedBanner);
+      } else {
+        hide(acceptedBanner);
+      }
+    } else {
+      show(originalBanner);
+      hide(acceptedBanner);
+    }
+  })();
 </script>
+
+  
+
 
   
   {% endblock %}
