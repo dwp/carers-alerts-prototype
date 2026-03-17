@@ -1,0 +1,34 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+{% block header %}
+
+
+<header data-module="govuk-header" class="dwp-header">
+  <div class="dwp-header__content govuk-width-container">
+    <div class="dwp-header__service-name">
+      <a href="/" class="dwp-header__link">{{serviceName}}</a>
+    </div>
+  </div>
+</header>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="govuk-footer">
+  <div class="govuk-width-container">
+    <h2 class="govuk-visually-hidden">Prototype actions</h2>
+    <ul class="govuk-footer__inline-list">
+      <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="/manage-prototype">Manage prototype</a>
+      </li>
+      <li class="govuk-footer__inline-list-item">
+        <a class="govuk-footer__link" href="/data">View stored data</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+{% endblock %}

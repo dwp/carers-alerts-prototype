@@ -1,0 +1,221 @@
+{% extends "layouts/index.html" %}
+
+{% block pageTitle %}
+GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+         <p><a href="javascript:history.back()" class="govuk-back-link govuk-!-static-margin-0">Back</a></p>
+       
+        <h1 class="govuk-heading-xl">
+          Historic VEP Prototype
+        </h1>
+        <p class="govuk-body-l">These design pre-date March 2026</p>
+
+        <!-- Demos -->
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-5">Carer allowance - prototype links</h2>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">CR7 - Set interest and Earnings Summary Journey
+          </caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" width="25%">Date</th>
+              <th scope="col" class="govuk-table__header" width="50%">Information</th>
+              <th scope="col" class="govuk-table__header" width="25%">Links</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 1</td>
+              <td class="govuk-table__cell">December 2025</td>
+              <td class="govuk-table__cell"><a href="/v4/set-interest/setInterest.html"> Set Interest journey </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">Team manager - dashboard</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" width="25%">Date</th>
+              <th scope="col" class="govuk-table__header" width="50%">Information</th>
+              <th scope="col" class="govuk-table__header" width="25%">Links</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 1</td>
+              <td class="govuk-table__cell">November 2025</td>
+              <td class="govuk-table__cell"><a href="/v3/team-dashboard/user-summary.html"> Team manager Dashboard </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">CA Dashboard</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" width="25%">Version</th>
+              <th scope="col" class="govuk-table__header" width="50%">Date</th>
+              <th scope="col" class="govuk-table__header" width="25%">Links</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 6</td>
+              <td class="govuk-table__cell">November 2025</td>
+              <td class="govuk-table__cell"><a href="/v3/ca-dashbaord_alerts-error.html">CA/PC dashboard -
+                  Error scenario - if date selected is more than 8 weeks.
+                </a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 5</td>
+              <td class="govuk-table__cell">October 2025</td>
+              <td class="govuk-table__cell"><a href="/v3/ca-dashbaord_alerts.html">CA/PC dashboard -
+                  Stakeholder's requirements
+                </a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 4</td>
+              <td class="govuk-table__cell">September 2025</td>
+              <td class="govuk-table__cell"><a href="/v2/task-statistics/task-statistics.html">CA dashboard with side
+                  navigation
+                </a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 3</td>
+              <td class="govuk-table__cell">20 July 2025</td>
+              <td class="govuk-table__cell"><a href="/v3/home-v2.html">Dashboard - Added Payments statistics</a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 2</td>
+              <td class="govuk-table__cell">22 June 2025</td>
+              <td class="govuk-table__cell"><a href="/v3/home-v1.html">Dashboard - with Ovearall statistics and Alerts
+                  intake
+                  &
+                  cleared</a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 1</td>
+              <td class="govuk-table__cell">24 March 2025</td>
+              <td class="govuk-table__cell"><a href="/v1/home">CA Dashbaord - first draft</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">Alerts Profile</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" width="25%">Version</th>
+              <th scope="col" class="govuk-table__header" width="50%">Date</th>
+              <th scope="col" class="govuk-table__header" width="25%">Links</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 2</td>
+              <td class="govuk-table__cell">October & Novemeber 2025</td>
+              <td class="govuk-table__cell"><a href="/v2/alerts-profile/task-list-tab.html">Alerts Profile - in new
+                  tab</a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 1</td>
+              <td class="govuk-table__cell">20 July 2025</td>
+              <td class="govuk-table__cell"><a href="/v2/alerts-profile/task-list.html">Open tasks - select alerts by age
+                  and
+                  NINO</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">Outcome journey</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" width="25%">Date</th>
+              <th scope="col" class="govuk-table__header" width="50%">Information</th>
+              <th scope="col" class="govuk-table__header" width="25%">Links</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 4</td>
+              <td class="govuk-table__cell">August 2025</td>
+              <td class="govuk-table__cell"><a href="/v2/outcomes_new_content/task-list.html">Outcome journey with
+                  updated
+                  contents</a>
+              </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 3</td>
+              <td class="govuk-table__cell">30 May 2025</td>
+              <td class="govuk-table__cell"><a href="/v2/outcomes/task-list.html">Record an outcome</a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 2</td>
+              <td class="govuk-table__cell">30 May 2025</td>
+              <td class="govuk-table__cell"><a href="/v2/error-pages/additional-outcomes-error.html">Error journey</a>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 1</td>
+              <td class="govuk-table__cell">30 April 2025</td>
+              <td class="govuk-table__cell"><a href="/v1/outcomes/additional-outcomes">Additional outcomes</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br />
+        <br />
+
+        <h2 class="govuk-heading-l">Pension credit - prototype</h2>
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">Outcome journey</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header" width="25%">Date</th>
+              <th scope="col" class="govuk-table__header" width="50%">Information</th>
+              <th scope="col" class="govuk-table__header" width="25%">Links</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">Version 1</td>
+              <td class="govuk-table__cell">October 2025</td>
+              <td class="govuk-table__cell"><a href="/v4/home.html">Pension Credit dashboard
+                  contents</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {% endblock %}
+      </div>
+    </div>
+  </main>
+</div>

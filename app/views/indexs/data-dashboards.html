@@ -1,0 +1,92 @@
+{% extends "layouts/index.html" %}
+
+{% block pageTitle %}
+GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p><a href="javascript:history.back()" class="govuk-back-link govuk-!-static-margin-0">Back</a></p>
+
+        <h1 class="govuk-heading-l">Data dashboards</h1>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Current iteration
+            </h2>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="#">Service Data</a> 
+                <!-- | <a class="govuk-link" href="#">Team management</a> -->
+              </li>
+
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Status
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <strong class="govuk-tag govuk-tag--red">
+                    In design
+                  </strong>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Designers
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Mark Keeling & Chris Smith
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Date of design
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  March 2026
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  User needs
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  March 2026
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Design documentation
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <a href="https://lucid.app/lucidspark/7f58347d-8419-49fb-b4d4-2da732ccaf9c/edit?viewport_loc=6365%2C2799%2C8582%2C4282%2C0_0&invitationId=inv_da501740-c8d1-4729-bdcf-a9535cdb3698" target="_blank">Lucid link</a> (opens in a new tab)
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Design history
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            No new era designs exist. Some pre-March 2026 designs may be recorded in the <a href="/indexs/historic">design archive</a>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
