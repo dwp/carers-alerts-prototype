@@ -1,0 +1,307 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+Service Data
+{% endblock %}
+
+{% block content %}
+{% if data['selectedBenefits'] %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <h1 class="govuk-heading-xl">Service data by date range</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="moj-filter">
+          <div class="moj-filter__header">
+            <div class="moj-filter__header-title">
+              <h2 class="govuk-heading-s ">Filter</h2>
+            </div>
+            <div class="moj-filter__header-action">
+            </div>
+          </div>
+          <div class="moj-filter__content">
+            <div class="moj-filter__options">
+              <form method="post">
+                <div class="govuk-form-group">
+                  <p class="govuk-heading-s">Date range</p>
+                  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        From
+                      </h1>
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterStart-day" name="dashboardFilterStart-day" type="text" inputmode="numeric" value="1">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterStart-month" name="dashboardFilterStart-month" type="text" inputmode="numeric" value="1">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                            id="dashboardFilterStart-year" name="dashboardFilterStart-year" type="text" inputmode="numeric" value="2026">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="govuk-fieldset govuk-body govuk-!-margin-top-3" role="group" aria-describedby="passport-issued-hint" >
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        To
+                      </h1>
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterEnd-day" name="dashboardFilterEnd-day" type="text" inputmode="numeric" value="28">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterEnd-month" name="dashboardFilterEnd-month" type="text" inputmode="numeric" value="2">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                            id="dashboardFilterEnd-year" name="dashboardFilterEnd-year" type="text" inputmode="numeric" value="2026">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                  
+
+                </div>
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      Benefit
+                    </legend>
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="selectedBenefits" name="selectedBenefits"
+                          type="checkbox" value="CA" {% if data['selectedBenefits'] and
+                          data['selectedBenefits'].includes('CA') %} checked {%endif%}>
+                        <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits">
+                          Carers Allowance
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="selectedBenefits-2" name="selectedBenefits"
+                          type="checkbox" value="PC" {% if data['selectedBenefits'] and
+                          data['selectedBenefits'].includes('PC') %}checked{%endif%}>
+                        <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits-2">
+                          Pension Credit
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+                    Apply filters
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Intake</h2>
+        <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <!-- EXAMPLE CARD
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">TITLE</div>
+              <div class="card-description">DESCRIPTON</div>
+              <div class="card-headline">DATAPOINT</div>
+              <div class="card-context">CONTEXT</div>
+            </div>
+          </div> -->
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Alerts total</div>
+              <div class="card-headline">4812</div>
+              <div class="card-context">alerts were raised</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Alerts queued</div>
+              <div class="card-headline">4231</div>
+              <div class="card-context">alerts require agent action</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l">Flow</h2>
+        <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Queue total</div>
+              <div class="card-headline">2341</div>
+              <div class="card-context">alerts were in the queue awaiting review</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Alerts under review</div>
+              <div class="card-headline">2345</div>
+              <div class="card-context">were in agents' task lists</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Alerts cleared</div>
+              <div class="card-headline">11110</div>
+              <div class="card-context">had an outcome recorded</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l">Outcomes</h2>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Overpayments</div>
+              <div class="card-headline">&pound;3,421,678.09</div>
+              <div class="card-context">was overpaid to claimants</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Arrears</div>
+              <div class="card-headline">&pound;392,763.91</div>
+              <div class="card-context">was underpaid to claimants</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-form-group govuk-!-padding-top-3">
+          <p class="govuk-body">
+            <a href="#">View week by week report</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% else %}
+<!-- error handling for no input -->
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#">Select a benefit</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-xl">Service data by date range</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="moj-filter">
+          <div class="moj-filter__header">
+            <div class="moj-filter__header-title">
+              <h2 class="govuk-heading-s ">Filter</h2>
+            </div>
+            <div class="moj-filter__header-action">
+            </div>
+          </div>
+          <div class="moj-filter__content">
+            <div class="moj-filter__options">
+              <form method="post">
+                <div class="govuk-form-group govuk-form-group--error"">
+                  <fieldset class=" govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    Benefit
+                  </legend>
+                  <p id="benefit-selected-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Select a benefit
+                  </p>
+                  <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input govuk-checkboxes--error" id="selectedBenefits"
+                        name="selectedBenefits" type="checkbox" value="CA">
+                      <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits">
+                        Carers Allowance
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input govuk-checkboxes--error" id="selectedBenefits-2"
+                        name="selectedBenefits" type="checkbox" value="PC">
+                      <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits-2">
+                        Pension Credit
+                      </label>
+                    </div>
+                  </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+                    Apply filters
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+</main>
+</div>
+{% endif %}
+{% endblock %}
