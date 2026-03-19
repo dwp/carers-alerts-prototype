@@ -1,0 +1,109 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+Week by week report
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    {% include '/includes/back' %}
+    <h1 class="govuk-heading-xl">Week by week report</h1>
+    <p>You are viewing 
+      {%if data['selectedBenefits'].includes('PC') %}Pension Credits{%endif%}
+      {% if data['selectedBenefits'].length > 1%}and {{data.selectedBenefits.length}} {{data.selectedBenefits}}{%endif%}
+      {%if data['selectedBenefits'].includes('CA') %}Carers Allowance{%endif%}
+      data between 1 January 2026 and 28 February 2026</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Week by week data</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Week commencing</th>
+              <th scope="col" class="govuk-table__header">Clearance</th>
+              <th scope="col" class="govuk-table__header">Overpayment</th>
+              <th scope="col" class="govuk-table__header">Underpayment</th>
+              <th scope="col" class="govuk-table__header">Outstanding</th>
+
+            </tr>
+          </thead>
+
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">5 January 2026</th>
+              <td class="govuk-table__cell">1564</td>
+              <td class="govuk-table__cell">&pound;157,844.90 </td>
+              <td class="govuk-table__cell">&pound;54,882.17</td>
+              <td class="govuk-table__cell">6255</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">12 January 2026</th>
+              <td class="govuk-table__cell">1654</td>
+              <td class="govuk-table__cell">&pound;629,501.66 </td>
+              <td class="govuk-table__cell">&pound;23,491.60</td>
+              <td class="govuk-table__cell">6127</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">19 January 2026</th>
+              <td class="govuk-table__cell">1243</td>
+              <td class="govuk-table__cell">&pound;288,119.02</td>
+              <td class="govuk-table__cell">&pound;87,300.45</td>
+              <td class="govuk-table__cell">6212</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">26 January 2026</th>
+              <td class="govuk-table__cell">1672</td>
+              <td class="govuk-table__cell">&pound;741,660.55</td>
+              <td class="govuk-table__cell">&pound;41,227.88</td>
+              <td class="govuk-table__cell">5973</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">2 February 2026</th>
+              <td class="govuk-table__cell">1923</td>
+              <td class="govuk-table__cell">&pound;503,277.31</td>
+              <td class="govuk-table__cell">&pound;66,519.04</td>
+              <td class="govuk-table__cell">5735</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">9 February 2026</th>
+              <td class="govuk-table__cell">1452</td>
+              <td class="govuk-table__cell">&pound;216,008.74</td>
+              <td class="govuk-table__cell">&pound;19,774.33</td>
+              <td class="govuk-table__cell">5342</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">16 February 2026</th>
+              <td class="govuk-table__cell">1342</td>
+              <td class="govuk-table__cell">&pound;402,352.24</td>
+              <td class="govuk-table__cell">&pound;52,660.12</td>
+              <td class="govuk-table__cell">4923</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">23 February 2026</th>
+              <td class="govuk-table__cell">1765</td>
+              <td class="govuk-table__cell">&pound;482,913.27</td>
+              <td class="govuk-table__cell">&pound;46,908.32</td>
+              <td class="govuk-table__cell">4686</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="govuk-form-group">
+          <p class="govuk-body">
+            <a href="#">Copy data to clipboard</a><br>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}
