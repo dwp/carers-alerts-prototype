@@ -4,8 +4,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
-{% block header %}
 
+{% block header %}
 <header data-module="govuk-header" class="dwp-header">
   <div class="dwp-header__content govuk-width-container">
     <div class="dwp-header__service-name">
@@ -19,12 +19,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 <div class="govuk-phase-banner">
   <div class="govuk-width-container">
     <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        Beta
-      </strong>
+      <span class="govuk-tag govuk-phase-banner__content__tag">
+        <strong>PROTOTYPE</strong>
+      </span>
       <span class="govuk-phase-banner__text">
-        This is a new private beta service - help us to improve it by telling us your <a class="govuk-link"
-          href="feedback">feedback</a>.
+        This is not a live service, and any data you enter will not be saved.
       </span>
     </p>
   </div>
@@ -34,39 +33,38 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% block footer %}
 
-<footer class="govuk-footer">
+<footer class="dwp-footer">
   <div class="govuk-width-container">
     <h2 class="govuk-visually-hidden">About this website</h2>
-    <ul class="govuk-footer__inline-list">
-      <li class="govuk-footer__inline-list-item">
-        <a class="govuk-footer__link" href="accessibility-statement">Accessibility</a>
-        <a class="govuk-footer__link" href="accessibility-statement">Accessibility</a>
+    <ul class="dwp-footer__inline-list">
+      <li class="dwp-footer__inline-list-item">
+        <a class="dwp-footer__link" href="accessibility-statement">Accessibility</a>
       </li>
-      <li class="govuk-footer__inline-list-item">
-        <a class="govuk-footer__link" href="contact">Contact</a>
+      <li class="dwp-footer__inline-list-item">
+        <a class="dwp-footer__link" href="contact">Contact</a>
       </li>
-      <li class="govuk-footer__inline-list-item">
-        <a class="govuk-footer__link" href="../v4/cookies/cookie-settings.html">Cookies</a>
+      <li class="dwp-footer__inline-list-item">
+        <a class="dwp-footer__link" href="../v4/cookies/cookie-settings.html">Cookies</a>
       </li>
-      <li class="govuk-footer__inline-list-item">
-        <a class="govuk-footer__link" href="https://intranet.dwp.gov.uk/page/dwp-employee-privacy-notice" target="blank"
+      <li class="dwp-footer__inline-list-item">
+        <a class="dwp-footer__link" href="https://intranet.dwp.gov.uk/page/dwp-employee-privacy-notice" target="blank"
           rel="noopener noreferrer">Privacy</a> (opens in a new tab)
       </li>
     </ul>
-    <p>Prototype actions</p>
-    <ul class="govuk-footer__inline-list">
+  </div>
 
-      <li class="govuk-footer__inline-list-item">
-        <a class="govuk-footer__link" href="/manage-prototype">Manage prototype</a>
+  <div class="govuk-width-container">
+    <h2 class="govuk-visually-hidden">Prototype actions</h2>
+    <ul class="govuk-footer__inline-list">
+      <li class="govuk-footer__inline-list-item govuk-body-s">
+        <a class="govuk-footer__link" href="/data">View stored data</a>
       </li>
-      <li class="govuk-footer__inline-list-item">
-        <<a class="govuk-footer__link" href="/data">View stored data</a>
+      <li class="govuk-footer__inline-list-item govuk-body-s">
+        <a class="govuk-footer__link" href="/manage-prototype/clear-data">Clear data</a>
       </li>
     </ul>
-
   </div>
 </footer>
-
 
 
 

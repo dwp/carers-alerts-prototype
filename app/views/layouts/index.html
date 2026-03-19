@@ -4,6 +4,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.html" %}
+
+
 {% block header %}
 
 
@@ -22,11 +24,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   <div class="govuk-width-container">
     <h2 class="govuk-visually-hidden">Prototype actions</h2>
     <ul class="govuk-footer__inline-list">
-      <li class="govuk-footer__inline-list-item">
+      <li class="govuk-footer__inline-list-item govuk-body-s">
         <a class="govuk-footer__link" href="/manage-prototype">Manage prototype</a>
       </li>
-      <li class="govuk-footer__inline-list-item">
+      <li class="govuk-footer__inline-list-item govuk-body-s">
         <a class="govuk-footer__link" href="/data">View stored data</a>
+      </li>
+      <li class="govuk-footer__inline-list-item govuk-body-s">
+        <a class="govuk-footer__link" href="/manage-prototype/clear-data">Clear data</a>
       </li>
     </ul>
   </div>

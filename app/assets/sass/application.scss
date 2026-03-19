@@ -2,11 +2,54 @@
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
 // 
+
 @import 'node_modules/dfe-frontend/packages/dfefrontend';
 
 
 
+
 // Add extra styles here
+
+//dashboard card stylng represents ONS styles
+.card{
+  background-color: #f4f8fb;
+  padding: 1rem;
+  width: 100%;
+  min-height: 200px;
+  border: #fff 5px solid;
+}
+
+.card-title {
+  @include govuk-font($size: 24);
+  font-weight: bold;
+}
+.card-description{
+  margin-top: 10px;
+  @include govuk-font($size: 16);
+}
+.card-headline{
+  margin-top: 15px;
+  @include govuk-font($size: 36);
+  font-weight: bold;
+}
+.card-context{
+  margin-top: 5px;
+  @include govuk-font($size: 19);
+}
+
+.card__link {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: -moz-fit-content;
+    width: fit-content
+}
+
+.card__link>.ons-card__title {
+    margin-bottom: 0
+}
+
+
 .govuk-header__logo {
   display: none;
 }

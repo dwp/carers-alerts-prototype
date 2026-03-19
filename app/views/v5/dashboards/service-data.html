@@ -1,0 +1,274 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+Service Data
+{% endblock %}
+
+{% block content %}
+{% if data['selectedBenefits'] %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <h1 class="govuk-heading-xl">Service data</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="moj-filter">
+          <div class="moj-filter__header">
+            <div class="moj-filter__header-title">
+              <h2 class="govuk-heading-s ">Filter</h2>
+            </div>
+            <div class="moj-filter__header-action">
+            </div>
+          </div>
+          <div class="moj-filter__content">
+            <div class="moj-filter__options">
+              <form method="post">
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      Benefit
+                    </legend>
+                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="selectedBenefits" name="selectedBenefits"
+                          type="checkbox" value="CA" {% if data['selectedBenefits'] and
+                          data['selectedBenefits'].includes('CA') %} checked {%endif%}>
+                        <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits">
+                          Carers Allowance
+                        </label>
+                      </div>
+                      <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="selectedBenefits-2" name="selectedBenefits"
+                          type="checkbox" value="PC" {% if data['selectedBenefits'] and
+                          data['selectedBenefits'].includes('PC') %}checked{%endif%}>
+                        <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits-2">
+                          Pension Credit
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+                    Apply filters
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {% if data['option'] and data['option'] == '2'%}
+
+        {% if data['selectedBenefits'].includes('CA') %}
+        <h2 class="govuk-heading-l">Carers allowance</h2>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Total alerts in queue</div>
+              <div class="card-headline">2832</div>
+              <div class="card-context">include both assigned and unassigned alerts</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Total alerts assigned</div>
+              <div class="card-headline">1343</div>
+              <div class="card-context">alerts allocated to an agent</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third govuk-!-margin-bottom-3">
+            <div class="card">
+              <div class="card-title">Oldest alert</div>
+              <div class="card-description">yet to be actioned</div>
+              <div class="card-headline">23 July 2025</div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if data['selectedBenefits'].includes('PC') %}
+        <h2 class="govuk-heading-l">Pension Credits</h2>
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Total alerts in queue</div>
+              <div class="card-headline">3496</div>
+              <div class="card-context">tinclude both assigned and unassigned alerts</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Total alerts assigned</div>
+              <div class="card-headline">1287</div>
+              <div class="card-context">this line adds context to the datapoint</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Oldest alert</div>
+              <div class="card-description">yet to be actioned</div>
+              <div class="card-headline">19 December 2024</div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Total alert volume</div>
+              <div class="card-headline">
+                {% if data['selectedBenefits'] == 'PC' %}
+                3496
+                {% elseif data['selectedBenefits'] == 'CA' %}
+                2832
+                {% elseif data['selectedBenefits'].includes('PC') and data['selectedBenefits'].includes('CA')%}
+                6328
+                {% endif %}
+              </div>
+              <div class="card-context">include both assigned and unassigned alerts</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Total alerts assigned</div>
+              <div class="card-headline">
+                {% if data['selectedBenefits'] == 'PC' %}
+                1287
+                {% elseif data['selectedBenefits'] == 'CA' %}
+                1343
+                {% elseif data['selectedBenefits'].includes('PC') and data['selectedBenefits'].includes('CA')%}
+                2630
+                {% endif %}
+              </div>
+              <div class="card-context">alerts allocated to an agent</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Oldest alert</div>
+              <div class="card-description">yet to be actioned</div>
+              <div class="card-headline">
+                {% if data['selectedBenefits'] == 'PC' %}
+                19 December 2024
+                {% elseif data['selectedBenefits'] == 'CA' %}
+                23 July 2025
+                {% elseif data['selectedBenefits'].includes('PC') and data['selectedBenefits'].includes('CA')%}
+                19 December 2024
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <!-- card example
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">This is a title</div>
+              <div class="card-description">This is a line of description</div>
+              <div class="card-headline">datapoint</div>
+              <div class="card-context">this line adds context to the datapoint</div>
+            </div>
+          </div> -->
+        </div>
+        {% endif %}
+
+
+        <div class="govuk-form-group govuk-!-padding-top-3">
+          <p class="govuk-body">
+            <a href="#">View total alerts by age</a><br>
+            <a href="#">View service data by date range</a>
+          </p>
+        </div>
+
+
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% else %}
+<!-- error handling for no input -->
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#">Select a benefit</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-xl">Service data</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="moj-filter">
+          <div class="moj-filter__header">
+            <div class="moj-filter__header-title">
+              <h2 class="govuk-heading-s ">Filter</h2>
+            </div>
+            <div class="moj-filter__header-action">
+            </div>
+          </div>
+          <div class="moj-filter__content">
+            <div class="moj-filter__options">
+              <form method="post">
+                <div class="govuk-form-group govuk-form-group--error"">
+                  <fieldset class=" govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    Benefit
+                  </legend>
+                  <p id="benefit-selected-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Select a benefit
+                  </p>
+                  <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input govuk-checkboxes--error" id="selectedBenefits"
+                        name="selectedBenefits" type="checkbox" value="CA">
+                      <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits">
+                        Carers Allowance
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input govuk-checkboxes--error" id="selectedBenefits-2"
+                        name="selectedBenefits" type="checkbox" value="PC">
+                      <label class="govuk-label govuk-checkboxes__label" for="selectedBenefits-2">
+                        Pension Credit
+                      </label>
+                    </div>
+                  </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+                    Apply filters
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+</main>
+</div>
+{% endif %}
+{% endblock %}

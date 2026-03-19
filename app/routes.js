@@ -7,12 +7,8 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 
-
-
-
-
-
-///// OLD ROUTES PRE-MARCH 2026 ////
+// ****************** OLD ROUTES PRE-MARCH 2026 ****************** //
+// ****************** New routing at the bottom ****************** //
 
 
 // Logging session data  
@@ -393,6 +389,12 @@ router.post('/payment-type-error', function (req, res) {
 router.post('/overpayment-details-error', function (req, res) {
     res.redirect('v2/outcomes-new-content/total-overpayments-summary')
 })
+
+
+
+// ****************** NEW ROUTING IMPORTS ****************** //
+require('./views/v5/dashboards/_dashboard-routes')
+
 
 module.exports = router
 
