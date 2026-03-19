@@ -4,6 +4,6 @@ const router = govukPrototypeKit.requests.setupRouter()
 var version = "v5";
 
 router.post('/'+ version +'/dashboards/service-data', function(req, res) {
-    req.session.data['selectedBenefits'] = req.body.selectedBenefits;
+    
     res.redirect('service-data')
 })
