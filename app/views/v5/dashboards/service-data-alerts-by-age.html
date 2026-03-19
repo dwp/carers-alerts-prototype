@@ -14,7 +14,7 @@ Week by week report
     <h1 class="govuk-heading-xl">Alerts by age</h1>
     <p>You are viewing 
       {%if data['selectedBenefits'].includes('PC') %}Pension Credits{%endif%}
-      {% if data['selectedBenefits'].length > 1%}and {{data.selectedBenefits.length}} {{data.selectedBenefits}}{%endif%}
+      {% if data['selectedBenefits'].length > 1%}and{%endif%}
       {%if data['selectedBenefits'].includes('CA') %}Carers Allowance{%endif%}</p>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
