@@ -1,5 +1,7 @@
 module.exports = {
 
+  users: require('./users.json'),
+
   // Insert values here
   "overpayment": [
     {
