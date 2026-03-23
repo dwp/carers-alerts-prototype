@@ -19,15 +19,16 @@
         Expiring tasks
         </a>
     </li>
+    <li class="dwp-header-navigation__item{{ ' govuk-header__navigation-item--active' if globalNavSection == 'My teams' }}">
+        <a href="/{{data.version}}/dashboards/teams-my-teams">
+        My teams
+        </a>
+    </li>
     <li class="dwp-header-navigation__item {{ ' govuk-header__navigation-item--active' if globalNavSection == 'Service data' }}">
         <a href="/{{data.version}}/dashboards/service-data">
         Service data
         </a>
     </li>
-    <li class="dwp-header-navigation__item">
-        <a href="#">
-        Team setup
-        </a>
-    </li>
+    
     </ul>
 </nav>

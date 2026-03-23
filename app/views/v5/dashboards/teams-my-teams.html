@@ -1,0 +1,49 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+{% block pageTitle %}
+My teams
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">My teams</h1>
+
+        {% if data['teams'].length >0 %}
+        <div class="govuk-form-group">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            {% for teams in data['teams']%}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {{
+                teams
+                }}
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="teams-manage-team?banner=null&teamName={{teams}}">Manage<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
+                <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
+                <a class="govuk-link" href="#">Remove<span class="govuk-visually-hidden"> team {{teams}}</span></a>
+              </dd>
+            </div>
+            {% endfor %}
+          </dl>
+        </div>
+
+        {% else %}
+        <p>You have not created any teams</p>
+        {% endif %}
+
+        <div class="govuk-body">
+          <a href="teams-new-team-name">
+            Add a team
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

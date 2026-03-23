@@ -1,9 +1,77 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-var version = "v5";
+let version = "v5";
 
-router.post('/'+ version +'/dashboards/service-data', function(req, res) {
-    
+router.post('/' + version + '/dashboards/service-data', function (req, res) {
     res.redirect('service-data')
+})
+
+
+router.post('/' + version + '/dashboards/teams-new-team-name', function (req, res) {
+
+    let tempTeamsArray = [];
+    if (req.session.data['teams']) {
+        tempTeamsArray = req.session.data['teams'];
+    }
+    let teamName = req.session.data['teamName'];
+
+    tempTeamsArray.push(teamName);
+    req.session.data['teams'] = tempTeamsArray;
+
+    res.redirect('teams-manage-team')
+})
+
+router.post('/' + version + '/dashboards/teams-manage-team', function (req, res) {
+
+    if (req.session.data['user']) {
+        let tempTeamArray = [];
+        let teamName = req.session.data['teamName'];
+        if (req.session.data[teamName]) {
+            tempTeamArray = req.session.data[teamName]
+        }
+
+        let x = req.session.data["user"];
+
+        req.session.data["tempName"] = req.session.data['users'][x].firstName + " " + req.session.data['users'][x].lastName
+
+        for (let i = 0; i < tempTeamArray.length; i++) {
+
+            if (tempTeamArray[i].email == req.session.data['users'][x].email) {
+                console.log("match")
+                res.redirect('teams-manage-team?banner=userthere')
+            }
+        }
+
+        let tempUsersArray = [];
+        tempArray = req.session.data['users']
+
+        let temporaryObject = {}
+
+        temporaryObject = tempArray[req.session.data['user']];
+
+        tempTeamArray.push(temporaryObject);
+        req.session.data[teamName] = tempTeamArray;
+
+        res.redirect('teams-manage-team?banner=useradded')
+    }
+    else {
+        res.redirect('teams-manage-team?banner=error')
+    }
+})
+
+router.post('/' + version + '/dashboards/teams-remove-team-member', function (req, res) {
+
+    if (req.session.data['deleteUser'] == 'yes') {
+
+        let x = req.session.data['remove'];
+        let temporaryArray = [];
+        let teamName = req.session.data['teamName']
+        temporaryArray = req.session.data[teamName]
+        temporaryArray.splice(x, 1);
+        req.session.data[teamName] = temporaryArray
+        req.session.data['remove'] = null;
+    }
+    res.redirect('teams-manage-team?banner=null')
+
 })

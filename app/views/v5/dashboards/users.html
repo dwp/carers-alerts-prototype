@@ -13,6 +13,28 @@ User list
     <h1 class="govuk-heading-xl">JSON example</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="user">
+                Choose your team member
+              </label>
+            </h1>
+            <select class="govuk-select" id="user" name="user" data-module="autocomplete" data-autoselect=""
+              data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+              <option value="" selected>Select an option</option>
+
+              {% for person in data['users']%}
+              <option value="{{loop.index0}}">{{person.firstName}} {{person.lastName}} ({{person.email}})</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="govuk-form-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+              Add member to this team
+            </button>
+          </div>
+        </form>
 
         <table class="govuk-table">
           <caption class="govuk-table__caption govuk-table__caption--m">Service users</caption>
@@ -30,10 +52,10 @@ User list
               <td class="govuk-table__cell">{{person.email}}</td>
               <td class="govuk-table__cell">{{person.staffNumber}}</td>
             </tr>
-             {% endfor %}
+            {% endfor %}
 
 
-            
+
           </tbody>
         </table>
 

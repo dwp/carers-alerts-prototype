@@ -1,0 +1,32 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+{% block pageTitle %}
+What would you like to call your team?
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% include '/includes/back' %}
+        <form method="post">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--l" for="teamName">
+                What would you like to call your team?
+              </label>
+            </h1>
+            <p class="govuk-hint">This team name will only be visible to you</p>
+            <input class="govuk-input" id="teamName" name="teamName" type="text">
+          </div>
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

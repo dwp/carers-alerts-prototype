@@ -1,0 +1,124 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+
+{% block pageTitle %}
+Manage team {{data['teamName'] | lower}}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+
+    {% if data['banner']=="userthere" %}
+    <!-- user exists in team -->
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title"
+      data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          {{data.tempName}} is already a member of this team.
+        </p>
+      </div>
+    </div>
+
+    {% elif data['banner']=="useradded" %}
+    <!-- user added to team -->
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+      aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          {{data.tempName}} has been added to your team.
+        </h3>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if data['banner']=="error" %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+      <div role="alert">
+        <h2 class="govuk-error-summary__title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#user">Select a team member</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {% include '/includes/back' %}
+        <h1 class="govuk-heading-xl">Manage team {{data['teamName'] | lower}}</h1>
+        <div class="govuk-form-group govuk-body">
+          {% if data[data['teamName']] %}
+          {% for members in data[data['teamName']]%}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {{members.firstName}} {{members.lastName}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{members.email}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="teams-remove-team-member?remove={{loop.index0}}">Remove<span
+                  class="govuk-visually-hidden"> {{members.firstName}} {{members.firstName}} from team
+                  {{teams}}</span></a>
+            </dd>
+          </div>
+          {% endfor %}
+          {% else %}
+          Team {{data['teamName'] | lower}} has no team members
+          {% endif %}
+        </div>
+        <form method="post">
+          <div class="govuk-form-group {% if data['banner']=="error" %}govuk-form-group--error{%endif%}">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="user">
+                Add a team member
+              </label>
+            </h1>
+            <p class="govuk-hint">Search for a team member to add</p>
+            {% if data['banner']=="error" %}
+            <p id="passport-issued-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Select a team member
+            </p>
+            {% endif %}
+            <select class="govuk-select" id="user" name="user" data-module="autocomplete" data-autoselect=""
+              data-display-menu="" data-min-length="" data-show-all-values="" data-show-no-options-found="">
+              <option value="" selected>Select an option</option>
+
+              {% for person in data['users']%}
+              <option value="{{loop.index0}}">{{person.firstName}} {{person.lastName}} ({{person.email}})</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="govuk-body govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+              Add member to this team
+            </button>
+            <a href="teams-my-teams">Finish</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
