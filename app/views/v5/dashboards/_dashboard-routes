@@ -22,7 +22,7 @@ router.post('/' + version + '/dashboards/teams-new-team-name', function (req, re
     res.redirect('teams-manage-team')
 })
 
-router.post('/' + version + '/dashboards/teams-manage-team', function (req, res) {
+router.post('/' + version + '/dashboards/teams-manage-team*', function (req, res) {
 
     if (req.session.data['user']) {
         let tempTeamArray = [];
@@ -72,6 +72,27 @@ router.post('/' + version + '/dashboards/teams-remove-team-member', function (re
         req.session.data[teamName] = temporaryArray
         req.session.data['remove'] = null;
     }
-    res.redirect('teams-manage-team?banner=null')
+    res.redirect('teams-manage-team?banner=userRemoved')
+
+})
+
+router.post('/' + version + '/dashboards/teams-remove-team', function (req, res) {
+    
+    if (req.session.data['deleteUser'] == 'yes') {
+
+        let x = req.session.data['remove'];
+        let temporaryArray = [];
+        let teamName = req.session.data['teamName']
+        temporaryArray = req.session.data['teams']
+        temporaryArray.splice(x, 1);
+        req.session.data['teams'] = temporaryArray;
+        req.session.data[teamName] = null
+        req.session.data['remove'] = null
+        res.redirect('teams-my-teams?banner=teamRemove')
+    }
+    else if(req.session.data['deleteUser'] == 'no'){
+        res.redirect('teams-my-teams')
+    }
+    
 
 })

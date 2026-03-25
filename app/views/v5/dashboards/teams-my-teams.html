@@ -8,6 +8,22 @@ My teams
 {% block content %}
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
+    {% if data['banner']=="teamRemoved" %}
+    <!-- user added to team -->
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+      aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          Your {{data.teamName}} team has been removed.
+        </h3>
+      </div>
+    </div>
+    {% endif %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">My teams</h1>
@@ -20,13 +36,13 @@ My teams
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 {{
-                teams
+                teams | capitalize
                 }}
               </dt>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="teams-manage-team?banner=null&teamName={{teams}}">Manage<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
-                <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
-                <a class="govuk-link" href="#">Remove<span class="govuk-visually-hidden"> team {{teams}}</span></a>
+                <a class="govuk-link" href="teams-manage-team?teamBanner=null&banner=null&teamName={{teams}}">Manage<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
+                <a class="govuk-link" href="teams-view-team?teamBanner=null&teamName={{teams}}">View<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
+                <a class="govuk-link" href="teams-remove-team?teamBanner=null&teamName={{teams}}&remove={{loop.index0}}">Remove<span class="govuk-visually-hidden"> team {{teams}}</span></a>
               </dd>
             </div>
             {% endfor %}
@@ -38,7 +54,7 @@ My teams
         {% endif %}
 
         <div class="govuk-body">
-          <a href="teams-new-team-name">
+          <a href="teams-new-team-name?banner=null">
             Add a team
           </a>
         </div>

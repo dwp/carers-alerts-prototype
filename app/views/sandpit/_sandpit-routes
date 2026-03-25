@@ -1,0 +1,53 @@
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+let version = "v5";
+
+router.post('/sandpit/file-upload', function (req, res) {
+    // setting up variable for later
+    req.session.data['random'] = [99,124,367,514,26,93,72,11,675,1026,3872] // this is just a random set of numbers for the file size
+    let previousUploadsArray = [] // creating a temporary array
+
+    //req.session.data['files'] is the list of file you've already uploaded
+    // this checks to see if it already exists and loads it into the temporary array
+    if(req.session.data['files']){
+        previousUploadsArray = req.session.data['files']
+    }
+
+    // This is where it gets a little complicated.
+    // The files you choose to upload in the component are recorded in req.session.data["fileUpload1"]
+    // If you choose multiple files they are recorded as an array
+    // if you choose a single file it will be a string
+    // we need to manipulate it so its allways a string
+
+    // convert the file names to a string.
+    let tempFiles = req.session.data['fileUpload1'].toString();
+
+    // Now we're working with a string we can figure out if it a single file or multiple files
+    // If its multiple files there will be a comma to seperate the filenames
+    
+    // looking to see if the string contains commas
+    if(tempFiles.includes(",")){
+        // if it does we create an new array
+        tempFilesArray = []
+        // split the string on the commas. this will give an array with multiple values
+        tempFilesArray = tempFiles.split(",")
+        // we then use a for statement add each filename to original temporary array
+        for (let i = 0; i < tempFilesArray.length; i++) {
+            previousUploadsArray.push(tempFilesArray[i]);
+        }
+    }
+    else{
+        // if it doesn't contain commas (single file), we add to original temporary array
+        previousUploadsArray.push(tempFiles);
+    }
+    // we just then overwrite our files data with the temporary array to update the file list with the new files
+    req.session.data['files'] = previousUploadsArray;
+    console.log("done")
+    res.redirect('file-upload')
+})
+
+router.post('/sandpit/remove', function (req, res) {
+    
+})
+

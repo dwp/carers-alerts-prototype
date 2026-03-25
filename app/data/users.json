@@ -6,6 +6,12 @@
         "staffNumber": "26596386"            
     },
     {
+        "firstName": "Meadow",
+        "lastName": "Tyler",
+        "email": "meadow.tyler1@dwp.gov.uk",
+        "staffNumber": "26596386"            
+    },
+    {
         "firstName": "Emmitt",
         "lastName": "Bryan",
         "email": "emmitt.bryan@dwp.gov.uk",
@@ -15,6 +21,12 @@
         "firstName": "Meredith",
         "lastName": "Small",
         "email": "meredith.small@dwp.gov.uk",
+        "staffNumber": "31653931"
+    },
+    {
+        "firstName": "Meredith",
+        "lastName": "Small",
+        "email": "meredith.small1@dwp.gov.uk",
         "staffNumber": "31653931"
     },
     {

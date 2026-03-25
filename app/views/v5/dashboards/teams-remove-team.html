@@ -2,7 +2,7 @@
 {% set globalNavSection = 'My teams' %}
 
 {% block pageTitle %}
-Remove team member
+Remove team
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@ Remove team member
       <div class="govuk-grid-column-two-thirds">
 
         <h1 class="govuk-heading-xl">
-          Remove team member
+          Remove team
           
         </h1>
 
@@ -26,13 +26,7 @@ Remove team member
             <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                 <h1 class="govuk-fieldset__heading">
-                  Are you sure you want to remove {% for person in data[data.teamName] %}
-          {% if loop.index0 == data['remove'] %}
-          {{ person.firstName }}
-          {% endif %}
-          {% endfor %}
-          {{data['team'][data.remove].firstName}}
-          from team {{data['teamName'] | lower}}?
+                  Are you sure you want to remove the {{data['teamName'] | lower}} team?
                 </h1>
               </legend>
               <div id="changedName-hint" class="govuk-hint">
@@ -40,14 +34,14 @@ Remove team member
               </div>
               <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="deleteUser" name="deleteUser" type="radio" value="yes">
-                  <label class="govuk-label govuk-radios__label" for="deleteUser">
+                  <input class="govuk-radios__input" id="deleteTeam" name="deleteTeam" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="deleteTeam">
                     Yes
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="deleteUser-2" name="deleteUser" type="radio" value="no">
-                  <label class="govuk-label govuk-radios__label" for="deleteUser-2">
+                  <input class="govuk-radios__input" id="deleteTeam-2" name="deleteTeam" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="deleteTeam-2">
                     No
                   </label>
                 </div>

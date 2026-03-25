@@ -1,0 +1,52 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+File upload
+{% endblock %}
+
+{% block content %}
+<main class="govuk-main-wrapper" id="main-content">
+  <div class="govuk-width-container">
+    <h1 class="govuk-heading-xl">File upload</h1>
+    <form method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="file-upload-1">
+          Upload a file
+        </label>
+        <div class="govuk-drop-zone" data-module="govuk-file-upload">
+          <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file" multiple>
+        </div>
+      </div>
+      <div class="govuk-button-group govuk-body">
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Upload file
+        </button>
+        <a href="#">Finish</a>
+      </div>
+      {% if data['files'] %}
+      <p>{{data['files'].length | plural("file") }} uploaded</p>
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Uploaded files</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Filename</th>
+            <th scope="col" class="govuk-table__header">File size</th>
+            <th scope="col" class="govuk-table__header "><span class="govuk-visually-hidden">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for files in data['files']%}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">{{files}}</th>
+            <td class="govuk-table__cell">{{data['random'] | random}}kb</td>
+            <td class="govuk-table__cell"><a href="#">Remove</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </form>
+  </div>
+</main>
+{% endblock %}

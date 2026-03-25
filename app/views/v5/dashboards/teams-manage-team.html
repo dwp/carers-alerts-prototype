@@ -25,8 +25,9 @@ Manage team {{data['teamName'] | lower}}
         </p>
       </div>
     </div>
+    {% endif %}
 
-    {% elif data['banner']=="useradded" %}
+    {% if data['banner']=="useradded" %}
     <!-- user added to team -->
     <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
       aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -38,6 +39,23 @@ Manage team {{data['teamName'] | lower}}
       <div class="govuk-notification-banner__content">
         <h3 class="govuk-notification-banner__heading">
           {{data.tempName}} has been added to your team.
+        </h3>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if data['banner']=="userRemoved" %}
+    <!-- user added to team -->
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+      aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          {{data.tempName}} has been removed from your team.
         </h3>
       </div>
     </div>
@@ -64,7 +82,7 @@ Manage team {{data['teamName'] | lower}}
       <div class="govuk-grid-column-two-thirds">
 
         {% include '/includes/back' %}
-        <h1 class="govuk-heading-xl">Manage team {{data['teamName'] | lower}}</h1>
+        <h1 class="govuk-heading-xl">Manage {{data['teamName'] | lower}} team</h1>
         <div class="govuk-form-group govuk-body">
           {% if data[data['teamName']] %}
           {% for members in data[data['teamName']]%}
