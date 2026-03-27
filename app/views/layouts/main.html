@@ -32,24 +32,22 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       </button>
       <a class="govuk-link" href="../v4/cookies/cookie-settings">view cookies
       </a>
-      <a class="govuk-link" href="#"
-        onclick="document.cookie='cookie_preferences=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'; location.reload();">Reset
-        cookie banner</a>
+      
     </div>
 
   </div>
 </div>
-</div>
+
 
 <div id="cookie-banner-accepted" class="govuk-cookie-banner" data-nosnippet role="region"
-  aria-label="Cookies on {{ serviceName }}" hidden>
+  aria-label="Cookies on {{ serviceName }}">
   <div class="govuk-cookie-banner__message govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-cookie-banner__content">
           <p class="govuk-body">
             You’ve accepted additional cookies. You can
-            <a class="govuk-link" href="../v4/cookies/cookie-settings">our cookie settings
+            <a class="govuk-link" href="../v4/cookies/cookie-settings">change your cookie settings
             </a>
             at any time.
           </p>
@@ -70,45 +68,39 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     <div class="dwp-header__service-name">
       <a href="/" class="dwp-header__link">{{serviceName}}</a>
     </div>
-    <nav class="dwp-header-navigation"
-      aria-label="Primary">
-      <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation" hidden>
+    <nav class="dwp-header-navigation" aria-label="Primary">
+      <button type="button" class="dwp-header-navigation__menu-button govuk-js-header-toggle" aria-controls="navigation"
+        hidden>
         Menu
       </button>
       <ul id="navigation" class="dwp-header-navigation__list">
         <li class="dwp-header-navigation__item">
-          <a
-            href="#">
+          <a href="#">
             Make a new request
           </a>
         </li>
         <li class="dwp-header-navigation__item">
-          <a
-            href="#">
+          <a href="#">
             My tasks
           </a>
         </li>
         <li class="dwp-header-navigation__item">
-          <a
-            href="#">
+          <a href="#">
             Task statistics
           </a>
         </li>
         <li class="dwp-header-navigation__item">
-          <a
-            href="#">
+          <a href="#">
             Expiring tasks
           </a>
         </li>
         <li class="dwp-header-navigation__item">
-          <a
-            href="/{{version}}/ca-dashbaord_alerts.html">
+          <a href="/{{version}}/ca-dashbaord_alerts.html">
             Dashboard
           </a>
         </li>
         <li class="dwp-header-navigation__item">
-          <a
-            href="/{{version}}/team-dashboard/team-setup.html">
+          <a href="/{{version}}/team-dashboard/team-setup.html">
             Team setup
           </a>
         </li>
@@ -156,7 +148,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     </ul>
     <p>Prototype actions</p>
     <ul class="govuk-footer__inline-list">
-    
+
       <li class="govuk-footer__inline-list-item">
         <a class="govuk-footer__link" href="/manage-prototype">Manage prototype</a>
       </li>
@@ -164,11 +156,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
         <<a class="govuk-footer__link" href="/data">View stored data</a>
       </li>
     </ul>
-    
-    </div>
+
+  </div>
 </footer>
 
-<script>
+ <script>
   (function () {
     var PREF_COOKIE_NAME = 'cookie_preferences';
     var PREF_COOKIE_DAYS = 365;
@@ -254,8 +246,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   })();
 </script>
 
-  
 
 
-  
-  {% endblock %}
+
+
+{% endblock %}
