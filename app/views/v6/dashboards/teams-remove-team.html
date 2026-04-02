@@ -1,0 +1,63 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+{% block pageTitle %}
+Remove team
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+          Remove team
+          
+        </h1>
+
+
+
+
+
+        <form method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Are you sure you want to remove the {{data['teamName'] | lower}} team?
+                </h1>
+              </legend>
+              <div id="changedName-hint" class="govuk-hint">
+                This includes changing your last name or spelling your name differently
+              </div>
+              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="deleteTeam" name="deleteTeam" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="deleteTeam">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="deleteTeam-2" name="deleteTeam" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="deleteTeam-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-body govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+              Continue
+            </button>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

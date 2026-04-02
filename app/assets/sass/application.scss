@@ -29,7 +29,7 @@
 }
 .card-headline{
   margin-top: 15px;
-  @include govuk-font($size: 36);
+  @include govuk-font($size: 27);
   font-weight: bold;
 }
 .card-context{

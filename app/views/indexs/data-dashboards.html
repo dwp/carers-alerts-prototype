@@ -1,7 +1,7 @@
 {% extends "layouts/index.html" %}
 
 {% block pageTitle %}
-GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+Dashboard index
 {% endblock %}
 
 {% block content %}
@@ -26,7 +26,7 @@ GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
                   Status
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  <span class="govuk-tag govuk-tag--red">
+                  <span class="govuk-tag govuk-tag--green">
                     <span>IN DESIGN</span>
                   </span>
                 </dd>
@@ -44,7 +44,7 @@ GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
                   Date of design
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  March 2026
+                  April 2026
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
@@ -55,12 +55,14 @@ GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
                   <p class="govuk-body-s">
                     <strong>As a</strong> team leader,<br>
                     <strong>I need to</strong> be able to create and manage a team,<br>
-                    <strong>So that I</strong> can allocate and monitor work effectively in line with our service level agreement.
+                    <strong>So that I</strong> can allocate and monitor work effectively in line with our service level
+                    agreement.
                   </p>
                   <p class="govuk-body-s">
                     <strong>As a</strong> senior manager,<br>
                     <strong>I need to</strong> access to the timely and accurate data required for my role,<br>
-                    <strong>So that I</strong> manage staffing effectively and report outcomes to SCS and above with confidence.
+                    <strong>So that I</strong> manage staffing effectively and report outcomes to SCS and above with
+                    confidence.
                   </p>
                 </dd>
               </div>
@@ -72,13 +74,15 @@ GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
                   <p class="govuk-body-s">
                     <span class="govuk-body-s"><strong>Service data</strong></span><br>
                     Data dashboard for senior managers.<br>
-                    <a class="govuk-link" href="/v5/dashboards/service-data?version=v5&option=1&selectedBenefits=CA">Option 1</a> - combined data<br>
-                    <a class="govuk-link" href="/v5/dashboards/service-data?version=v5&option=2&selectedBenefits=CA">Option 2</a> - seperated data<br>
+                    <a class="govuk-link"
+                      href="/v6/dashboards/service-data?version=v6&selectedBenefits=CA&selectedView=lastCalendarWeek">Iteration 2</a> - combined
+                    data<br>
+                    Changes based on feedback from UR dated 30 May 2026
                   </p>
-                   <p class="govuk-body-s">
+                  <p class="govuk-body-s">
                     <span class="govuk-body-s"><strong>Team management</strong></span><br>
                     Data dashboard for team leaders to create team and view team data.<br>
-                    <a class="govuk-link" href="/v5/dashboards/teams-my-teams?version=v5">Initial design</a><br>
+                    <a class="govuk-link" href="/v6/dashboards/teams-my-teams?version=v6">Iteration 1</a><br>
                   </p>
                 </dd>
               </div>
@@ -87,24 +91,111 @@ GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
                   Design documentation
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  <a href="https://lucid.app/lucidspark/7f58347d-8419-49fb-b4d4-2da732ccaf9c/edit?viewport_loc=6365%2C2799%2C8582%2C4282%2C0_0&invitationId=inv_da501740-c8d1-4729-bdcf-a9535cdb3698" target="_blank">Lucid link</a> (opens in a new tab)
+                  <a href="https://lucid.app/lucidspark/7f58347d-8419-49fb-b4d4-2da732ccaf9c/edit?viewport_loc=6365%2C2799%2C8582%2C4282%2C0_0&invitationId=inv_da501740-c8d1-4729-bdcf-a9535cdb3698"
+                    target="_blank">Lucid link</a> (opens in a new tab)
                 </dd>
               </div>
             </dl>
           </div>
         </div>
 
-        <details class="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Design history
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            No new era designs exist. Some pre-March 2026 designs may be recorded in the <a href="/indexs/historic">design archive</a>
-          </div>
-        </details>
+        <div class="govuk-form-group govuk-!-margin-top-9">
+          <h2 class="govuk-heading-m ">Design history</h2>
+        </div>
 
+        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-3"
+                  style="font-size: 16pt;">
+                  March 2026 - Iteration 1
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-with-summary-sections-content-3" class="govuk-accordion__section-content">
+              <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                  <h2 class="govuk-summary-card__title">
+                    March 2026 - Iteration 1
+                  </h2>
+                </div>
+                <div class="govuk-summary-card__content">
+                  <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Status
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <span class="govuk-tag govuk-tag--orange">
+                          <span>ITERATION NEEDED</span>
+                        </span>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Designers
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        Mark Keeling & Chris Smith
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Date of design
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        March 2026
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        High-level assumed user needs
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body-s">
+                          <strong>As a</strong> senior manager,<br>
+                          <strong>I need to</strong> access to the timely and accurate data required for my role,<br>
+                          <strong>So that I</strong> manage staffing effectively and report outcomes to SCS and above
+                          with confidence.
+                        </p>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Prototype links
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body-s">
+                          <span class="govuk-body-s"><strong>Service data</strong></span><br>
+                          Data dashboard for senior managers.<br>
+                          <a class="govuk-link"
+                            href="/v5/dashboards/service-data?version=v5&option=1&selectedBenefits=CA">Option 1</a> -
+                          combined data<br>
+                          <a class="govuk-link"
+                            href="/v5/dashboards/service-data?version=v5&option=2&selectedBenefits=CA">Option 2</a> -
+                          seperated data<br>
+                        </p>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Design documentation
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <a href="https://lucid.app/lucidspark/7f58347d-8419-49fb-b4d4-2da732ccaf9c/edit?viewport_loc=-9884%2C-6503%2C70440%2C35147%2C0_0&invitationId=inv_da501740-c8d1-4729-bdcf-a9535cdb3698"
+                          target="_blank">Lucid link</a> (opens in a new tab)
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Some pre-March 2026 designs may be recorded in the <a
+              href="/indexs/historic">design archive</a></p>
       </div>
     </div>
   </main>

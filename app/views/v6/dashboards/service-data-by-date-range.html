@@ -1,0 +1,282 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data by date range' %}
+
+{% block pageTitle %}
+Service data by date range
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    {% include '/includes/back' %}
+    <h1 class="govuk-heading-xl">Service data by date range</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="moj-filter">
+          <div class="moj-filter__header">
+            <div class="moj-filter__header-title">
+              <h2 class="govuk-heading-s ">Filter</h2>
+            </div>
+            <div class="moj-filter__header-action">
+            </div>
+          </div>
+          <div class="moj-filter__content">
+            <div class="moj-filter__options">
+              <form method="post">
+                <div class="govuk-form-group">
+                  <p class="govuk-heading-s">Date range</p>
+                  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        From
+                      </h1>
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterStart-day" name="dashboardFilterStart-day" type="text"
+                            inputmode="numeric" value="1">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterStart-month" name="dashboardFilterStart-month" type="text"
+                            inputmode="numeric" value="3">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                            id="dashboardFilterStart-year" name="dashboardFilterStart-year" type="text"
+                            inputmode="numeric" value="2026">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="govuk-fieldset govuk-body govuk-!-margin-top-3" role="group"
+                    aria-describedby="passport-issued-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        To
+                      </h1>
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterEnd-day" name="dashboardFilterEnd-day" type="text" inputmode="numeric"
+                            value="31">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterEnd-month" name="dashboardFilterEnd-month" type="text"
+                            inputmode="numeric" value="3">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                            id="dashboardFilterEnd-year" name="dashboardFilterEnd-year" type="text" inputmode="numeric"
+                            value="2026">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+
+                </div>
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      Benefit
+                    </legend>
+                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedBenefits" name="selectedBenefits" type="radio"
+                          value="CA" {% if data['selectedBenefits'] and data['selectedBenefits'].includes('CA') %}
+                          checked {%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedBenefits">
+                          Carer's Allowance
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedBenefits-2" name="selectedBenefits" type="radio"
+                          value="PC" {% if data['selectedBenefits'] and data['selectedBenefits'].includes('PC')
+                          %}checked{%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedBenefits-2">
+                          Pension Credit
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+                    Apply filters
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Intake</h2>
+        <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <!-- EXAMPLE CARD
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">TITLE</div>
+              <div class="card-description">DESCRIPTON</div>
+              <div class="card-headline">DATAPOINT</div>
+              <div class="card-context">CONTEXT</div>
+            </div>
+          </div> -->
+          <!-- <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Alerts total</div>
+              <div class="card-headline">4812</div>
+              <div class="card-context">alerts were raised</div>
+            </div>
+          </div> -->
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Alerts carried over</div>
+              <div class="card-headline">4231</div>
+              <div class="card-context">alerts were brought through from the preceeding period</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">New alerts</div>
+              <div class="card-headline">1232</div>
+              <div class="card-context">alerts received</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l">Outstanding
+          <span class="govuk-caption-m">As of 31 March 2026</span>
+        </h2>
+
+        <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Unallocated alerts</div>
+              <div class="card-headline">1679</div>
+              <div class="card-context"></div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Allocated alerts (untouched)</div>
+              <div class="card-headline">2345</div>
+              <div class="card-context">are assigned to agents but have no BF</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Allocated alerts (brought forward)</div>
+              <div class="card-headline">11110</div>
+              <div class="card-context">are assigned to agents but have BF</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l">Clearence</h2>
+        <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Cleared</div>
+              <div class="card-headline">6034</div>
+              <div class="card-context">alerts had outcomes recorded</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Overpayments</div>
+              <div class="card-headline">&pound;3,421,678.09</div>
+              <div class="card-context">was overpaid to claimants</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Arrears</div>
+              <div class="card-headline">&pound;392,763.91</div>
+              <div class="card-context">was underpaid to claimants</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l">Overpayments</h2>
+        <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Official error</div>
+              <div class="card-headline">&pound;2,325,678.98</div>
+              <div class="card-context">was overpaid because of us</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Customer error</div>
+              <div class="card-headline">&pound;92,761.34</div>
+              <div class="card-context">was overpaid because of a claimant error</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Mixed error</div>
+              <div class="card-headline">123</div>
+              <div class="card-context">overpayments were a mix of official and customer error</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-form-group govuk-!-padding-top-3">
+          <p class="govuk-body">
+            <a href="service-data-week-by-week">View a week by week report for this period</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

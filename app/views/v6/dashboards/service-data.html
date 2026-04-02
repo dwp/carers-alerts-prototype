@@ -1,0 +1,188 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+Service Data
+{% endblock %}
+
+{% block content %}
+{% if data['selectedBenefits'] %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <h1 class="govuk-heading-xl">Service data</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="moj-filter">
+          <div class="moj-filter__header">
+            <div class="moj-filter__header-title">
+              <h2 class="govuk-heading-s ">Filters</h2>
+            </div>
+            <div class="moj-filter__header-action">
+            </div>
+          </div>
+          <div class="moj-filter__content">
+            <div class="moj-filter__options">
+              <form method="post">
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      Timescale
+                    </legend>
+                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedView" name="selectedView" type="radio"
+                          value="yesterday" {% if data['selectedView'] and data['selectedView']=='yesterday' %}
+                          checked {%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedView">
+                          Yesterday
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedView-2" name="selectedView"
+                          type="radio" value="last7Days" {% if data['selectedView'] and
+                          data['selectedView']=='last7Days' %}checked{%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedView-2">
+                          Last 7 days
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedView-2" name="selectedView"
+                          type="radio" value="lastCalendarWeek" {% if data['selectedView'] and
+                          data['selectedView']=='lastCalendarWeek' %}checked{%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedView-2">
+                          Last calendar week
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedView-2" name="selectedView"
+                          type="radio" value="lastMonth" {% if data['selectedView'] and
+                          data['selectedView']=='lastMonth' %}checked{%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedView-2">
+                          Last month
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      Benefit
+                    </legend>
+                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedBenefits" name="selectedBenefits" type="radio"
+                          value="CA" {% if data['selectedBenefits'] and data['selectedBenefits'].includes('CA') %}
+                          checked {%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedBenefits">
+                          Carer's Allowance
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedBenefits-2" name="selectedBenefits"
+                          type="radio" value="PC" {% if data['selectedBenefits'] and
+                          data['selectedBenefits'].includes('PC') %}checked{%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedBenefits-2">
+                          Pension Credit
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+                    Apply filters
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">
+          {% if data['selectedBenefits']=='CA' %}
+            Carer's Allowance
+          {% else %}
+            Pension Credit
+          {% endif %}
+        </h2>
+        <p class="govuk-body">
+          You are viewing data from 
+            {% if data['selectedView']=='yesterday'%}
+            {{data['yesterday'] | govukDate}}
+            {% elif data['selectedView']=='last7Days' %}
+              {{data['weekStart'] | govukDate}} and {{data['yesterday'] | govukDate}}
+            {% elif data['selectedView']=='lastCalendarWeek' %}
+              {{data['previousMonday'] | govukDate}} and {{data['previousSunday'] | govukDate}}
+            {% else %}
+              {{data['monthStart'] | govukDate}} and {{data['yesterday'] | govukDate}}
+            {% endif %}
+        </p>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Intake</div>
+              <div class="card-headline">2832</div>
+              <div class="card-context">alerts were queued and under review</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Clearance</div>
+              <div class="card-headline">1343</div>
+              <div class="card-context">alerts were in agents' task lists</div>
+            </div>
+          </div>
+        </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Unallocated alerts</div>
+              <!-- <div class="card-description">yet to be reviewed</div> -->
+              <div class="card-headline">999</div>
+              <div class="card-context">alerts awaiting to be assigned by an agent</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Allocated alerts (untouched)</div>
+              <!-- <div class="card-description">999</div> -->
+              <div class="card-headline">999</div>
+              <div class="card-context">alerts are assigned to agent but have not been touched</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Allocated alerts (brought forward)</div>
+              <!-- <div class="card-description">yet to be reviewed</div> -->
+              <div class="card-headline">999</div>
+              <div class="card-context">alerts are assigned to agent but are BF'd</div>
+            </div>
+          </div>
+        </div>
+
+
+
+        
+
+        <div class="govuk-form-group govuk-!-padding-top-3">
+          <p class="govuk-body">
+            <a href="service-data-alerts-by-age">View alerts by age</a><br>
+            <a href="service-data-by-date-range">View service data by date range</a>
+          </p>
+        </div>
+
+
+
+      </div>
+    </div>
+  </main>
+</div>
+{% endif %}
+{% endblock %}

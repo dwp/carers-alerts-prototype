@@ -1,0 +1,100 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Week by week data' %}
+
+{% block pageTitle %}
+Week by week report
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    {% include '/includes/back' %}
+    <h1 class="govuk-heading-xl">Week by week report</h1>
+    <p>You are viewing 
+      {%if data['selectedBenefits'].includes('PC') %}Pension Credit
+      {%elif data['selectedBenefits'].includes('CA') %}Carer's Allowance
+      {%endif%}
+      data between 1 March 2026 and 31 March 2026</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Week by week data</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Week commencing</th>
+              <th scope="col" class="govuk-table__header">Clearance</th>
+              <th scope="col" class="govuk-table__header">Overpayment</th>
+              <th scope="col" class="govuk-table__header">Official error</th>
+              <th scope="col" class="govuk-table__header">Customer error</th>
+              <th scope="col" class="govuk-table__header">Underpayment</th>
+              <th scope="col" class="govuk-table__header">Outstanding</th>
+
+            </tr>
+          </thead>
+
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">2 March 2026</th>
+              <td class="govuk-table__cell">1564</td>
+              <td class="govuk-table__cell">&pound;157,844.90 </td>
+              <td class="govuk-table__cell">58%</td>
+              <td class="govuk-table__cell">42%</td>
+              <td class="govuk-table__cell">&pound;54,882.17</td>
+              <td class="govuk-table__cell">6255</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">9 March 2026</th>
+              <td class="govuk-table__cell">1654</td>
+              <td class="govuk-table__cell">&pound;629,501.66 </td>
+              <td class="govuk-table__cell">64%</td>
+              <td class="govuk-table__cell">36%</td>
+              <td class="govuk-table__cell">&pound;23,491.60</td>
+              <td class="govuk-table__cell">6127</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">16 March 2026</th>
+              <td class="govuk-table__cell">1243</td>
+              <td class="govuk-table__cell">&pound;288,119.02</td>
+              <td class="govuk-table__cell">56%</td>
+              <td class="govuk-table__cell">44%</td>
+              <td class="govuk-table__cell">&pound;87,300.45</td>
+              <td class="govuk-table__cell">6212</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">23 March 2026</th>
+              <td class="govuk-table__cell">1672</td>
+              <td class="govuk-table__cell">&pound;741,660.55</td>
+              <td class="govuk-table__cell">52%</td>
+              <td class="govuk-table__cell">48%</td>
+              <td class="govuk-table__cell">&pound;41,227.88</td>
+              <td class="govuk-table__cell">5973</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">30 March 2026</th>
+              <td class="govuk-table__cell">345</td>
+              <td class="govuk-table__cell">&pound;102,376.92</td>
+              <td class="govuk-table__cell">50%</td>
+              <td class="govuk-table__cell">50%</td>
+              <td class="govuk-table__cell">&pound;11,234.04</td>
+              <td class="govuk-table__cell">5735</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="govuk-form-group">
+          <p class="govuk-body">
+            <a href="#">Copy data to clipboard</a><br>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}
