@@ -53,7 +53,7 @@
   "dfe-frontend": "^2.0.1",
   
     
-  "express": "4.18.2",
+  "express": "4.20.0",
   
     
   "govuk-frontend": "5.14.0",
@@ -74,5 +74,21 @@
     
   "nodemon": "1.9.0"
   
+  },
+  "overrides": {
+  "lodash": "^4.18.0",
+  "path-to-regexp": "^0.1.13",
+  "body-parser": "^1.20.3",
+  "braces": "^3.0.3",
+  "glob-parent": "^5.1.2",
+  "picomatch": "^2.3.2",
+  "immutable": "^5.1.5",
+  "socket.io-parser": "^4.2.6",
+  "undefsafe": "^2.0.3",
+  "send": "^0.19.0",
+  "brace-expansion": "^1.1.13",
+  "serve-static": "^1.16.0",
+  "micromatch": "^4.0.8",
+  "got": "^11.8.5"
   }
 }

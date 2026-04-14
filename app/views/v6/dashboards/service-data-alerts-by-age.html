@@ -1,5 +1,5 @@
 {% extends "layouts/main_post_2026.html" %}
-{% set globalNavSection = 'Alerts by age' %}
+{% set globalNavSection = 'Service data' %}
 
 {% block pageTitle %}
 Alerts by age
@@ -11,85 +11,76 @@ Alerts by age
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
     {% include '/includes/back' %}
-    <h1 class="govuk-heading-xl">Alerts by age</h1>
+    <!-- <h1 class="govuk-heading-xl">Alerts by age</h1>
     <p>You are viewing 
       {%if data['selectedBenefits'].includes('PC') %}Pension Credit{%endif%}
       {% if data['selectedBenefits'].length > 1%}and{%endif%}
-      {%if data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%}</p>
+      {%if data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%}</p> -->
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 
         <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--m">Assigned alerts</caption>
+          <caption class="govuk-table__caption">
+            <span class="govuk-caption-xl">Service dashboard</span>
+
+             <h1 class="govuk-heading-xl">Alerts by age</h1>
+            <p>Showing 
+              {%if data['selectedBenefits'].includes('PC') %}Pension Credit{%endif%}
+              {%if data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%}
+              data. Last updated {% if data['selectedView']=='lastCalendarWeek' %}
+            {{data['previousSunday'] | govukDate}}.
+          {% else %}
+            {{data['yesterday'] | govukDate}}.
+          {% endif %}
+            </p>
+            </caption>
+          
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Alert type</span></th>
               <th scope="col" class="govuk-table__header">Up to 4 weeks</th>
-              <th scope="col" class="govuk-table__header">4 to 8 weeks</th>
-              <th scope="col" class="govuk-table__header">8 to 12 weeks</th>
-              <th scope="col" class="govuk-table__header">12 weeks to 6 months</th>
-              <th scope="col" class="govuk-table__header">6 months to a year</th>
-              <th scope="col" class="govuk-table__header">Over a year</th>
+              <th scope="col" class="govuk-table__header">Older than 4 weeks up to 8 weeks</th>
+              <th scope="col" class="govuk-table__header">Older than 8 weeks up to 12 weeks</th>
+              <th scope="col" class="govuk-table__header">Older than 12 weeks up to 6 months</th>
+              <th scope="col" class="govuk-table__header">Older than 6 months up to a year</th>
+              <th scope="col" class="govuk-table__header">Over a year old</th>
+              <th scope="col" class="govuk-table__header">Alerts expiring in the next two weeks</th>
             </tr>
           </thead>
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Assigned alerts</th>
               <td class="govuk-table__cell">1876</td>
               <td class="govuk-table__cell">685</td>
               <td class="govuk-table__cell">34</td>
-              <td class="govuk-table__cell">21</td>
-              <td class="govuk-table__cell">12</td>
-              <td class="govuk-table__cell">8</td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Assigned+alerts&description=Older than 12 weeks up to 6 months&amount=21">21</a></td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Assigned+alerts&description=Older than 6 months up to a year&amount=12">12</a></td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Assigned+alerts&description=Over a year old&amount=8">8</a></td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Assigned+alerts&description=Alerts expiring in the next two weeks&amount=2">2</a></td>
             </tr>
-          </tbody>
-        </table>
-
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--m">Unassigned alerts</caption>
-          <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Up to 4 weeks</th>
-              <th scope="col" class="govuk-table__header">4 to 8 weeks</th>
-              <th scope="col" class="govuk-table__header">8 to 12 weeks</th>
-              <th scope="col" class="govuk-table__header">12 weeks to 6 months</th>
-              <th scope="col" class="govuk-table__header">6 months to a year</th>
-              <th scope="col" class="govuk-table__header">Over a year</th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Alerts placed in bring forward</th>
               <td class="govuk-table__cell">3421</td>
               <td class="govuk-table__cell">232</td>
               <td class="govuk-table__cell">87</td>
-              <td class="govuk-table__cell">3</td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Alerts placed in bring forward&description=Older than 12 weeks up to 6 months&amount=3">3</a></td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Alerts placed in bring forward&description=Older than 6 months up to a year&amount=4">4</a></td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Alerts placed in bring forward&description=Over a year old&amount=6">6</a></td>
+              <td class="govuk-table__cell">0</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Unassigned alerts</th>
+              <td class="govuk-table__cell">235</td>
+              <td class="govuk-table__cell">123</td>
+              <td class="govuk-table__cell">56</td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Unassigned alerts&description=Older than 12 weeks up to 6 months&amount=14">14</a></td>
+              <td class="govuk-table__cell">0</td>
               <td class="govuk-table__cell">0</td>
               <td class="govuk-table__cell">0</td>
             </tr>
           </tbody>
         </table>
 
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--m">Total alerts</caption>
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Up to 4 weeks</th>
-              <th scope="col" class="govuk-table__header">4 to 8 weeks</th>
-              <th scope="col" class="govuk-table__header">8 to 12 weeks</th>
-              <th scope="col" class="govuk-table__header">12 weeks to 6 months</th>
-              <th scope="col" class="govuk-table__header">6 months to a year</th>
-              <th scope="col" class="govuk-table__header">Over a year</th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <td class="govuk-table__cell">5297</td>
-              <td class="govuk-table__cell">917</td>
-              <td class="govuk-table__cell">121</td>
-              <td class="govuk-table__cell">24</td>
-              <td class="govuk-table__cell">12</td>
-              <td class="govuk-table__cell">8</td>
-            </tr>
-          </tbody>
-        </table>
 
 
       </div>

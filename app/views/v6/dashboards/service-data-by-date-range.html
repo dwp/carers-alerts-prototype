@@ -1,8 +1,8 @@
 {% extends "layouts/main_post_2026.html" %}
-{% set globalNavSection = 'Service data by date range' %}
+{% set globalNavSection = 'Service data' %}
 
 {% block pageTitle %}
-Service data by date range
+Alerts data by date range
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,8 @@ Service data by date range
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
     {% include '/includes/back' %}
-    <h1 class="govuk-heading-xl">Service data by date range</h1>
+    <span class="govuk-caption-xl">Service dashboard</span>
+    <h1 class="govuk-heading-xl">Alerts by date range</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-third">
         <div class="moj-filter">
@@ -173,18 +174,19 @@ Service data by date range
               <div class="card-context">alerts were raised</div>
             </div>
           </div> -->
+          
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Alerts carried over</div>
-              <div class="card-headline">4231</div>
-              <div class="card-context">alerts were brought through from the preceeding period</div>
+              <div class="card-title">New</div>
+              <div class="card-headline">1,232</div>
+              <div class="card-context">alerts received in this period</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">New alerts</div>
-              <div class="card-headline">1232</div>
-              <div class="card-context">alerts received</div>
+              <div class="card-title">Carried over</div>
+              <div class="card-headline">4,231</div>
+              <div class="card-context">outstanding alerts as of 28 February 2026</div>
             </div>
           </div>
         </div>
@@ -196,28 +198,28 @@ Service data by date range
         <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Unallocated alerts</div>
-              <div class="card-headline">1679</div>
-              <div class="card-context"></div>
+              <div class="card-title">Unallocated</div>
+              <div class="card-headline">1,679</div>
+              <div class="card-context">alerts untouched, awaiting assignment</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Allocated alerts (untouched)</div>
-              <div class="card-headline">2345</div>
-              <div class="card-context">are assigned to agents but have no BF</div>
+              <div class="card-title">Assigned</div>
+              <div class="card-headline">2,345</div>
+              <div class="card-context">alerts assigned but unresolved</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Allocated alerts (brought forward)</div>
-              <div class="card-headline">11110</div>
-              <div class="card-context">are assigned to agents but have BF</div>
+              <div class="card-title">Assigned, placed in bring forward</div>
+              <div class="card-headline">11,110</div>
+              <div class="card-context">alerts assigned and postponed</div>
             </div>
           </div>
         </div>
 
-        <h2 class="govuk-heading-l">Clearence</h2>
+        <h2 class="govuk-heading-l">Clearance</h2>
         <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
           <div class="govuk-grid-column-one-third">
             <div class="card">
@@ -235,7 +237,7 @@ Service data by date range
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Arrears</div>
+              <div class="card-title">Underpayments</div>
               <div class="card-headline">&pound;392,763.91</div>
               <div class="card-context">was underpaid to claimants</div>
             </div>
@@ -244,32 +246,25 @@ Service data by date range
 
         <h2 class="govuk-heading-l">Overpayments</h2>
         <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
-          <div class="govuk-grid-column-one-half">
+          <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Official error</div>
               <div class="card-headline">&pound;2,325,678.98</div>
-              <div class="card-context">was overpaid because of us</div>
+              <div class="card-context">was recorded as official error</div>
             </div>
           </div>
-          <div class="govuk-grid-column-one-half">
+          <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Customer error</div>
               <div class="card-headline">&pound;92,761.34</div>
-              <div class="card-context">was overpaid because of a claimant error</div>
-            </div>
-          </div>
-          <div class="govuk-grid-column-one-half">
-            <div class="card">
-              <div class="card-title">Mixed error</div>
-              <div class="card-headline">123</div>
-              <div class="card-context">overpayments were a mix of official and customer error</div>
+              <div class="card-context">was recorded as customer error</div>
             </div>
           </div>
         </div>
 
         <div class="govuk-form-group govuk-!-padding-top-3">
           <p class="govuk-body">
-            <a href="service-data-week-by-week">View a week by week report for this period</a>
+            <a href="service-data-week-by-week">View a week by week report</a>
           </p>
         </div>
 

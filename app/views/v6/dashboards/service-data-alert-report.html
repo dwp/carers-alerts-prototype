@@ -1,0 +1,278 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+{{data.title}}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    {% include '/includes/back' %}
+    <!-- <h1 class="govuk-heading-xl">Alerts by age</h1>
+    <p>You are viewing 
+      {%if data['selectedBenefits'].includes('PC') %}Pension Credit{%endif%}
+      {% if data['selectedBenefits'].length > 1%}and{%endif%}
+      {%if data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%}</p> -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption">
+            <span class="govuk-caption-xl">Service dashboard</span>
+            <h1 class="govuk-heading-xl">{{data.title}}</h1>
+            <p>{{data.description}}</p>
+          </caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">National Insurance number</th>
+              {% if data.title != "Unassigned alerts"%}
+              <th scope="col" class="govuk-table__header">Allocated agent</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 A</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+
+            {% if data.amount > 1 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 B</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Mildred Hamilton</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 2 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 C</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Luke Stringer</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 3 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 D</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrea Rhodes</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 4 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 E</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 5 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 F</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Jane Haysham</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 6 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 G</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Luke Stringer</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 7 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 H</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 8 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 I</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Jane Haysham</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 9 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 J</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 10 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 K</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Roger Jones</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 11 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 L</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Luke Stringer</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 12 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 M</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Jane Haysham</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 13 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 N</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 14 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 O</th>
+              {% if data.title != "Unassigned alerts" %}
+              <td class="govuk-table__cell">Luke Stringer</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 15 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 P</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 16 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 Q</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Luke Stringer</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 17 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 R</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Jane Haysham</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 18 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 S</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Roger Jones</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 19 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 T</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Mildred Hamilton</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 20 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 U</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 21 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 V</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Luke Stringer</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 22 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 W</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 23 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 X</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Andrew Strong</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 24 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 Y</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Roger Jones</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+
+            {% if data.amount > 25 %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">QQ 12 34 56 Z</th>
+              {% if data.title != "Unassigned alerts"%}
+              <td class="govuk-table__cell">Mildred Hamilton</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

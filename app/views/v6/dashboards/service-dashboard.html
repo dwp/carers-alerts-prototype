@@ -2,7 +2,7 @@
 {% set globalNavSection = 'Service data' %}
 
 {% block pageTitle %}
-Service Data
+Service Dashboard
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@ Service Data
 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
-    <h1 class="govuk-heading-xl">Service data</h1>
+    <h1 class="govuk-heading-xl">Service dashboard</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-third">
         <div class="moj-filter">
@@ -27,7 +27,7 @@ Service Data
                 <div class="govuk-form-group">
                   <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                      Timescale
+                      Time period
                     </legend>
                     <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
                       <div class="govuk-radios__item">
@@ -39,6 +39,14 @@ Service Data
                         </label>
                       </div>
                       <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedView-1" name="selectedView"
+                          type="radio" value="lastCalendarWeek" {% if data['selectedView'] and
+                          data['selectedView']=='lastCalendarWeek' %}checked{%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedView-1">
+                          Last full week
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="selectedView-2" name="selectedView"
                           type="radio" value="last7Days" {% if data['selectedView'] and
                           data['selectedView']=='last7Days' %}checked{%endif%}>
@@ -47,18 +55,10 @@ Service Data
                         </label>
                       </div>
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="selectedView-2" name="selectedView"
-                          type="radio" value="lastCalendarWeek" {% if data['selectedView'] and
-                          data['selectedView']=='lastCalendarWeek' %}checked{%endif%}>
-                        <label class="govuk-label govuk-radios__label" for="selectedView-2">
-                          Last calendar week
-                        </label>
-                      </div>
-                      <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="selectedView-2" name="selectedView"
+                        <input class="govuk-radios__input" id="selectedView-3" name="selectedView"
                           type="radio" value="lastMonth" {% if data['selectedView'] and
                           data['selectedView']=='lastMonth' %}checked{%endif%}>
-                        <label class="govuk-label govuk-radios__label" for="selectedView-2">
+                        <label class="govuk-label govuk-radios__label" for="selectedView-3">
                           Last month
                         </label>
                       </div>
@@ -104,15 +104,16 @@ Service Data
 
 
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-1">
           {% if data['selectedBenefits']=='CA' %}
             Carer's Allowance
           {% else %}
             Pension Credit
           {% endif %}
+          alerts overview
         </h2>
         <p class="govuk-body">
-          You are viewing data from 
+          Showing data from 
             {% if data['selectedView']=='yesterday'%}
             {{data['yesterday'] | govukDate}}
             {% elif data['selectedView']=='last7Days' %}
@@ -129,40 +130,68 @@ Service Data
             <div class="card">
               <div class="card-title">Intake</div>
               <div class="card-headline">2832</div>
-              <div class="card-context">alerts were queued and under review</div>
+              <div class="card-context">new alerts received</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Oustanding</div>
+              <div class="card-headline">2832</div>
+              <div class="card-context">new alerts received</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Clearance</div>
               <div class="card-headline">1343</div>
-              <div class="card-context">alerts were in agents' task lists</div>
+              <div class="card-context">alerts had outcomes recorded</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="govuk-heading-l govuk-body govuk-!-margin-top-4 govuk-body govuk-!-margin-bottom-1">Outstanding</h2>
+        <p>As of 
+          
+          {% if data['selectedView']=='lastCalendarWeek' %}
+            {{data['previousSunday'] | govukDate}}
+          {% else %}
+            {{data['yesterday'] | govukDate}}
+          {% endif %}
+
+        </p>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Unassigned</div>
+              <!-- <div class="card-description">yet to be reviewed</div> -->
+              <div class="card-headline">1,679</div>
+              <div class="card-context">alerts untouched, awaiting assignment</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Total assigned</div>
+              <!-- <div class="card-description">999</div> -->
+              <div class="card-headline">324</div>
+              <div class="card-context">alerts had been assigned to agents' open tasks lists</div>
             </div>
           </div>
         </div>
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Unallocated alerts</div>
+              <div class="card-title">Assigned, not placed in bring forward</div>
               <!-- <div class="card-description">yet to be reviewed</div> -->
-              <div class="card-headline">999</div>
-              <div class="card-context">alerts awaiting to be assigned by an agent</div>
+              <div class="card-headline">2,345</div>
+              <div class="card-context">alerts had been assigned and then postponed</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Allocated alerts (untouched)</div>
-              <!-- <div class="card-description">999</div> -->
-              <div class="card-headline">999</div>
-              <div class="card-context">alerts are assigned to agent but have not been touched</div>
-            </div>
-          </div>
-          <div class="govuk-grid-column-one-third">
-            <div class="card">
-              <div class="card-title">Allocated alerts (brought forward)</div>
+              <div class="card-title">Assigned, placed in bring forward</div>
               <!-- <div class="card-description">yet to be reviewed</div> -->
-              <div class="card-headline">999</div>
-              <div class="card-context">alerts are assigned to agent but are BF'd</div>
+              <div class="card-headline">2,345</div>
+              <div class="card-context">alerts had been assigned and then postponed</div>
             </div>
           </div>
         </div>
@@ -173,8 +202,8 @@ Service Data
 
         <div class="govuk-form-group govuk-!-padding-top-3">
           <p class="govuk-body">
-            <a href="service-data-alerts-by-age">View alerts by age</a><br>
-            <a href="service-data-by-date-range">View service data by date range</a>
+            <a href="service-data-by-date-range">View service data by date range</a><br>
+            <a href="service-data-alerts-by-age">View alerts by age</a>
           </p>
         </div>
 

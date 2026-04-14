@@ -27,11 +27,11 @@ router.get('/'+version + '/setupData', function (req, res) {
     req.session.data['monthStart'] = monthStart;
     req.session.data['weekStart'] = weekStart;
 
-    res.redirect('dashboards/service-data')
+    res.redirect('dashboards/service-dashboard')
 })
 
-router.post('/' + version + '/dashboards/service-data', function (req, res) {
-    res.redirect('service-data')
+router.post('/' + version + '/dashboards/service-dashboard', function (req, res) {
+    res.redirect('service-dashboard')
 })
 
 
