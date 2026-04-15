@@ -8,6 +8,8 @@ Week by week report
 {% block content %}
 
 
+
+
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
     {% include '/includes/back' %}
@@ -21,8 +23,8 @@ Week by week report
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Week by week data</caption>
+        <table class="govuk-table" id="table">
+          <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Week by week data for {%if data['selectedBenefits'].includes('PC') %}Pension Credit {%elif data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%} between 1 March 2026 and 31 March 2026</caption>
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Week beginning</th>
@@ -32,7 +34,6 @@ Week by week report
               <th scope="col" class="govuk-table__header">Customer error</th>
               <th scope="col" class="govuk-table__header">Amount underpaid</th>
               <th scope="col" class="govuk-table__header">Alerts outstanding</th>
-
             </tr>
           </thead>
 
@@ -87,7 +88,7 @@ Week by week report
 
         <div class="govuk-form-group">
           <p class="govuk-body">
-            <a href="#">Copy data to clipboard</a><br>
+            <a href="javascript:copy()">Copy data to clipboard</a><br>
           </p>
         </div>
 
@@ -96,6 +97,20 @@ Week by week report
     </div>
   </main>
 </div>
+
+<script>
+  function copy() {
+    let table = document.querySelector('#table').outerHTML;
+    table = table
+      .replaceAll('\n', '<br style="mso-data-placement:same-cell;"/>')  // new lines inside html cells => Alt+Enter in Excel
+      .replaceAll('<td', '<td style="vertical-align: top;"');  // align top
+    navigator.clipboard.writeText(table).then(
+      () => console.log("success"),
+      (e) => console.log("error", e),
+    );
+  }
+
+</script>
 
 
 {% endblock %}

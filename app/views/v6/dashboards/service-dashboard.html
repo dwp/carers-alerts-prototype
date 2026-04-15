@@ -129,6 +129,7 @@ Service Dashboard
           <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Intake</div>
+              <div class="card-description">&nbsp;</div>
               <div class="card-headline">2832</div>
               <div class="card-context">new alerts received</div>
             </div>
@@ -136,20 +137,28 @@ Service Dashboard
           <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Oustanding</div>
+              <div class="card-description">As of
+                {% if data['selectedView']=='lastCalendarWeek' %}
+                  {{data['previousSunday'] | govukDate}}
+                {% else %}
+                  {{data['yesterday'] | govukDate}}
+                {% endif %}
+              </div>
               <div class="card-headline">2832</div>
-              <div class="card-context">new alerts received</div>
+              <div class="card-context">alerts not yet cleared</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Clearance</div>
+              <div class="card-description">&nbsp;</div>
               <div class="card-headline">1343</div>
-              <div class="card-context">alerts had outcomes recorded</div>
+              <div class="card-context">alerts closed</div>
             </div>
           </div>
         </div>
 
-        <h2 class="govuk-heading-l govuk-body govuk-!-margin-top-4 govuk-body govuk-!-margin-bottom-1">Outstanding</h2>
+        <h2 class="govuk-heading-l govuk-body govuk-!-margin-top-4 govuk-body govuk-!-margin-bottom-1">Outstanding alerts</h2>
         <p>As of 
           
           {% if data['selectedView']=='lastCalendarWeek' %}
@@ -163,33 +172,44 @@ Service Dashboard
           <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Unassigned</div>
-              <!-- <div class="card-description">yet to be reviewed</div> -->
+              <div class="card-description">&nbsp;</div>
               <div class="card-headline">1,679</div>
-              <div class="card-context">alerts untouched, awaiting assignment</div>
+              <div class="card-context">&nbsp;</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Total assigned</div>
-              <!-- <div class="card-description">999</div> -->
+              <div class="card-title">Assigned</div>
+              <div class="card-description">&nbsp;</div>
               <div class="card-headline">324</div>
-              <div class="card-context">alerts had been assigned to agents' open tasks lists</div>
+              <div class="card-context">&nbsp;</div>
             </div>
           </div>
         </div>
+
+        <h2 class="govuk-heading-l govuk-body govuk-!-margin-top-4 govuk-body govuk-!-margin-bottom-1">Assigned alerts</h2>
+        <p>As of 
+          
+          {% if data['selectedView']=='lastCalendarWeek' %}
+            {{data['previousSunday'] | govukDate}}
+          {% else %}
+            {{data['yesterday'] | govukDate}}
+          {% endif %}
+
+        </p>
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Assigned, not placed in bring forward</div>
-              <!-- <div class="card-description">yet to be reviewed</div> -->
+              <div class="card-title">Open alerts</div>
+              <div class="card-description">&nbsp;</div>
               <div class="card-headline">2,345</div>
-              <div class="card-context">alerts had been assigned and then postponed</div>
+              <div class="card-context">alerts were being worked on</div>
             </div>
           </div>
           <div class="govuk-grid-column-one-third">
             <div class="card">
-              <div class="card-title">Assigned, placed in bring forward</div>
-              <!-- <div class="card-description">yet to be reviewed</div> -->
+              <div class="card-title">Alerts placed in bring forward</div>
+              <div class="card-description">&nbsp;</div>
               <div class="card-headline">2,345</div>
               <div class="card-context">alerts had been assigned and then postponed</div>
             </div>
@@ -202,7 +222,7 @@ Service Dashboard
 
         <div class="govuk-form-group govuk-!-padding-top-3">
           <p class="govuk-body">
-            <a href="service-data-by-date-range">View service data by date range</a><br>
+            <a href="service-data-by-date-range">View alerts by date range</a><br>
             <a href="service-data-alerts-by-age">View alerts by age</a>
           </p>
         </div>

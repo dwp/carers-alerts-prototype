@@ -27,11 +27,8 @@ Alerts by age
             <p>Showing 
               {%if data['selectedBenefits'].includes('PC') %}Pension Credit{%endif%}
               {%if data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%}
-              data. Last updated {% if data['selectedView']=='lastCalendarWeek' %}
-            {{data['previousSunday'] | govukDate}}.
-          {% else %}
-            {{data['yesterday'] | govukDate}}.
-          {% endif %}
+              data. Last updated {{data['yesterday'] | govukDate}}.
+
             </p>
             </caption>
           
@@ -49,8 +46,8 @@ Alerts by age
           </thead>
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Assigned alerts</th>
-              <td class="govuk-table__cell">1876</td>
+              <th scope="row" class="govuk-table__header">Open alerts</th>
+              <td class="govuk-table__cell">1,876</td>
               <td class="govuk-table__cell">685</td>
               <td class="govuk-table__cell">34</td>
               <td class="govuk-table__cell"><a href="service-data-alert-report?title=Assigned+alerts&description=Older than 12 weeks up to 6 months&amount=21">21</a></td>
@@ -60,7 +57,7 @@ Alerts by age
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Alerts placed in bring forward</th>
-              <td class="govuk-table__cell">3421</td>
+              <td class="govuk-table__cell">3,421</td>
               <td class="govuk-table__cell">232</td>
               <td class="govuk-table__cell">87</td>
               <td class="govuk-table__cell"><a href="service-data-alert-report?title=Alerts placed in bring forward&description=Older than 12 weeks up to 6 months&amount=3">3</a></td>
