@@ -1,0 +1,95 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+Alerts by age
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    {% include '/includes/back' %}
+    <!-- <h1 class="govuk-heading-xl">Alerts by age</h1>
+    <p>You are viewing 
+      {%if data['selectedBenefits'].includes('PC') %}Pension Credit{%endif%}
+      {% if data['selectedBenefits'].length > 1%}and{%endif%}
+      {%if data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%}</p> -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        
+          
+            <span class="govuk-caption-xl">Service dashboard</span>
+
+             <h1 class="govuk-heading-xl">Alerts by age</h1>
+            <p>Showing 
+              {%if data['selectedBenefits'].includes('PC') %}Pension Credit{%endif%}
+              {%if data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%}
+              data. Last updated {{data['yesterday'] | govukDate}}.
+
+            </p>
+
+        <table class="govuk-table govuk-!-margin-bottom-9">
+          <caption class="govuk-table__caption">Queued alerts</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Up to 4 weeks</th>
+              <th scope="col" class="govuk-table__header">Older than 4 weeks up to 8</th>
+              <th scope="col" class="govuk-table__header">Older than 8 weeks up to 12</th>
+              <th scope="col" class="govuk-table__header">Older than 12 weeks up to 6 months</th>
+              <th scope="col" class="govuk-table__header">Older than 6 months up to a year</th>
+              <th scope="col" class="govuk-table__header">Over a year old</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">235</td>
+              <td class="govuk-table__cell">123</td>
+              <td class="govuk-table__cell">56</td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=Queued alerts&description=Older than 12 weeks up to 6 months&amount=14">14</a></td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+         <table class="govuk-table">
+          <caption class="govuk-table__caption">In progress alerts</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Alert type</th>
+              <th scope="col" class="govuk-table__header">Up to 4 weeks old</th>
+              <th scope="col" class="govuk-table__header">Older than 4 weeks up to 6</th>
+              <th scope="col" class="govuk-table__header">Older than 6 weeks up to 12</th>
+              <th scope="col" class="govuk-table__header">Expiring in 2 weeks</th>
+            </tr>
+          </thead>
+        <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">In progress, being worked on</th>
+              <td class="govuk-table__cell">675</td>
+              <td class="govuk-table__cell">234</td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=In progress, being worked on&description=Older than 6 weeks up to 12&amount=21">21</a></td>
+              <td class="govuk-table__cell">0</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">In progress, marked BF</th>
+              <td class="govuk-table__cell">900</td>
+              <td class="govuk-table__cell">232</td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=In progress, marked BF&description=Older than 6 weeks up to 12&amount=19">19</a></td>
+              <td class="govuk-table__cell"><a href="service-data-alert-report?title=In progress, marked BF&description=Expiring in 2 weeks&amount=4">4</a></td>
+            </tr>
+          </table>
+
+
+
+      </div>
+    </div>
+  </main>
+</div>
+
+
+{% endblock %}

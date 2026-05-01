@@ -1,0 +1,92 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+Week by week report
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    {% include '/includes/back' %}
+    <span class="govuk-caption-xl">Service dashboard</span>
+    <h1 class="govuk-heading-xl">Week by week report</h1>
+    <p>Showing
+      {%if data['selectedBenefits'].includes('PC') %}Pension Credit
+      {%elif data['selectedBenefits'].includes('CA') %}Carer's Allowance
+      {%endif%}
+      data between 1 March 2026 and 31 March 2026</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <table class="govuk-table" id="table">
+          <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Week by week data for {%if data['selectedBenefits'].includes('PC') %}Pension Credit {%elif data['selectedBenefits'].includes('CA') %}Carer's Allowance{%endif%} between 1 March 2026 and 31 March 2026</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Week beginning</th>
+              <th scope="col" class="govuk-table__header">Intake</th>
+              <th scope="col" class="govuk-table__header">Alerts cleared</th>
+              <th scope="col" class="govuk-table__header">Amount overpaid</th>
+              <th scope="col" class="govuk-table__header">Official error %</th>
+              <th scope="col" class="govuk-table__header">Official error </th>
+              <th scope="col" class="govuk-table__header">Customer error %</th>
+              <th scope="col" class="govuk-table__header">Customer error</th>
+              <th scope="col" class="govuk-table__header">Amount underpaid</th>
+              <th scope="col" class="govuk-table__header">Alerts outstanding</th>
+              <th scope="col" class="govuk-table__header">Action required %</th>
+              <th scope="col" class="govuk-table__header ">No action required %</th>
+            </tr>
+          </thead>
+
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">2 March 2026</th>
+              <td class="govuk-table__cell">1243</td>
+              <td class="govuk-table__cell">1564</td>
+              <td class="govuk-table__cell">&pound;157844.90 </td>
+              
+              <td class="govuk-table__cell">55</td>
+              <td class="govuk-table__cell ">450</td>
+              <td class="govuk-table__cell">45</td>
+              <td class="govuk-table__cell ">345</td>
+              
+              <td class="govuk-table__cell">&pound;54882.17</td>
+              <td class="govuk-table__cell">6255</td>
+              <td class="govuk-table__cell">35%</td>
+              <td class="govuk-table__cell">65%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="govuk-form-group">
+          <p class="govuk-body">
+            <a href="javascript:copy()">Copy data to clipboard</a><br>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  function copy() {
+    let table = document.querySelector('#table').outerHTML;
+    table = table
+      .replaceAll('\n', '<br style="mso-data-placement:same-cell;"/>')  // new lines inside html cells => Alt+Enter in Excel
+      .replaceAll('<td', '<td style="vertical-align: top;"');  // align top
+    navigator.clipboard.writeText(table).then(
+      () => console.log("success"),
+      (e) => console.log("error", e),
+    );
+  }
+
+</script>
+
+
+{% endblock %}

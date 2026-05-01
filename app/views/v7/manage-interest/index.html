@@ -1,0 +1,47 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Manage requests' %}
+
+{% block pageTitle %}
+Service Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <h1 class="govuk-heading-l">Manage requests</h1>
+    
+
+        <div class="govuk-width-container">
+          <ul class="govuk-grid-row MoJ-card-group">
+            <li class="govuk-grid-column-one-third MoJ-card-group__item">
+              <div class="MoJ-card MoJ-card--clickable" data-test="global-search">
+                <h2 class="govuk-heading-m MoJ-card__heading">
+                  <a class="govuk-link MoJ-card__link govuk-link--no-visited-state" href="new-request" onclick="showAlert()">Make a new request</a>
+                </h2>
+                <p class="govuk-body MoJ-card__description">Blah blah blah.</p>
+              </div>
+            </li>
+            <li class="govuk-grid-column-one-third MoJ-card-group__item">
+              <div class="MoJ-card MoJ-card--clickable" data-test="manage-prisoner-whereabouts">
+                <h2 class="govuk-heading-m MoJ-card__heading">
+                  <a class="govuk-link MoJ-card__link govuk-link--no-visited-state" href="view-request" onclick="showAlert()">View recent requests</a>
+                </h2>
+                <p class="govuk-body MoJ-card__description">Blah blah blah.</p>
+              </div>
+            </li>
+            <li class="govuk-grid-column-one-third MoJ-card-group__item">
+              <div class="MoJ-card MoJ-card--clickable" data-test="use-of-force">
+                <h2 class="govuk-heading-m MoJ-card__heading">
+                  <a class="govuk-link MoJ-card__link govuk-link--no-visited-state" href="stop-request" onclick="showAlert()">Cancel a request</a>
+                </h2>
+                <p class="govuk-body MoJ-card__description">Blah blah blah.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+  </main>
+</div>
+
+{% endblock %}

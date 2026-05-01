@@ -4,9 +4,9 @@
     Menu
     </button>
     <ul id="navigation" class="dwp-header-navigation__list">
-    <li class="dwp-header-navigation__item">
-        <a href="#">
-        Make a new request
+    <li class="dwp-header-navigation__item {{ ' govuk-header__navigation-item--active' if globalNavSection == 'Manage requests' }}">
+        <a href="/{{data.version}}/manage-interest/">
+        Manage requests
         </a>
     </li>
     <li class="dwp-header-navigation__item">

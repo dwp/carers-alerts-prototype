@@ -1,0 +1,266 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Service data' %}
+
+{% block pageTitle %}
+Service Dashboard
+{% endblock %}
+
+{% block content %}
+{% if data['selectedBenefits'] %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <h1 class="govuk-heading-xl">Service dashboard</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <div class="moj-filter">
+          <div class="moj-filter__header">
+            <div class="moj-filter__header-title">
+              <h2 class="govuk-heading-s ">Filter</h2>
+            </div>
+            <div class="moj-filter__header-action">
+            </div>
+          </div>
+          <div class="moj-filter__content">
+            <div class="moj-filter__options">
+              <form method="post">
+                <div class="govuk-form-group">
+                  <p class="govuk-heading-s">Date range</p>
+                  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        From
+                      </h1>
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterStart-day" name="dashboardFilterStart-day" type="text"
+                            inputmode="numeric" value="20">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterStart-month" name="dashboardFilterStart-month" type="text"
+                            inputmode="numeric" value="4">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                            id="dashboardFilterStart-year" name="dashboardFilterStart-year" type="text"
+                            inputmode="numeric" value="2026">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="govuk-fieldset govuk-body govuk-!-margin-top-3" role="group"
+                    aria-describedby="passport-issued-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">
+                        To
+                      </h1>
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterEnd-day" name="dashboardFilterEnd-day" type="text" inputmode="numeric"
+                            value="26">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                            id="dashboardFilterEnd-month" name="dashboardFilterEnd-month" type="text"
+                            inputmode="numeric" value="4">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="dashboardFilterEnd-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                            id="dashboardFilterEnd-year" name="dashboardFilterEnd-year" type="text" inputmode="numeric"
+                            value="2026">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+
+                </div>
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      Benefit
+                    </legend>
+                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedBenefits" name="selectedBenefits" type="radio"
+                          value="CA" {% if data['selectedBenefits'] and data['selectedBenefits'].includes('CA') %}
+                          checked {%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedBenefits">
+                          Carer's Allowance
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="selectedBenefits-2" name="selectedBenefits" type="radio"
+                          value="PC" {% if data['selectedBenefits'] and data['selectedBenefits'].includes('PC')
+                          %}checked{%endif%}>
+                        <label class="govuk-label govuk-radios__label" for="selectedBenefits-2">
+                          Pension Credit
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="govuk-form-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
+                    Apply filters
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-1">
+        {% if data['selectedBenefits']=='CA' %}
+        Carer's Allowance
+        {% else %}
+        Pension Credit
+        {% endif %}
+        alerts overview
+      </h2>
+      <p class="govuk-body">
+        Showing data from 20 April 2026 and 26 April 2026
+      </p>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <div class="card">
+            <div class="card-title">Intake</div>
+            <div class="card-description">&nbsp;</div>
+            <div class="card-headline">1,287</div>
+            <div class="card-context">new alerts received</div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <div class="card">
+            <div class="card-title">Clearance</div>
+            <div class="card-description">&nbsp;</div>
+            <div class="card-headline">1,343</div>
+            <div class="card-context">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Overpayments</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">&pound;3,421,678.09</div>
+              <div class="card-context">from 234 alerts</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Underpayments</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">&pound;392,763.91</div>
+              <div class="card-context">from 245 alerts</div>
+            </div>
+          </div>
+          
+        </div>
+
+      <h2 class="govuk-heading-l govuk-body govuk-!-margin-top-4 govuk-body govuk-!-margin-bottom-1">Outstanding alerts
+      </h2>
+      <p>As of 26 April 2026
+
+       
+      </p>
+      <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <div class="govuk-grid-column-one-half">
+            <div class="card">
+              <div class="card-title">Total</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">12,012</div>
+              <div class="card-context"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-1">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Queued</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">6,716</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">In progress, being worked on</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">1,411</div>
+              <div class="card-context"></div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">In progress, marked BF</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">3,885</div>
+              <div class="card-context"></div>
+            </div>
+          </div>
+        </div>
+        
+
+      <div class="govuk-form-group govuk-!-padding-top-3">
+        <p class="govuk-body">
+          <a href="service-data-by-date-range">View detailed data</a><br>
+          <a href="service-data-alerts-by-age">View alerts by age</a>
+        </p>
+      </div>
+
+
+
+    </div>
+</div>
+</main>
+</div>
+{% endif %}
+{% endblock %}
