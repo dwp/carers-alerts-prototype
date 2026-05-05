@@ -1,0 +1,112 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Manage requests' %}
+
+{% block pageTitle %}
+Service Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-body govuk-body-s">
+      <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+        <ol class="govuk-breadcrumbs__list">
+          <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Home</a>
+          </li>
+          <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Task statistics</a>
+          </li>
+          <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">User summary</a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <h1 class="govuk-heading-l">User Summary</h1>
+    <p class="govuk-body-l"><strong>Query Date - 08/07/2022 to 08/07/2022</strong> <span class="no-wrap">amsnbmnabmsnbfjkashfkjasdnmsb dmajshfdjkasbfmnasfbjksadhkjasbdfmasnbdkjasdhkjamsnfbmasndbkjsagdajhsdbmnasdbksuadhgkuadbmnbad</span></p>
+    
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#task-statuses">
+            Task statuses
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#outcome-summary">
+            Outcome summary
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#outcome-breakdown">
+            Outcome breakdown
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#user-summary">
+            User summary
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel" id="task-statuses">
+        
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="outcome-summary">
+        
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="outcome-breakdown">
+        
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="user-summary">
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">User</th>
+              <th scope="col" class="govuk-table__header">Tasks open</th>
+              <th scope="col" class="govuk-table__header">Grey tasks</th>
+              <th scope="col" class="govuk-table__header">Yellow tasks</th>
+              <th scope="col" class="govuk-table__header">Orange tasks</th>
+              <th scope="col" class="govuk-table__header">Red tasks</th>
+              <th scope="col" class="govuk-table__header">Tasks with outcomes</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="open-tasks?user=Alice Apple">Alice Apple</a></td>
+              <td class="govuk-table__cell">1</td>
+              <td class="govuk-table__cell">1</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="open-tasks?user=Bob Banana">Bob Banana</a></td>
+              <td class="govuk-table__cell">2</td>
+              <td class="govuk-table__cell">2</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">1</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="open-tasks?user=Colin Carrot">Colin Carrot</a></td>
+              <td class="govuk-table__cell">1</td>
+              <td class="govuk-table__cell">1</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
