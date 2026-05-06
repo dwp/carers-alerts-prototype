@@ -62,6 +62,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       <li class="govuk-footer__inline-list-item govuk-body-s">
         <a class="govuk-footer__link" href="/manage-prototype/clear-data">Clear data</a>
       </li>
+      {% if data.version == "v7"%}
+      <li class="govuk-footer__inline-list-item govuk-body-s">
+        <a class="govuk-footer__link" href="/ur">UR link</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </footer>

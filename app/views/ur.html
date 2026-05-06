@@ -1,0 +1,101 @@
+{% extends "layouts/index.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} homepage
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">User Research</h1>
+        <form method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">
+                  Which test scenario would you like to use?
+                </h1>
+              </legend>
+              
+              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="test" name="test" type="radio" value="a" checked="checked">
+                  <label class="govuk-label govuk-radios__label" for="test">
+                    A
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="test-2" name="test" type="radio" value="b">
+                  <label class="govuk-label govuk-radios__label" for="test-2">
+                    B
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">
+                  Which benefit?
+                </h1>
+              </legend>
+              
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="benefit" name="benefit" type="radio" value="Pension Credit"  checked="checked">
+                  <label class="govuk-label govuk-radios__label" for="benefit">
+                    Pension Credit
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="benefit-2" name="benefit" type="radio" value="Carer's Allowance">
+                  <label class="govuk-label govuk-radios__label" for="benefit-2">
+                    Carer's Allowance
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="benefit-3" name="benefit" type="radio" value="Housing Benefit">
+                  <label class="govuk-label govuk-radios__label" for="benefit-3">
+                    Housing Benefit
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-form-group">
+            <input type="hidden" id="version" name="version" value="v7" />
+            <button class="govuk-button">Start</button>
+          </div>
+        </form>
+
+        <!-- <div class="dfe-grid-container">
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="/v7/manage-interest/index?version=v7&test=a"
+                  class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Test A</a>
+              </h3>
+              <p>&nbsp;</p>
+            </div>
+          </div>
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="/v7/manage-interest/index?version=v7&test=b"
+                  class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Test B</a>
+              </h3>
+              <p>&nbsp;</p>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

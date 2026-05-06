@@ -1,0 +1,29 @@
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+let version = "v7";
+
+router.post('/' + version + '/manage-interest/stop-request-identity-confirm', function (req, res) {
+    if(req.session.data['confirmCitizen'] == 'yes'){
+        res.redirect("stop-request-clarify")
+    }
+    else{
+        res.redirect("stop-request")
+    }
+})
+
+router.post('/' + version + '/manage-interest/stop-request-clarify', function (req, res) {
+    if(req.session.data['stopRequest'] == 'yes'){
+        res.redirect("stop-request-confirmation")
+    }
+    else{
+        res.redirect("index")
+    }
+})
+
+router.post('/ur', function (req, res) {
+
+    res.redirect(version+"/manage-interest/")
+})
+
+

@@ -2,15 +2,45 @@
 {% set globalNavSection = 'Manage requests' %}
 
 {% block pageTitle %}
-Stop request
+Enter a National Insurance number
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {% include "includes/back.njk"%}
-    <h1 class="govuk-heading-l">Stop request</h1>
-    <a href="index" class="govuk-button">Search</a>
+
+    {% if data['test'] == "a" %}
+    <span class="govuk-caption-l">Unset an interest</span>
+    <h1 class="govuk-heading-l">Search for a citizen</h1>
+    <p class="govuk-body">Enter a National Insurance number to search the Real Time Information system and begin
+      unsetting an interest. </p>
+
+
+    {% elif data['test'] == "b" %}
+    <span class="govuk-caption-l">Cancel a request</span>
+    <h1 class="govuk-heading-l">Search for a citizen</h1>
+    <p class="govuk-body">Enter a National Insurance number to search the Real Time Information system and begin
+      to cancel a request for this citizen. </p>
+
+    {% endif%}
+
+    <form>
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--m" for="event-name">
+            National Insurance number
+          </label>
+        </h1>
+        <p class="govuk-hint">For example, QQ 12 34 56 C</p>
+        <input class="govuk-input  govuk-input--width-10" id="event-name" name="eventName" type="text"
+        value="QQ 123456 A">
+      </div>
+    </form>
+    <p><a class="govuk-button" href="stop-request-identity-confirm">Search</a></p>
+
+    
+
   </div>
 </div>
 

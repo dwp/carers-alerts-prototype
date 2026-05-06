@@ -396,6 +396,8 @@ router.post('/overpayment-details-error', function (req, res) {
 require('./views/v5/dashboards/_dashboard-routes')
 require('./views/v6/dashboards/_dashboard-routes')
 
+require('./views/v7/manage-interest/_interest-routes')
+
 require('./views/sandpit/_sandpit-routes')
 
 module.exports = router

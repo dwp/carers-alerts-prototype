@@ -13,13 +13,21 @@ Stop request
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation">
           <h1 class="govuk-panel__title">
-            Application complete
+            {% if data['test']=="a" %}Interest unset
+            {% elif data['test'] == "b" %}Request cancelled
+            {% endif%}
           </h1>
         </div>
+        {% if data.benefit == "Pension Credit" or data.benefit == "Housing Benefit" %}
         <h2 class="govuk-heading-m">What happens next</h2>
         <p class="govuk-body">
-          Blah blah blah. <a href="#" class="govuk-link">Link</a>.
+          You will need to check Searchlight to see whether Bob Banana has a partner. You may need to <a href="stop-request" class="govuk-link">
+            {% if data['test']=="a" %}unset an interest
+            {% elif data['test'] == "b" %}cancel a request
+            {%endif%}
+            </a> for them too.
         </p>
+        {% endif %}
         <a href="index" class="govuk-button">Finish</a>
       </div>
     </div>
