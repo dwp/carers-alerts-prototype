@@ -9,21 +9,21 @@ Enter a National Insurance number
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {% include "includes/back.njk"%}
-
     {% if data['test'] == "a" %}
     <span class="govuk-caption-l">Unset an interest</span>
-    <h1 class="govuk-heading-l">Search for a citizen</h1>
-    <p class="govuk-body">Enter a National Insurance number to search the Real Time Information system and begin
-      unsetting an interest. </p>
-
-
     {% elif data['test'] == "b" %}
-    <span class="govuk-caption-l">Cancel a request</span>
+     <span class="govuk-caption-l">Cancel a request</span>
+    {%endif%}
     <h1 class="govuk-heading-l">Search for a citizen</h1>
-    <p class="govuk-body">Enter a National Insurance number to search the Real Time Information system and begin
-      to cancel a request for this citizen. </p>
 
-    {% endif%}
+    <p>
+      {% if data['test'] == "a" %}
+        To unset an interest in a citizen,
+      {% elif data['test'] == "b" %}
+        To cancel a request for a citizen,
+      {% endif %}
+      we need to search for their record in the Real Time Information database.
+    </p>
 
     <form>
       <div class="govuk-form-group">

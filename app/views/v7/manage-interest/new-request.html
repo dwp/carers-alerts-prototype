@@ -36,13 +36,12 @@ Make a new request
     {% endif%}
 
     <p>
-      Enter a National Insurance number to search the Real Time Information system and begin 
       {% if data['test'] == "a" %}
-        setting an interest 
+        To set an interest in a citizen,
       {% elif data['test'] == "b" %}
-        to make a new request
+        To make a new request for a citizen,
       {% endif %}
-      in this citizen.
+      we need to search for their record in the Real Time Information database.
     </p>
     <form>
       <div class="govuk-form-group">
