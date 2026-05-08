@@ -1,0 +1,93 @@
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+let version = "v7";
+
+///////////////////////////////
+// Carer's Allowance journey //
+///////////////////////////////
+
+router.post('/' + version + '/record-outcome/ca/outcome', function (req, res) {
+    if(req.session.data['outcome'] == 'Full disallowance' ||  req.session.data['outcome'] == 'Partial disallowance'){
+        res.redirect("claimant-declared")
+    }
+    else if(req.session.data['outcome'] == 'No change to award'){
+        res.redirect("no-change")
+    }
+    else if(req.session.data['outcome'] == 'Outstanding action in CAU'){
+        res.redirect("outstanding-action")
+    }
+    else{
+       res.redirect("no-action") 
+    }
+    
+})
+router.post('/' + version + '/record-outcome/ca/no-change', function (req, res) {
+    res.redirect("check-answers")    
+})
+router.post('/' + version + '/record-outcome/ca/outstanding-action', function (req, res) {
+    res.redirect("check-answers")    
+})
+router.post('/' + version + '/record-outcome/ca/no-action', function (req, res) {
+    if(req.session.data['noActionReason'] == "Dormant case"){
+        res.redirect("cancel-alerts")
+    }
+    else{res.redirect("check-answers")}
+})
+
+
+router.post('/' + version + '/record-outcome/ca/claimant-declared', function (req, res) {
+    res.redirect("payment-type")    
+})
+
+router.post('/' + version + '/record-outcome/ca/payment-type', function (req, res) {
+    if(req.session.data['paymentType'] == 'Overpayments' ||  req.session.data['paymentType'] == 'Overpayments and arrears'){
+        res.redirect("overpayment-details")
+    }
+    else{
+        res.redirect("arrears-details")    
+    }
+})
+
+router.post('/' + version + '/record-outcome/ca/overpayment-details', function (req, res) {
+    if(req.session.data['paymentType'] == 'Overpayments and arrears'){
+        res.redirect("arrears-details")
+    }
+    else if(req.session.data['outcome'] == "Full disallowance"){
+        res.redirect("cancel-alerts") 
+    }
+    else{
+        res.redirect("check-answers")    
+    }
+})
+
+router.post('/' + version + '/record-outcome/ca/arrears-details', function (req, res) {
+    if(req.session.data['outcome'] == "Full disallowance"){
+        res.redirect("cancel-alerts") 
+    }
+    else{
+        res.redirect("check-answers") 
+    }  
+})
+
+router.post('/' + version + '/record-outcome/ca/cancel-alerts', function (req, res) {
+    res.redirect("check-answers")        
+})
+
+router.post('/' + version + '/record-outcome/ca/check-answers', function (req, res) {
+    res.redirect("clear-record-session")        
+})
+
+router.get('/'+ version + '/record-outcome/clear-record-sessions', function (req, res) {
+    delete req.session.data['outcome']
+    delete req.session.data['claimantDeclared']
+    delete req.session.data['officialError']
+    delete req.session.data['customerError']
+    delete req.session.data['civilPenalty']
+    delete req.session.data['arrearsPaid']
+    delete req.session.data['cancelAlerts']
+    delete req.session.data['outstandingAction']
+    delete req.session.data['noChangeReason']
+    
+    res.redirect("/"+version+"/tasks/index")
+})

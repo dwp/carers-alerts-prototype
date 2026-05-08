@@ -66,6 +66,31 @@
               </div>
             </fieldset>
           </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h1 class="govuk-fieldset__heading">
+                  Select agent type
+                </h1>
+              </legend>
+              
+              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="agentType" name="agentType" type="radio" value="BAU" checked="checked">
+                  <label class="govuk-label govuk-radios__label" for="agentType">
+                    Benefit agent (PC, CA or HB)
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="agentType-2" name="agentType" type="radio" value="VEP">
+                  <label class="govuk-label govuk-radios__label" for="agentType-2">
+                    VEP agent
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
           <div class="govuk-form-group">
             <input type="hidden" id="version" name="version" value="v7" />
             <button class="govuk-button">Start</button>

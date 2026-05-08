@@ -1,0 +1,88 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+{% if data['test'] == "a" %}Manage interests
+{% elif data['test'] == "b" %}Manage requests
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <h1 class="govuk-heading-xl">My open tasks</h1>
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#open-tasks">
+            Open tasks
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#search-nino">
+            Search by National Insurance number
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#closed-tasks">
+            Closed tasks
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#transfer-task">
+            Transfer a task
+          </a>
+        </li>
+      </ul>
+
+
+      <div class="govuk-tabs__panel" id="open-tasks">
+        <h2 class="govuk-heading-m">Alert list:</h2>
+        <div class="govuk-form-group">
+        <select class="govuk-select" id="sort" name="sort">
+          <option value="updated" selected>Select an alert list</option>
+          <option value="published">Oldest</option>
+          <option value="views">Newest</option>
+          <option value="comments">Standard</option>
+        </select>
+      </div>
+      <button class="govuk-button">Add new task</button>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">National Insurance number</th>
+              <th scope="col" class="govuk-table__header">Name</th>
+              <th scope="col" class="govuk-table__header">Notes</th>
+              <th scope="col" class="govuk-table__header">Alert type</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a href="task-details">QQ 123456 A</td>
+              <td class="govuk-table__cell">Bob Banana</td>
+              <td class="govuk-table__cell">Task opened 3 days ago.</td>
+              <td class="govuk-table__cell">Standard</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="search-nino">
+        
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="closed-tasks">
+        
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="transfer-task">
+        
+      </div>
+    </div>
+
+  </main>
+</div>
+
+{% endblock %}

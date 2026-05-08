@@ -21,9 +21,6 @@ router.post('/' + version + '/manage-interest/stop-request-clarify', function (r
     }
 })
 
-router.post('/ur', function (req, res) {
 
-    res.redirect(version+"/manage-interest/")
-})
 
 

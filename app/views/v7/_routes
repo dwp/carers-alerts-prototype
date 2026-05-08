@@ -1,0 +1,25 @@
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+let version = "v7";
+
+
+router.post('/ur', function (req, res) {
+    if(req.session.data['benefit'] == "Pension Credit"){
+        req.session.data['benefitType'] = "pc"
+    }
+    else if(req.session.data['benefit'] == "Carer's Allowance"){
+        req.session.data['benefitType'] = "ca"
+    }
+    else{
+        req.session.data['benefitType'] = "hb"
+    }
+
+    if(req.session.data['agentType'] == "BAU"){
+        res.redirect("/"+version+"/manage-interest/")
+    }
+    else{
+        res.redirect("/"+version+"/tasks/")
+    }
+    
+})
