@@ -20,42 +20,37 @@ Cancel alerts
           <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="#">Cancel alerts</a>
+          <a class="govuk-breadcrumbs__link" href="#">Award decreased</a>
         </li>
       </ol>
     </nav>
-    <h1 class="govuk-heading-xl">Cancel alerts</h1>
+    <h1 class="govuk-heading-xl">Award decreased</h1>
     <div class="govuk-inset-text">
       National Insurance number: QQ123456A, Name: Bob Banana<br>
-      You have selected CA outcome: {{data.outcome}}
+      You have selected HB outcome: {{data.outcome}}
     </div>
     <form method="post">
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-body">
             <h2 class="govuk-fieldset__heading-l">
-              {% if data['test']=="a" %}
-                Would you like to unset the interest in Bob Banana?
-              {% elif data['test'] == "b" %}
-                Would you like to cancel the {{data.benefit}} request for Bob Banana?
-              {% endif%}
-              
+              Does the increase in earnings mean the benefit has now ceased?
             </h2>
           </legend>
 
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="cancelAlerts" name="cancelAlerts" type="radio" value="Yes">
-              <label class="govuk-label govuk-radios__label" for="cancelAlerts">
+              <input class="govuk-radios__input" id="reducedToNil" name="reducedToNil" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="reducedToNil">
                 Yes
               </label>
             </div>
 
             
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="cancelAlerts-2" name="cancelAlerts" type="radio"
+              <input class="govuk-radios__input" id="reducedToNil-2" name="reducedToNil" type="radio"
                 value="No">
-              <label class="govuk-label govuk-radios__label" for="cancelAlerts-2">
+              <label class="govuk-label govuk-radios__label" for="reducedToNil-2">
                 No
               </label>
             </div>

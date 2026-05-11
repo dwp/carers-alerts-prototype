@@ -17,9 +17,18 @@ router.post('/' + version + '/manage-interest/stop-request-clarify', function (r
         res.redirect("stop-request-confirmation")
     }
     else{
-        res.redirect("index")
+        res.redirect("clear-manage-sessions")
     }
 })
+
+
+router.get('/' + version + '/manage-interest/clear-manage-sessions', function (req, res) {
+    delete req.session.data['confirmCitizen']
+    delete req.session.data['stopRequest']
+    res.redirect("index")
+})
+
+
 
 
 

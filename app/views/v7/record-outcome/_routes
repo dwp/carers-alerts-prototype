@@ -8,77 +8,78 @@ let version = "v7";
 ///////////////////////////////
 
 router.post('/' + version + '/record-outcome/ca/outcome', function (req, res) {
-    if(req.session.data['outcome'] == 'Full disallowance' ||  req.session.data['outcome'] == 'Partial disallowance'){
+    if (req.session.data['outcome'] == 'Full disallowance' || req.session.data['outcome'] == 'Partial disallowance') {
         res.redirect("claimant-declared")
     }
-    else if(req.session.data['outcome'] == 'No change to award'){
+    else if (req.session.data['outcome'] == 'No change to award') {
         res.redirect("no-change")
     }
-    else if(req.session.data['outcome'] == 'Outstanding action in CAU'){
+    else if (req.session.data['outcome'] == 'Outstanding action in CAU') {
         res.redirect("outstanding-action")
     }
-    else{
-       res.redirect("no-action") 
+    else {
+        res.redirect("no-action")
     }
-    
+
 })
 router.post('/' + version + '/record-outcome/ca/no-change', function (req, res) {
-    res.redirect("check-answers")    
+    res.redirect("check-answers")
 })
 router.post('/' + version + '/record-outcome/ca/outstanding-action', function (req, res) {
-    res.redirect("check-answers")    
+    res.redirect("check-answers")
 })
 router.post('/' + version + '/record-outcome/ca/no-action', function (req, res) {
-    if(req.session.data['noActionReason'] == "Dormant case"){
+    if (req.session.data['noActionReason'] == "Dormant case") {
         res.redirect("cancel-alerts")
     }
-    else{res.redirect("check-answers")}
+    else { res.redirect("check-answers") }
 })
 
 
 router.post('/' + version + '/record-outcome/ca/claimant-declared', function (req, res) {
-    res.redirect("payment-type")    
+    res.redirect("payment-type")
 })
 
 router.post('/' + version + '/record-outcome/ca/payment-type', function (req, res) {
-    if(req.session.data['paymentType'] == 'Overpayments' ||  req.session.data['paymentType'] == 'Overpayments and arrears'){
+    if (req.session.data['paymentType'] == 'Overpayments' || req.session.data['paymentType'] == 'Overpayments and arrears') {
         res.redirect("overpayment-details")
     }
-    else{
-        res.redirect("arrears-details")    
+    else {
+        res.redirect("arrears-details")
     }
 })
 
 router.post('/' + version + '/record-outcome/ca/overpayment-details', function (req, res) {
-    if(req.session.data['paymentType'] == 'Overpayments and arrears'){
+    if (req.session.data['paymentType'] == 'Overpayments and arrears') {
         res.redirect("arrears-details")
     }
-    else if(req.session.data['outcome'] == "Full disallowance"){
-        res.redirect("cancel-alerts") 
+    else if (req.session.data['outcome'] == "Full disallowance") {
+        res.redirect("cancel-alerts")
     }
-    else{
-        res.redirect("check-answers")    
+    else {
+        res.redirect("check-answers")
     }
 })
 
 router.post('/' + version + '/record-outcome/ca/arrears-details', function (req, res) {
-    if(req.session.data['outcome'] == "Full disallowance"){
-        res.redirect("cancel-alerts") 
+    if (req.session.data['outcome'] == "Full disallowance") {
+        res.redirect("cancel-alerts")
     }
-    else{
-        res.redirect("check-answers") 
-    }  
+    else {
+        res.redirect("check-answers")
+    }
 })
 
 router.post('/' + version + '/record-outcome/ca/cancel-alerts', function (req, res) {
-    res.redirect("check-answers")        
+    res.redirect("check-answers")
 })
 
 router.post('/' + version + '/record-outcome/ca/check-answers', function (req, res) {
-    res.redirect("clear-record-session")        
+    req.session.data['outcomeSuccess'] = "true";
+    res.redirect("clear-record-session")
 })
 
-router.get('/'+ version + '/record-outcome/clear-record-sessions', function (req, res) {
+router.get('/' + version + '/record-outcome/clear-record-sessions', function (req, res) {
     delete req.session.data['outcome']
     delete req.session.data['claimantDeclared']
     delete req.session.data['officialError']
@@ -88,6 +89,57 @@ router.get('/'+ version + '/record-outcome/clear-record-sessions', function (req
     delete req.session.data['cancelAlerts']
     delete req.session.data['outstandingAction']
     delete req.session.data['noChangeReason']
-    
-    res.redirect("/"+version+"/tasks/index")
+    delete req.session.data['unchangedOutcomeReason']
+    delete req.session.data['reducedToNil']
+    delete req.session.data['paymentType']
+    res.redirect("/" + version + "/tasks/index")
+})
+
+
+
+///////////////////////////////
+//  Housing Benefit journey  //
+///////////////////////////////
+
+router.post('/' + version + '/record-outcome/hb/outcome', function (req, res) {
+    if (req.session.data['outcome'] == 'Award decreased' || req.session.data['outcome'] == 'Award increased') {
+        res.redirect("claimant-declared")
+    }
+    else if (req.session.data['outcome'] == 'Award unchanged') {
+        res.redirect("unchanged-outcome")
+    }
+    else if (req.session.data['outcome'] == 'No active claim') {
+        res.redirect("cancel-alerts")
+    }
+})
+
+router.post('/' + version + '/record-outcome/hb/claimant-declared', function (req, res) {
+    if (req.session.data['outcome'] == 'Award decreased'){
+        res.redirect("reduced-to-nil")
+    }
+    else {
+        res.redirect("check-answers")
+    }
+})
+
+router.post('/' + version + '/record-outcome/hb/reduced-to-nil', function (req, res) {
+    if (req.session.data['reducedToNil'] == 'Yes'){
+        res.redirect("cancel-alerts")
+    }
+    else {
+        res.redirect("check-answers")
+    }
+})
+
+router.post('/' + version + '/record-outcome/hb/check-answers', function (req, res) {
+    req.session.data['outcomeSuccess'] = "true";
+    res.redirect("../clear-record-sessions")
+})
+
+router.post('/' + version + '/record-outcome/hb/unchanged-outcome', function (req, res) {
+    res.redirect("check-answers")
+})
+
+router.post('/' + version + '/record-outcome/hb/cancel-alerts', function (req, res) {
+    res.redirect("check-answers")
 })

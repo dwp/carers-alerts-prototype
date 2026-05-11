@@ -28,7 +28,7 @@
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="test-2" name="test" type="radio" value="b">
+                  <input class="govuk-radios__input" id="test-2" name="test" type="radio" value="b" {% if data.test == "b" %} checked="checked"{%endif%}>
                   <label class="govuk-label govuk-radios__label" for="test-2">
                     B
                   </label>
@@ -46,19 +46,19 @@
               
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="benefit" name="benefit" type="radio" value="Pension Credit"  checked="checked">
+                  <input class="govuk-radios__input" id="benefit" name="benefit" type="radio" value="Pension Credit" checked="checked">
                   <label class="govuk-label govuk-radios__label" for="benefit">
                     Pension Credit
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="benefit-2" name="benefit" type="radio" value="Carer's Allowance">
+                  <input class="govuk-radios__input" id="benefit-2" name="benefit" type="radio" value="Carer's Allowance" {% if data.benefit == "Carer's Allowance" %} checked="checked"{%endif%}>
                   <label class="govuk-label govuk-radios__label" for="benefit-2">
                     Carer's Allowance
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="benefit-3" name="benefit" type="radio" value="Housing Benefit">
+                  <input class="govuk-radios__input" id="benefit-3" name="benefit" type="radio" value="Housing Benefit" {% if data.benefit == "Housing Benefit" %} checked="checked"{%endif%}>
                   <label class="govuk-label govuk-radios__label" for="benefit-3">
                     Housing Benefit
                   </label>
@@ -83,9 +83,9 @@
                   </label>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="agentType-2" name="agentType" type="radio" value="VEP">
+                  <input class="govuk-radios__input" id="agentType-2" name="agentType" type="radio" value="VEP" {% if data.agentType == "VEP" %} checked="checked"{%endif%}>
                   <label class="govuk-label govuk-radios__label" for="agentType-2">
-                    VEP agent
+                    VEP agent (PC or CA only)
                   </label>
                 </div>
               </div>

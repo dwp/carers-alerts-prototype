@@ -1,0 +1,117 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+Check your answers before recording the outcome
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">My open tasks</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Check your answers before recording the outcome</a>
+        </li>
+      </ol>
+    </nav>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Check your answers before recording the outcome</h1>
+        <div class="govuk-form-group">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                National Insurance number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                QQ123456A
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                &nbsp
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is the outcome of this task?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data.outcome}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              </dd>
+            </div>
+            {% if data.claimantDeclared %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Has the citizen already declared a change of earnings?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data.claimantDeclared}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              </dd>
+            </div>
+            {% endif %}
+            {% if data.unchangedOutcomeReason %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What is the reason for this award unchanged outcome?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data.unchangedOutcomeReason}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              </dd>
+            </div>
+            {% endif %}
+            {% if data.cancelAlerts %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                {% if data['test']=="a" %}
+                Would you like to unset the interest in Bob Banana?
+                {% elif data['test'] == "b" %}
+                Would you like to cancel the {{data.benefit}} request for Bob Banana?
+                {% endif%}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data.cancelAlerts}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              </dd>
+            </div>
+            {% endif %}
+        </div>
+        <form method="post">
+          <div class="form-group">
+            <button type="submit" class="govuk-button">Record outcome</button>
+          </div>
+          <div class="form-group">
+            <a href="../clear-record-sessions" class="govuk-button govuk-button--secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+
+
+
+
+  </main>
+</div>
+
+{% endblock %}

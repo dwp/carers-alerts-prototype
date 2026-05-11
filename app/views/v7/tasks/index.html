@@ -9,7 +9,25 @@
 
 {% block content %}
 <div class="govuk-width-container">
+
   <main class="govuk-main-wrapper" id="main-content">
+    {% if data.outcomeSuccess == "true" %}
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+      aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          Task outcome recorded
+        </h3>
+        
+      </div>
+    </div>
+    {% endif %}
+
     <h1 class="govuk-heading-xl">My open tasks</h1>
 
     <div class="govuk-tabs" data-module="govuk-tabs">
@@ -43,14 +61,14 @@
       <div class="govuk-tabs__panel" id="open-tasks">
         <h2 class="govuk-heading-m">Alert list:</h2>
         <div class="govuk-form-group">
-        <select class="govuk-select" id="sort" name="sort">
-          <option value="updated" selected>Select an alert list</option>
-          <option value="published">Oldest</option>
-          <option value="views">Newest</option>
-          <option value="comments">Standard</option>
-        </select>
-      </div>
-      <button class="govuk-button">Add new task</button>
+          <select class="govuk-select" id="sort" name="sort">
+            <option value="updated" selected>Select an alert list</option>
+            <option value="published">Oldest</option>
+            <option value="views">Newest</option>
+            <option value="comments">Standard</option>
+          </select>
+        </div>
+        <button class="govuk-button">Add new task</button>
 
         <table class="govuk-table">
           <thead class="govuk-table__head">
@@ -63,7 +81,7 @@
           </thead>
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <td class="govuk-table__cell"><a href="task-details">QQ 123456 A</td>
+              <td class="govuk-table__cell"><a href="task-details?outcomeSuccess=false">QQ 123456 A</td>
               <td class="govuk-table__cell">Bob Banana</td>
               <td class="govuk-table__cell">Task opened 3 days ago.</td>
               <td class="govuk-table__cell">Standard</td>
@@ -72,13 +90,13 @@
         </table>
       </div>
       <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="search-nino">
-        
+
       </div>
       <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="closed-tasks">
-        
+
       </div>
       <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="transfer-task">
-        
+
       </div>
     </div>
 

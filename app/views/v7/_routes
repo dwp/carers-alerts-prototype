@@ -16,10 +16,11 @@ router.post('/ur', function (req, res) {
     }
 
     if(req.session.data['agentType'] == "BAU"){
-        res.redirect("/"+version+"/manage-interest/")
+        res.redirect("/"+version+"/manage-interest/clear-manage-sessions")
     }
     else{
-        res.redirect("/"+version+"/tasks/")
+        delete req.session.data['outcomeSuccess']
+        res.redirect("/"+version+"/record-outcome/clear-record-sessions")
     }
     
 })
