@@ -86,7 +86,6 @@ router.get('/' + version + '/record-outcome/clear-record-sessions', function (re
     delete req.session.data['customerError']
     delete req.session.data['civilPenalty']
     delete req.session.data['arrearsPaid']
-    delete req.session.data['cancelAlerts']
     delete req.session.data['outstandingAction']
     delete req.session.data['noChangeReason']
     delete req.session.data['unchangedOutcomeReason']
@@ -141,5 +140,54 @@ router.post('/' + version + '/record-outcome/hb/unchanged-outcome', function (re
 })
 
 router.post('/' + version + '/record-outcome/hb/cancel-alerts', function (req, res) {
+    res.redirect("check-answers")
+})
+
+
+
+///////////////////////////////
+//  Pension Credit journey  //
+///////////////////////////////
+
+router.post('/' + version + '/record-outcome/pc/outcome', function (req, res) {
+    if (req.session.data['outcome'] == 'Award decreased' || req.session.data['outcome'] == 'Award increased') {
+        res.redirect("claimant-declared")
+    }
+    else if (req.session.data['outcome'] == 'Award unchanged') {
+        res.redirect("unchanged-outcome")
+    }
+    else if (req.session.data['outcome'] == 'No active award') {
+        res.redirect("cancel-alerts")
+    }
+})
+
+router.post('/' + version + '/record-outcome/pc/claimant-declared', function (req, res) {
+    if (req.session.data['outcome'] == 'Award decreased'){
+        res.redirect("reduced-to-nil")
+    }
+    else {
+        res.redirect("check-answers")
+    }
+})
+
+router.post('/' + version + '/record-outcome/pc/reduced-to-nil', function (req, res) {
+    if (req.session.data['reducedToNil'] == 'Yes'){
+        res.redirect("cancel-alerts")
+    }
+    else {
+        res.redirect("check-answers")
+    }
+})
+
+router.post('/' + version + '/record-outcome/pc/check-answers', function (req, res) {
+    req.session.data['outcomeSuccess'] = "true";
+    res.redirect("../clear-record-sessions")
+})
+
+router.post('/' + version + '/record-outcome/pc/unchanged-outcome', function (req, res) {
+    res.redirect("check-answers")
+})
+
+router.post('/' + version + '/record-outcome/pc/cancel-alerts', function (req, res) {
     res.redirect("check-answers")
 })

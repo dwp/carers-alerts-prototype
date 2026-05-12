@@ -10,7 +10,8 @@
 {% block content %}
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
-    <h1 class="govuk-heading-xl">My open tasks</h1>
+    <h1 class="govuk-heading-xl">Task details</h1>
+  
 
     <div class="govuk-tabs" data-module="govuk-tabs">
       <h2 class="govuk-tabs__title">
@@ -66,6 +67,7 @@
             {{ "today" | govukDate }}
           </dd>
         </div>
+        {% if data.benefitType == "pc" or  data.benefitType == "ca"%}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Date alert generate
@@ -74,6 +76,7 @@
             3 Apr 2026
           </dd>
         </div>
+        {% endif %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Notes
