@@ -77,6 +77,19 @@ Check your answers before recording the outcome
               </dd>
             </div>
             {% endif %}
+            {% if data.reducedToNil %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Has the benefit ended because they're earning more?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data.reducedToNil}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+              </dd>
+            </div>
+            {% endif %}
             {% if data.cancelAlerts %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">

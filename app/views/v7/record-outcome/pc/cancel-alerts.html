@@ -20,11 +20,23 @@ Cancel alerts
           <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="#">Cancel alerts</a>
+          <a class="govuk-breadcrumbs__link" href="#">
+            {% if data['test']=="a" %}
+            Unset the interest
+            {% elif data['test'] == "b" %}
+            Cancel the request
+            {% endif%}
+          </a>
         </li>
       </ol>
     </nav>
-    <h1 class="govuk-heading-xl">Cancel alerts</h1>
+    <h1 class="govuk-heading-xl">
+      {% if data['test']=="a" %}
+      Unset the interest
+      {% elif data['test'] == "b" %}
+      Cancel the request
+      {% endif%}
+    </h1>
     <div class="govuk-inset-text">
       National Insurance number: QQ123456A, Name: Bob Banana<br>
       You have selected HB outcome: {{data.outcome}}
@@ -35,11 +47,11 @@ Cancel alerts
           <legend class="govuk-body">
             <h2 class="govuk-fieldset__heading-l">
               {% if data['test']=="a" %}
-                Would you like to unset the interest in Bob Banana?
+              Would you like to unset the interest in Bob Banana?
               {% elif data['test'] == "b" %}
-                Would you like to cancel the {{data.benefit}} request for Bob Banana?
+              Would you like to cancel the {{data.benefit}} request for Bob Banana?
               {% endif%}
-              
+
             </h2>
           </legend>
 
@@ -51,10 +63,9 @@ Cancel alerts
               </label>
             </div>
 
-            
+
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="cancelAlerts-2" name="cancelAlerts" type="radio"
-                value="No">
+              <input class="govuk-radios__input" id="cancelAlerts-2" name="cancelAlerts" type="radio" value="No">
               <label class="govuk-label govuk-radios__label" for="cancelAlerts-2">
                 No
               </label>

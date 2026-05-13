@@ -2,9 +2,7 @@
 {% set globalNavSection = 'My tasks' %}
 
 {% block pageTitle %}
-{% if data['test'] == "a" %}Manage interests
-{% elif data['test'] == "b" %}Manage requests
-{% endif %}
+My open tasks
 {% endblock %}
 
 {% block content %}
@@ -21,15 +19,15 @@
       </div>
       <div class="govuk-notification-banner__content">
         <h3 class="govuk-notification-banner__heading">
-          Task outcome recorded
+          Outcome recorded {% if data.cancelAlerts == "Yes" %}and alerts cancelled{%endif%}
         </h3>
         {% if (data.benefitType == "pc" or data.benefitType == "hb") and data.cancelAlerts == "Yes" %}
         <p class="govuk-body">
-          You will need to check Searchlight to see whether Bob Banana has a partner. You may need to <a href="../manage-interest/stop-request" class="govuk-link">
-            {% if data['test']=="a" %}unset an interest
-            {% elif data['test'] == "b" %}cancel a request
+          Check Searchlight to see whether Bob Banana has a partner. If they do, you may also need to <a href="../manage-interest/stop-request" class="govuk-link">
+            {% if data['test']=="a" %}unset an interest</a> in
+            {% elif data['test'] == "b" %}cancel the request</a> for
             {%endif%}
-            </a> for them too.
+             them.
         </p>
         {% endif %}
       </div>
