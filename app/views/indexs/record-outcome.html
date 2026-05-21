@@ -1,0 +1,96 @@
+{% extends "layouts/index.html" %}
+
+{% block pageTitle %}
+Dashboard index
+{% endblock %}
+ 
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p><a href="javascript:history.back()" class="govuk-back-link govuk-!-static-margin-0">Back</a></p>
+
+        <h1 class="govuk-heading-l">Record an outcome</h1>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Current iteration
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Status
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <span class="govuk-tag govuk-tag--green">
+                    <span>IN DESIGN</span>
+                  </span>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Designers
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Mark Keeling & Chris Smith
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Date of design
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  May 2026
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  High-level assumed user needs
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body-s">
+                    <strong>As a</strong> VEP agent,<br>
+                    <strong>I need to</strong> ???<br>
+                    <strong>So that I</strong> ???
+                  </p>
+                  
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Prototype links
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body-s">
+                    <span class="govuk-body-s"><strong>???</strong></span><br>
+                    <a class="govuk-link"
+                      href="#">???</a>                   
+                  </p>
+                  
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Design documentation
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <a href="https://lucid.app/lucidspark/b5903b4a-0e20-4cc3-8bbd-60d5d542b672/edit?viewport_loc=-775%2C-1169%2C11574%2C5775%2C0_0&invitationId=inv_049178fc-73b7-452b-91b3-5d7e854d8815"
+                    target="_blank">Lucid link</a> (opens in a new tab)
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        
+        <p>Some pre-March 2026 designs may be recorded in the <a
+              href="/indexs/historic">design archive</a></p>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}
