@@ -1,0 +1,60 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Team {{data['teamName'] | lower}}</span>
+        <h1 class="govuk-heading-xl">Current allocations</h1>
+        <div class="govuk-grid-column-one-third">
+            <button class="dwp-side-navigation__button" data-module="dwp-side-navigation"
+                data-target="dwp-side-navigation-panel" data-label-hide="Hide navigation"
+                data-label-show="Show navigation" aria-expanded="false">
+                <span class="dwp-side-navigation__section-toggle-focus">
+                    <span class="dwp-side-navigation__chevron dwp-side-navigation__chevron--down"></span>
+                    <span class="dwp-side-navigation__section-toggle-text">Show navigation</span>
+                </span>
+            </button>
+            <nav data-module="dwp-side-navigation-panel" class="dwp-side-navigation dwp-side-navigation--mobile"
+                aria-label="Side" role="navigation">
+                <ul class="dwp-side-navigation__list">
+                    <li class="dwp-side-navigation__item dwp-side-navigation__item--selected">
+                        <a id="s-item-2" href="#s-item-2"
+                            class="dwp-side-navigation__link dwp-side-navigation__link--selected">
+                            Current allocations
+                        </a>
+                    </li>
+                    <li class="dwp-side-navigation__item">
+                        <a id="s-item-3" href="#s-item-3" class="dwp-side-navigation__link">
+                            Yesterday's metrics
+                        </a>
+                    </li>
+                    <li class="dwp-side-navigation__item">
+                        <a id="s-item-4" href="#s-item-4" class="dwp-side-navigation__link">
+                            Last working week
+                        </a>
+                    </li>
+                    <li class="dwp-side-navigation__item">
+                        <a id="s-item-5" href="#s-item-5" class="dwp-side-navigation__link">
+                            Transfer an alert
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+            Content goes here
+        </div>
+    </div>
+</div>
+{% endblock %}
