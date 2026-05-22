@@ -24,3 +24,8 @@ router.post('/ur', function (req, res) {
     }
     
 })
+
+router.post('/' + version + '/cookies/cookie-settings', function (req, res) {
+    req.session.data['cookies'] = "true";
+    res.redirect("cookie-settings")
+})
