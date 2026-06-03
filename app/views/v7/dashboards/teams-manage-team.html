@@ -3,7 +3,7 @@
 
 
 {% block pageTitle %}
-Manage team {{data['teamName'] | lower}}
+Manage team {{data['teamName'] | capitalize}}
 {% endblock %}
 
 {% block content %}
@@ -82,7 +82,7 @@ Manage team {{data['teamName'] | lower}}
       <div class="govuk-grid-column-two-thirds">
 
         {% include '/includes/back' %}
-        <h1 class="govuk-heading-xl">Manage {{data['teamName'] | lower}} team</h1>
+        <h1 class="govuk-heading-xl">Manage {{data['teamName']| capitalize}}</h1>
         <div class="govuk-form-group govuk-body">
           {% if data[data['teamName']] %}
           {% for members in data[data['teamName']]%}
@@ -96,13 +96,13 @@ Manage team {{data['teamName'] | lower}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="teams-remove-team-member?remove={{loop.index0}}">Remove<span
-                  class="govuk-visually-hidden"> {{members.firstName}} {{members.firstName}} from team
+                  class="govuk-visually-hidden"> {{members.firstName}} {{members.lastName}} from team
                   {{teams}}</span></a>
             </dd>
           </div>
           {% endfor %}
           {% else %}
-          Team {{data['teamName'] | lower}} has no team members
+          {{data['teamName'] | capitalize}} has no team members
           {% endif %}
         </div>
         <form method="post">

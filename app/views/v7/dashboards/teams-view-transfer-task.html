@@ -1,0 +1,129 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+
+{% block pageTitle %}
+Transfer a task
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {% include '/includes/back' %}
+  <main class="govuk-main-wrapper">
+    {% if data.confirmTransfer == "Yes" %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+          aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Success
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <h3 class="govuk-notification-banner__heading">
+              The task has been transfered
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+        <span class="govuk-caption-l">{{data['teamName'] | capitalize}}</span>
+        <h1 class="govuk-heading-l">Transfer a task</h1>
+
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <button class="dwp-side-navigation__button" data-module="dwp-side-navigation"
+          data-target="dwp-side-navigation-panel" data-label-hide="Hide navigation" data-label-show="Show navigation"
+          aria-expanded="false">
+          <span class="dwp-side-navigation__section-toggle-focus">
+            <span class="dwp-side-navigation__chevron dwp-side-navigation__chevron--down"></span>
+            <span class="dwp-side-navigation__section-toggle-text">Show navigation</span>
+          </span>
+        </button>
+        <nav data-module="dwp-side-navigation-panel" class="dwp-side-navigation dwp-side-navigation--mobile"
+          aria-label="Side" role="navigation">
+          <ul class="dwp-side-navigation__list">
+            <li class="dwp-side-navigation__item">
+              <a id="s-item-1" href="teams-view-team-overview" class="dwp-side-navigation__link">
+                Team overview
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item ">
+              <a id="s-item-2" href="teams-view-team-summary" class="dwp-side-navigation__link" aria-current="true">
+                Team summary
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item">
+              <a id="s-item-3" href="teams-view-task-clearance" class="dwp-side-navigation__link">
+                Task clearance
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item dwp-side-navigation__item--selected">
+              <a id="s-item-4" href="teams-view-transfer-task"
+                class="dwp-side-navigation__link dwp-side-navigation__link--selected">
+                Transfer a task
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="transferNINO">
+                National Insurance number
+              </label>
+            </h1>
+            <p class="govuk-hint">Enter the National Insurance number for the task you would like to transfer. For
+              example, QQ 12 34 56 D.</p>
+            <input class="govuk-input govuk-input--width-10" id="transferNINO" name="transferNINO" type="text">
+          </div>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Who would you like to transfer the task to?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                {% for members in data[data['teamName']]%}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="transferTo{{loop.index}}" name="transferTo" type="radio"
+                    value="{{members.firstName}} {{members.lastName}}">
+                  <label class="govuk-label govuk-radios__label" for="transferTo{{loop.index}}">
+                    {{members.firstName}} {{members.lastName}}
+                  </label>
+                </div>
+                {%endfor%}
+
+                <div class="govuk-radios__divider">or</div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="Yourself" name="transferTo" type="radio" value="Yourself">
+                  <label class="govuk-label govuk-radios__label" for="Yourself">
+                    Yourself
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+</div>
+{% endblock %}

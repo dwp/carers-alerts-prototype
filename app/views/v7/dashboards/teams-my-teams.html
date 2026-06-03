@@ -2,7 +2,7 @@
 {% set globalNavSection = 'My teams' %}
 
 {% block pageTitle %}
-My teams
+Managed teams
 {% endblock %}
 
 {% block content %}
@@ -19,14 +19,14 @@ My teams
       </div>
       <div class="govuk-notification-banner__content">
         <h3 class="govuk-notification-banner__heading">
-          Your {{data.teamName}} team has been removed.
+          {{data.teamName}} has been removed.
         </h3>
       </div>
     </div>
     {% endif %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">My teams</h1>
+        <h1 class="govuk-heading-xl">Manage teams</h1>
 
         {% if data['teams'].length >0 %}
         <div class="govuk-form-group">
@@ -40,9 +40,9 @@ My teams
                 }}
               </dt>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="teams-manage-team?teamBanner=null&banner=null&teamName={{teams}}">Manage<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
-                <a class="govuk-link" href="teams-view-team?teamBanner=null&teamName={{teams}}">View<span class="govuk-visually-hidden"> team {{teams}}</span></a>&nbsp;
-                <a class="govuk-link" href="teams-remove-team?teamBanner=null&teamName={{teams}}&remove={{loop.index0}}">Remove<span class="govuk-visually-hidden"> team {{teams}}</span></a>
+                <a class="govuk-link" href="teams-manage-team?teamBanner=null&banner=null&teamName={{teams}}">Manage team</a><br>
+                <a class="govuk-link" href="teams-view-team?teamBanner=null&teamName={{teams}}">View performance<span class="govuk-visually-hidden"> team {{teams}}</span></a><br>
+                <a class="govuk-link" href="teams-remove-team?teamBanner=null&teamName={{teams}}&remove={{loop.index0}}">Remove<span class="govuk-visually-hidden">team</span></a>
               </dd>
             </div>
             {% endfor %}

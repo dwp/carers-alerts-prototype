@@ -1,0 +1,98 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+
+{% block pageTitle %}
+Team summary
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {% include '/includes/back' %}
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+        <span class="govuk-caption-l">{{data['teamName'] | capitalize}}</span>
+        <h1 class="govuk-heading-l">Team summary</h1>
+
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <button class="dwp-side-navigation__button" data-module="dwp-side-navigation"
+          data-target="dwp-side-navigation-panel" data-label-hide="Hide navigation" data-label-show="Show navigation"
+          aria-expanded="false">
+          <span class="dwp-side-navigation__section-toggle-focus">
+            <span class="dwp-side-navigation__chevron dwp-side-navigation__chevron--down"></span>
+            <span class="dwp-side-navigation__section-toggle-text">Show navigation</span>
+          </span>
+        </button>
+        <nav data-module="dwp-side-navigation-panel" class="dwp-side-navigation dwp-side-navigation--mobile"
+          aria-label="Side" role="navigation">
+          <ul class="dwp-side-navigation__list">
+            <li class="dwp-side-navigation__item ">
+              <a id="s-item-1" href="teams-view-team-overview" class="dwp-side-navigation__link ">
+                Team overview
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item dwp-side-navigation__item--selected">
+              <a id="s-item-2" href="teams-view-team-summary"
+                class="dwp-side-navigation__link dwp-side-navigation__link--selected" aria-current="true">
+                Team summary
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item">
+              <a id="s-item-3" href="teams-view-task-clearance" class="dwp-side-navigation__link">
+                Task clearance
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item">
+              <a id="s-item-4" href="teams-view-transfer-task" class="dwp-side-navigation__link">
+                Transfer a task
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+      <div class="govuk-grid-column-three-quarters">
+        <p class="govuk-body">Showing data from {{data.teamViewStart | govukDate }} to {{data.teamViewEnd | govukDate }}
+          &nbsp;&nbsp;<a href="teams-view-team">Change</a></p>
+        <table class="govuk-table">
+          
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-visually-hidden">Team member</th>
+              <th scope="col" class="govuk-table__header">Allocated tasks</th>
+              <th scope="col" class="govuk-table__header">Up to 4 weeks old</th>
+              <th scope="col" class="govuk-table__header">Older than 4 weeks up to 6 </th>
+              <th scope="col" class="govuk-table__header">Older than 6 weeks up to 12 </th>
+              <th scope="col" class="govuk-table__header">Expiring in 2 weeks or less </th>
+              <th scope="col" class="govuk-table__header">Cleared </th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+
+            {% for members in data[data['teamName']]%}
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">{{members.firstName}} {{members.lastName}}</th>
+              <td class="govuk-table__cell"><a href="teams-view-allocated?n={{members.allocatedTasks}}">{{members.allocatedTasks}}</a></td>
+              <td class="govuk-table__cell">{{members.allocatedTasks}}</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell">0</td>
+              <td class="govuk-table__cell"><a href="teams-view-completed?n={{members.clearedTasks}}">{{members.clearedTasks}}</a></td>
+            </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+
+
+</div>
+</main>
+</div>
+{% endblock %}

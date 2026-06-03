@@ -32,12 +32,10 @@ Remove team member
           {% endif %}
           {% endfor %}
           {{data['team'][data.remove].firstName}}
-          from team {{data['teamName'] | lower}}?
+          from {{data['teamName'] | capitalize}}?
                 </h1>
               </legend>
-              <div id="changedName-hint" class="govuk-hint">
-                This includes changing your last name or spelling your name differently
-              </div>
+              
               <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="deleteUser" name="deleteUser" type="radio" value="yes">

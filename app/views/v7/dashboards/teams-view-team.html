@@ -8,98 +8,141 @@ View team {{data['teamName'] | lower}}
 
 {% block content %}
 <div class="govuk-width-container">
-  <main class="govuk-main-wrapper" id="main-content">
+  {% include '/includes/back' %}
+  <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
+      <div class="govuk-grid-column-two-thirds">
 
-        {% include '/includes/back' %}
-        <h1 class="govuk-heading-xl">View {{data['teamName'] | lower}} team
-          <span class="govuk-caption-l">Week 12 - Monday 16 March to Sunday 22 March</span>
-        </h1>
-        <div class="govuk-form-group govuk-body govuk-!-margin-bottom-3">
-          <table class="govuk-table">
-            <caption class="govuk-table__caption govuk-table__caption--m">Allocations</caption>
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Team member</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Allocated alerts</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Cleared alerts</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              {% if data[data['teamName']] %}
-              {% for members in data[data['teamName']]%}
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">{{members.firstName}} {{members.lastName}}</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-              </tr>
-              {% endfor %}
-              {% else %}
-              Team {{data['teamName'] | lower}} has no team members
-              {% endif %}
-            </tbody>
-          </table>
-        </div>
-        <div class="govuk-form-group govuk-body govuk-body govuk-!-margin-bottom-3">
-          <table class="govuk-table">
-            <caption class="govuk-table__caption govuk-table__caption--m">Postponements (BF)</caption>
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Team member</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Over 30 days</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Over 60 days</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Over 100 days</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Oldest date</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              {% if data[data['teamName']] %}
-              {% for members in data[data['teamName']]%}
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">{{members.firstName}} {{members.lastName}}</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-              </tr>
-              {% endfor %}
-              {% else %}
-              Team {{data['teamName'] | lower}} has no team members
-              {% endif %}
-            </tbody>
-          </table>
-        </div>
-        <div class="govuk-form-group govuk-body govuk-body govuk-!-margin-bottom-3">
-          <table class="govuk-table">
-            <caption class="govuk-table__caption govuk-table__caption--m">Cleared alerts</caption>
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Team member</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Total overpayment</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Official error</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Customer error</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Small overpayment</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              {% if data[data['teamName']] %}
-              {% for members in data[data['teamName']]%}
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">{{members.firstName}} {{members.lastName}}</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xx%</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xx%</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric">xxxx</td>
-              </tr>
-              {% endfor %}
-              {% else %}
-              Team {{data['teamName'] | lower}} has no team members
-              {% endif %}
-            </tbody>
-          </table>
-        </div>
+        <span class="govuk-caption-l">{{data['teamName'] | capitalize}}</span>
+        <h1 class="govuk-heading-l">What period you would like to view?</h1>
+        <form method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Start date
+                </h2>
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 12 3 2021
+              </div>
+              <div class="govuk-date-input" id="teamViewStart">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewStart-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewStart-day"
+                      name="teamViewStart-day" type="text" inputmode="numeric" {% if data["teamViewStart-day"] %}
+                      value={{data['teamViewStart-day']}} {% endif %}>
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewStart-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewStart-month"
+                      name="teamViewStart-month" type="text" inputmode="numeric" {% if data["teamViewStart-month"] %}
+                      value="{{data['teamViewStart-month']}}" {%endif%}>
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewStart-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                      id="teamViewStart-year  name=" teamViewStart-year" type="text" inputmode="numeric" {% if
+                      data["teamViewStart-year"] %} value={{data['teamViewStart-year']}} {% endif %}>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  End date
+                </h2>
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 12 3 2021
+              </div>
+              <div class="govuk-date-input" id="teamViewEnd">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewEnd-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewEnd-day"
+                      name="teamViewEnd-day" type="text" inputmode="numeric" {% if data["teamViewEnd-day"] %}
+                      value={{data['teamViewEnd-day']}} {% elif data["teamViewStart-day"] %}
+                      value={{data['teamViewStart-day']}} {% endif %}>
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewEnd-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewEnd-month"
+                      name="teamViewEnd-month" type="text" inputmode="numeric" {% if data["teamViewEnd-month"] %}
+                      value={{data['teamViewEnd-month']}} {% elif data["teamViewStart-month"] %}
+                      value={{data['teamViewStart-month']}} {% endif %}>
+                    >
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewEnd-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="teamViewEnd-year"
+                      name="teamViewEnd-year" type="text" inputmode="numeric" {% if data["teamViewEnd-year"] %}
+                      value={{data['teamViewEnd-year']}} {% elif data["teamViewStart-year"] %}
+                      value={{data['teamViewStart-year']}} {% endif %}>
+                    >
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-form-group">
+            <h2 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="WTE">
+                What was the teams average daily whole time equivalant (WTE) for this period?
+              </label>
+            </h2>
+            <div id="passport-issued-hint" class="govuk-hint">
+              Enter as a percentage. For example, 87.3%.
+            </div>
+            
+            <div class="govuk-input__wrapper">
+              <input class="govuk-input govuk-input--width-3" id="event-name" name="WTE" type="text">
+              <div class="govuk-input__suffix" aria-hidden="true">%</div>
+            </div>
+          </div>
+          <div class="govuk-form-group">
+            <h2 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="dailyExpectation">
+                What is the current daily expectation?
+            </h2>
+            <input class="govuk-input govuk-input--width-2" id="dailyExpectation" name="dailyExpectation" type="text" {%
+              if data.dailyExpectation %}value={{data.dailyExpectation}}{%endif%}>
+          </div>
+          <div class="govuk-form-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+        </form>
+
+
       </div>
+    </div>
   </main>
 </div>
 {% endblock %}
