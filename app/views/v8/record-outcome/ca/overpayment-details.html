@@ -1,0 +1,86 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+Record overpayment details
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">My open tasks</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Record overpayment details</a>
+        </li>
+      </ol>
+    </nav>
+    <form method="post">
+      <h1 class="govuk-heading-xl">Record overpayment details</h1>
+      <div class="govuk-inset-text">
+        National Insurance number: QQ123456A, Name: Bob Banana<br>
+        You have selected CA outcome: {{data.outcome}}
+      </div>
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-body govuk-body--m" for="officialError">
+            Official error amount
+          </label>
+        </h1>
+        <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5" id="officialError" name="officialError" type="number"
+            spellcheck="false">
+        </div>
+
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-body govuk-body--m" for="customerError">
+            Customer error amount
+          </label>
+        </h1>
+        <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5" id="customerError" name="customerError" type="number"
+            spellcheck="false">
+        </div>
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-body">Civil penalty applied?</legend>
+          
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="civilPenalty" name="civilPenalty" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="civilPenalty">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="civilPenalty-2" name="civilPenalty" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="civilPenalty-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+      </div>
+    </form>
+
+
+  </main>
+</div>
+
+{% endblock %}

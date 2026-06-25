@@ -1,0 +1,89 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Manage requests' %}
+
+{% block pageTitle %}
+Tasks
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "user-summary#user-summary"
+    }) }}
+
+    <span class="govuk-caption-xl">{{data.user}}'s</span>
+    <h1 class="govuk-heading-xl">Tasks</h1>
+
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#open-tasks">
+            Open tasks
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#closed-tasks">
+            Closed tasks
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel" id="open-tasks">
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">National Insurance number</th>
+              <th scope="col" class="govuk-table__header">Name</th>
+              <th scope="col" class="govuk-table__header">Notes</th>
+              <th scope="col" class="govuk-table__header">Alert type</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a href="#">QQ123456A</a></th>
+              <td class="govuk-table__cell">Brian Underwood</td>
+              <td class="govuk-table__cell">Task opended today</td>
+              <td class="govuk-table__cell">Oldest</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a href="#">QQ123456B</a></th>
+              <td class="govuk-table__cell">Oscar Hinge</td>
+              <td class="govuk-table__cell">Task opended today</td>
+              <td class="govuk-table__cell">Oldest</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="closed-tasks">
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">National Insurance number</th>
+              <th scope="col" class="govuk-table__header">Name</th>
+              <th scope="col" class="govuk-table__header">Date Task Closed</th>
+              <th scope="col" class="govuk-table__header">Alert type(s)</th>
+              <th scope="col" class="govuk-table__header">Outcome Recorded</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a href="#">QQ123456C</a></th>
+              <td class="govuk-table__cell">Harry Swing</td>
+              <td class="govuk-table__cell">8 Jul 2022</td>
+              <td class="govuk-table__cell">Carers Allowance Net Pay Start</td>
+              <td class="govuk-table__cell">Partial disallowance - Claimant declared</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}

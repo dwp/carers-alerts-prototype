@@ -1,0 +1,174 @@
+{% extends "layouts/main_post_2026.html" %}
+
+{% block pageTitle %}
+Cookies consent
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content" role="main">
+
+    {% if data.cookies == "true"%}
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+      aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          Your cookie settings were saved.
+        </h3>
+        <p>
+          You've {% if data.gaCookies == "no"%}rejected{%else%}accepted{%endif%} analytics cookies.
+        </p>
+      </div>
+    </div>
+    {%endif%}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <a href="../tasks/index?cookies=false" class="govuk-body govuk-back-link">Return to previous page</a>
+        <h1 class="govuk-heading-xl">Cookies</h1>
+        <p class="govuk-body">Cookies are small files saved on your phone, tablet or computer when you visit a website.
+        </p>
+        <p class="govuk-body">We use cookies to make this site work and collect information about how you use our
+          service.</p>
+        <h2 class="govuk-heading-l">Essential cookies</h2>
+        <div class="govuk-body" id="essential_cookies_desc">
+          <p>EEssential cookies keep your information secure while you use this service.</p>
+          <p>We do no need to ask permission to use them.</p>
+          <details class="govuk-details" data-module="essential-cookies-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Essential cookies
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <h3 class="govuk-heading-m" id="security_cookies_desc">Security cookies</h3>
+
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Name</th>
+                    <th scope="col" class="govuk-table__header">Purpose</th>
+                    <th scope="col" class="govuk-table__header">Expires</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-table__header">SESSION</td>
+                    <td class="govuk-table__cell">A unique identifier representing your session with this application
+                    </td>
+                    <td class="govuk-table__cell">1 hour</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-table__header">connect.sid</td>
+                    <td class="govuk-table__cell">A unique identifier used to recognise your session across multiple
+                      requests, ensuring security and supporting key functionality.
+                    </td>
+                    <td class="govuk-table__cell">12 hours</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-table__header">VEP_ID</td>
+                    <td class="govuk-table__cell">A unique number assigned to you to help us monitor how the service is
+                      performing.
+                      purposes</td>
+                    <td class="govuk-table__cell">5 mins</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-table__header">VEP_NAME</td>
+                    <td class="govuk-table__cell">Records your name to help us monitor how the service is performing.
+                    </td>
+                    <td class="govuk-table__cell">5 mins</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-table__header">VEP_LOC</td>
+                    <td class="govuk-table__cell">Tracks the office location or team that you are assigned to so we can
+                      monitor how the service is performing.</td>
+                    <td class="govuk-table__cell">5 mins</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-table__header">VEP_BEN</td>
+                    <td class="govuk-table__cell">Tracks the benefit line that you work with to helps us monitor how the
+                      service is performing.</td>
+                    <td class="govuk-table__cell">5 mins</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell govuk-table__header">VEP_COOKIES_POLICY</td>
+                    <td class="govuk-table__cell">A cookie that's used to remember your optional cookie choices
+                      (external users)</td>
+                    <td class="govuk-table__cell">1 year</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+          </details>
+        </div>
+        <div class="govuk-body" id="optional_cookies_desc">
+          <h2 class="govuk-heading-l">Google Analytics cookies used by our service</h2>
+          <p class="govuk-body">We use Google Analytics to collect information on how you use our service so that we can
+            improve it for you.</p>
+          <p class="govuk-body">Google Analytics does not store any of your personal details. It stores data about how
+            you got to the service, the pages you visit and how long you spend on each page.</p>
+          <p class="govuk-body">We do not allow Google to use or share our analytics data.</p>
+
+          <table class="govuk-table" aria-describedby="google_analytics_cookies_desc">
+            <thead class="govuk-table__header">
+              <tr>
+                <th scope="col" class="govuk-table__header">Name</th>
+                <th scope="col" class="govuk-table__header">Purpose</th>
+                <th scope="col" class="govuk-table__header">Expires</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr scope="row" class="govuk-table__row">
+                <td class="govuk-table__cell">_ga</td>
+                <td class="govuk-table__cell">Helps us stores information about sessions, campaigns, and visitor activity for analytics reports.</td>
+                <td class="govuk-table__cell">2 years</td>
+              </tr>
+              <tr scope="row" class="govuk-table__row">
+                <td class="govuk-table__cell">_ga_[container-id]</td>
+                <td class="govuk-table__cell">Collects information about how you use the service so we can make it better.</td>
+                <td class="govuk-table__cell">2 years</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <form method="post">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Do you want to use analytics cookies?</legend>
+                <input value="" type="hidden" name="cookie_preferences_form[ga]" id="cookie_preferences_form_ga">
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="gaCookies" name="gaCookies" type="radio" value="yes" {% if
+                      data.gaCookies=="yes" %}checked{%endif%}>
+                    <label class="govuk-label govuk-radios__label" for="gaCookies">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="gaCookies-2" name="gaCookies" type="radio" value="no" {% if
+                      data.gaCookies=="no" %}checked{%endif%}>
+                    <label class="govuk-label govuk-radios__label" for="gaCookies-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <button type="submit" class="govuk-button">Save cookie settings</button>
+          </form>
+        </div>
+      </div>
+  </main>
+</div>
+
+{% endblock %}

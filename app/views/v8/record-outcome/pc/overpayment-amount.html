@@ -1,0 +1,84 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+What was the underpayment amount?
+{% endblock %}
+
+{% block content %}
+<main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">Bob Banana</dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National
+            Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">QQ 12 34 56 A</dd>
+        </dl>
+      </section>
+      <span class="govuk-caption-l">Record an outcome</span>
+      <h1 class="govuk-heading-l">Record the overpayment details</h1>
+      <form method="post">
+        {% if data.claimantDeclared == "No" %}
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="customerError">
+              How much was customer error?
+            </label>
+          </h2>
+          <div class="govuk-input__wrapper">
+            <div class="govuk-input__prefix" aria-hidden="true">£</div>
+            <input class="govuk-input govuk-input--width-10" id="customerError" name="customerError" type="text"
+              spellcheck="false">
+          </div>
+        </div>
+        {%endif%}
+        <div class="govuk-form-group">
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="officialError">
+              How much was official error?
+            </label>
+          </h2>
+          <div class="govuk-input__wrapper">
+            <div class="govuk-input__prefix" aria-hidden="true">£</div>
+            <input class="govuk-input govuk-input--width-10" id="officialError" name="officialError" type="text"
+              spellcheck="false">
+          </div>
+        </div>
+        {% if data.claimantDeclared == "No"%}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Was a civil penalty applied?
+              </h2>
+            </legend>
+          
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="civilPenalty" name="civilPenalty" type="radio" value="Yes">
+                <label class="govuk-label govuk-radios__label" for="civilPenalty">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="civilPenalty-2" name="civilPenalty" type="radio" value="No">
+                <label class="govuk-label govuk-radios__label" for="civilPenalty-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        {%endif%}
+
+        <div class="govuk-form-group">
+          <button type="submit" class="govuk-button">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+
+{% block pageTitle %}
+View team {{data['teamName'] | lower}}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {% include '/includes/back' %}
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-l">{{data['teamName'] | capitalize}}</span>
+        <h1 class="govuk-heading-l">What period you would like to view?</h1>
+        <form method="post">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Start date
+                </h2>
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 12 3 2021
+              </div>
+              <div class="govuk-date-input" id="teamViewStart">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewStart-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewStart-day"
+                      name="teamViewStart-day" type="text" inputmode="numeric" {% if data["teamViewStart-day"] %}
+                      value={{data['teamViewStart-day']}} {% endif %}>
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewStart-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewStart-month"
+                      name="teamViewStart-month" type="text" inputmode="numeric" {% if data["teamViewStart-month"] %}
+                      value="{{data['teamViewStart-month']}}" {%endif%}>
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewStart-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                      id="teamViewStart-year  name=" teamViewStart-year" type="text" inputmode="numeric" {% if
+                      data["teamViewStart-year"] %} value={{data['teamViewStart-year']}} {% endif %}>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  End date
+                </h2>
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 12 3 2021
+              </div>
+              <div class="govuk-date-input" id="teamViewEnd">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewEnd-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewEnd-day"
+                      name="teamViewEnd-day" type="text" inputmode="numeric" {% if data["teamViewEnd-day"] %}
+                      value={{data['teamViewEnd-day']}} {% elif data["teamViewStart-day"] %}
+                      value={{data['teamViewStart-day']}} {% endif %}>
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewEnd-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="teamViewEnd-month"
+                      name="teamViewEnd-month" type="text" inputmode="numeric" {% if data["teamViewEnd-month"] %}
+                      value={{data['teamViewEnd-month']}} {% elif data["teamViewStart-month"] %}
+                      value={{data['teamViewStart-month']}} {% endif %}>
+                    >
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="teamViewEnd-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="teamViewEnd-year"
+                      name="teamViewEnd-year" type="text" inputmode="numeric" {% if data["teamViewEnd-year"] %}
+                      value={{data['teamViewEnd-year']}} {% elif data["teamViewStart-year"] %}
+                      value={{data['teamViewStart-year']}} {% endif %}>
+                    >
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-form-group">
+            <h2 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="WTE">
+                What was the teams average daily whole time equivalant (WTE) for this period?
+              </label>
+            </h2>
+            <div id="passport-issued-hint" class="govuk-hint">
+              Enter as a percentage. For example, 87.3%.
+            </div>
+            
+            <div class="govuk-input__wrapper">
+              <input class="govuk-input govuk-input--width-3" id="event-name" name="WTE" type="text">
+              <div class="govuk-input__suffix" aria-hidden="true">%</div>
+            </div>
+          </div>
+          <div class="govuk-form-group">
+            <h2 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="dailyExpectation">
+                What is the current daily expectation?
+            </h2>
+            <input class="govuk-input govuk-input--width-2" id="dailyExpectation" name="dailyExpectation" type="text" {%
+              if data.dailyExpectation %}value={{data.dailyExpectation}}{%endif%}>
+          </div>
+          <div class="govuk-form-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

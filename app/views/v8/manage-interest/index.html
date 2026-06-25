@@ -1,0 +1,84 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Manage requests' %}
+
+{% block pageTitle %}
+{% if data['test'] == "a" %}Manage interests
+{% elif data['test'] == "b" %}Manage requests
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    {% if data['test'] == "a" %}
+      <h1 class="govuk-heading-l">Manage interests</h1>
+      <div class="govuk-width-container">
+        <div class="dfe-grid-container">
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="new-request" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Set an interest</a>
+              </h3>
+              <p>Request earnings data and enable alerts about earnings changes.</p>
+            </div>
+          </div>
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="view-request" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">View recent
+                  interests</a>
+              </h3>
+              <p>View earnings data for people that you recently set an interest in.</p>
+            </div>
+          </div>
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="stop-request" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Unset an
+                  interest</a>
+              </h3>
+              <p>Stop earnings change alerts when they are no longer needed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% elif data['test'] == "b" %}
+      <h1 class="govuk-heading-l">Manage requests</h1>
+      <div class="govuk-width-container">
+        <div class="dfe-grid-container">
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="new-request" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Make a new
+                  request</a>
+              </h3>
+              <p>Request earnings data and enable alerts about earnings changes.</p>
+            </div>
+          </div>
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="view-request" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">View recent
+                  requests</a>
+              </h3>
+              <p>View earnings you recently requested.</p>
+            </div>
+          </div>
+          <div class="dfe-card">
+            <div class="dfe-card-container">
+              <h3 class="govuk-heading-m">
+                <a href="stop-request" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Cancel a
+                  request</a>
+              </h3>
+              <p>Stop income change alerts when they are no longer needed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% endif %}
+  </main>
+</div>
+
+{% endblock %}

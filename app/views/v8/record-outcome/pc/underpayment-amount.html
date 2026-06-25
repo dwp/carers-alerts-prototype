@@ -1,0 +1,50 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+What was the underpayment amount?
+{% endblock %}
+
+{% block content %}
+<main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">Bob Banana</dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National
+            Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">QQ 12 34 56 A</dd>
+        </dl>
+      </section>
+  
+    <form method="post">
+      <div class="govuk-form-group">
+        <div class="govuk-form-group">
+          <span class="govuk-caption-l">Record an outcome</span>
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="underpaymentAmount">
+              What was the underpayment amount?
+            </label>
+          </h1>
+          <div class="govuk-input__wrapper">
+            <div class="govuk-input__prefix" aria-hidden="true">£</div>
+            <input class="govuk-input govuk-input--width-10" id="underpaymentAmount" name="underpaymentAmount" type="text" spellcheck="false">
+            
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+      </div>
+    </form>
+
+</div>
+</div>
+  </main>
+
+
+{% endblock %}

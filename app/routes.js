@@ -402,6 +402,8 @@ require('./views/v7/manage-interest/_interest-routes')
 require('./views/v7/record-outcome/_routes')
 require('./views/v7/_routes')
 
+require('./views/v8/record-outcome/_routes')
+
 require('./views/sandpit/_sandpit-routes')
 
 module.exports = router

@@ -1,0 +1,183 @@
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
+
+let version = "v7";
+
+router.get('/' + version + '/setupData', function (req, res) {
+
+    let today = new Date();
+    let yesterday = new Date(today.setDate(today.getDate() - 1));
+
+    var prevMonday = new Date();
+    prevMonday.setDate(prevMonday.getDate() - 7);
+    prevMonday.setDate(prevMonday.getDate() - (prevMonday.getDay() + 6) % 7);
+
+    let prevSunday = new Date(prevMonday)
+    prevSunday.setDate(prevSunday.getDate() + 6)
+
+    let weekStart = new Date()
+    weekStart.setDate(yesterday.getDate() - 6)
+
+    let monthStart = new Date()
+    monthStart.setMonth(yesterday.getMonth() - 1)
+
+    req.session.data['yesterday'] = yesterday;
+    req.session.data['previousMonday'] = prevMonday;
+    req.session.data['previousSunday'] = prevSunday;
+    req.session.data['monthStart'] = monthStart;
+    req.session.data['weekStart'] = weekStart;
+
+    res.redirect('dashboards/service-dashboard')
+})
+router.post('/' + version + '/dashboards/service-dashboard', function (req, res) {
+    res.redirect('service-dashboard')
+})
+
+router.get('/' + version + '/dashboards/teams-my-teams', function (req, res) {
+
+    let lastWorkingDay = new Date();
+
+    if (lastWorkingDay.getDay() == 1) {
+        lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
+    }
+    else {
+        lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
+    }
+
+    lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
+
+
+    req.session.data['teamViewStart-day'] = lastWorkingDay.getDate()
+    req.session.data['teamViewStart-month'] = lastWorkingDay.getMonth()
+    req.session.data['teamViewStart-year'] = lastWorkingDay.getFullYear()
+
+    res.render('/' + version + '/dashboards/teams-my-teams')
+})
+
+
+router.post('/' + version + '/dashboards/teams-new-team-name*', function (req, res) {
+
+    let tempTeamsArray = [];
+    if (req.session.data['teams']) {
+        tempTeamsArray = req.session.data['teams'];
+    }
+    let teamName = req.session.data['teamName'];
+
+    tempTeamsArray.push(teamName);
+    req.session.data['teams'] = tempTeamsArray;
+
+    res.redirect('teams-manage-team')
+})
+
+router.post('/' + version + '/dashboards/teams-manage-team*', function (req, res) {
+
+    if (req.session.data['user']) {
+        let tempTeamArray = [];
+        let teamName = req.session.data['teamName'];
+        if (req.session.data[teamName]) {
+            tempTeamArray = req.session.data[teamName]
+        }
+
+        let x = req.session.data["user"];
+
+        req.session.data["tempName"] = req.session.data['users'][x].firstName + " " + req.session.data['users'][x].lastName
+
+        for (let i = 0; i < tempTeamArray.length; i++) {
+
+            if (tempTeamArray[i].email == req.session.data['users'][x].email) {
+
+                res.redirect('teams-manage-team?banner=userthere')
+            }
+        }
+
+        let tempUsersArray = [];
+        tempArray = req.session.data['users']
+
+        let temporaryObject = {}
+
+        temporaryObject = tempArray[req.session.data['user']];
+
+        tempTeamArray.push(temporaryObject);
+        req.session.data[teamName] = tempTeamArray;
+
+        res.redirect('teams-manage-team?banner=useradded')
+    }
+    else {
+        res.redirect('teams-manage-team?banner=error')
+    }
+})
+
+router.post('/' + version + '/dashboards/teams-remove-team-member', function (req, res) {
+
+    if (req.session.data['deleteUser'] == 'yes') {
+
+        let x = req.session.data['remove'];
+        let temporaryArray = [];
+        let teamName = req.session.data['teamName']
+        temporaryArray = req.session.data[teamName]
+        temporaryArray.splice(x, 1);
+        req.session.data[teamName] = temporaryArray
+        req.session.data['remove'] = null;
+    }
+    res.redirect('teams-manage-team?banner=userRemoved')
+
+})
+
+router.post('/' + version + '/dashboards/teams-remove-team', function (req, res) {
+    if (req.session.data['deleteUser'] == 'yes') {
+
+        let x = req.session.data['remove'];
+        let temporaryArray = [];
+        let teamName = req.session.data['teamName']
+        temporaryArray = req.session.data['teams']
+        temporaryArray.splice(x, 1);
+        req.session.data['teams'] = temporaryArray;
+        req.session.data[teamName] = null
+        req.session.data['remove'] = null
+        res.redirect('teams-my-teams?banner=teamRemove')
+    }
+    else if (req.session.data['deleteUser'] == 'no') {
+        res.redirect('teams-my-teams')
+    }
+})
+
+
+router.post('/' + version + '/dashboards/teams-view-team*', function (req, res) {
+    let startDate = new Date(req.session.data['teamViewStart-year'] + "-" + req.session.data['teamViewStart-month'] + "-" + req.session.data['teamViewStart-day'])
+    let endDate = new Date(req.session.data['teamViewEnd-year'] + "-" + req.session.data['teamViewEnd-month'] + "-" + req.session.data['teamViewEnd-day'])
+    req.session.data['teamViewStart'] = startDate
+    req.session.data['teamViewEnd'] = endDate
+
+    // Use this later to change the data based on the days in the period
+    // const diffInTime = Math.abs(endDate - startDate);
+    // const diffInDays = Math.floor(diffInTime / (1000 * 60 * 60 * 24)); 
+    // req.session.data['teamViewDays'] = diffInDays
+
+    let totalAllocated = 0;
+    let totalClosed = 0;
+
+    for (members in req.session.data[req.session.data['teamName']]) {  
+        totalClosed += req.session.data[req.session.data['teamName']][members].clearedTasks
+        totalAllocated += req.session.data[req.session.data['teamName']][members].allocatedTasks
+    }
+    req.session.data['totalClosed'] = totalClosed
+    req.session.data['totalAllocated'] = totalAllocated
+
+    res.redirect('teams-view-team-overview');
+
+})
+
+router.post('/' + version + '/dashboards/teams-view-transfer-task', function (req, res) {
+    res.redirect('teams-view-transfer-task-confirm')
+})
+
+router.post('/' + version + '/dashboards/teams-view-transfer-task-confirm', function (req, res) {
+   if ( req.session.data['confirmTransfer'] == "Yes" ){
+    res.redirect('teams-view-transfer-task')
+   } 
+   else{
+    req.session.data['confirmTransfer'] = "No"
+    res.redirect('teams-view-transfer-task')
+   }
+    
+})

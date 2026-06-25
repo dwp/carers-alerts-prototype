@@ -1,0 +1,85 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+Cancel alerts
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">My open tasks</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">
+            {% if data['test']=="a" %}
+            Unset the interest
+            {% elif data['test'] == "b" %}
+            Cancel the request
+            {% endif%}
+          </a>
+        </li>
+      </ol>
+    </nav>
+    <h1 class="govuk-heading-xl">
+      {% if data['test']=="a" %}
+      Unset the interest
+      {% elif data['test'] == "b" %}
+      Cancel the request
+      {% endif%}
+    </h1>
+    <div class="govuk-inset-text">
+      National Insurance number: QQ123456A, Name: Bob Banana<br>
+      You have selected HB outcome: {{data.outcome}}
+    </div>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-body">
+            <h2 class="govuk-fieldset__heading-l">
+              {% if data['test']=="a" %}
+              Would you like to unset the interest in Bob Banana?
+              {% elif data['test'] == "b" %}
+              Would you like to cancel the {{data.benefit}} request for Bob Banana?
+              {% endif%}
+
+            </h2>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="cancelAlerts" name="cancelAlerts" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="cancelAlerts">
+                Yes
+              </label>
+            </div>
+
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="cancelAlerts-2" name="cancelAlerts" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="cancelAlerts-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+      </div>
+    </form>
+
+
+  </main>
+</div>
+
+{% endblock %}

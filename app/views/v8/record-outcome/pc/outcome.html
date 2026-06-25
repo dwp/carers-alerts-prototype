@@ -1,0 +1,92 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+How did the outcome affect the award?
+{% endblock %}
+
+{% block content %}
+
+{% include "/includes/back.njk" %}
+<main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">Bob Banana</dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National
+            Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">QQ 12 34 56 A</dd>
+        </dl>
+      </section>
+
+
+
+      <form method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">Record an outcome</span>
+              How did the outcome affect the award?
+            </legend>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcome-2" name="outcome" type="radio"
+                  value="The award increased">
+                <label class="govuk-label govuk-radios__label" for="outcome">
+                  The award increased
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcome-2" name="outcome" type="radio"
+                  value="The award decreased">
+                <label class="govuk-label govuk-radios__label" for="outcome-2">
+                  The award decreased
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcome-3" name="outcome" type="radio"
+                  value="The award remained unchanged">
+                <label class="govuk-label govuk-radios__label" for="outcome-3">
+                  The award remained unchanged
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcome-4" name="outcome" type="radio"
+                  value="There is no active award">
+                <label class="govuk-label govuk-radios__label" for="outcome-4">
+                  There is no active award
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcome-5" name="outcome" type="radio"
+                  value="The award is dormant">
+                <label class="govuk-label govuk-radios__label" for="outcome-5">
+                  The award is dormant
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="outcome-6" name="outcome" type="radio"
+                  value="The award was referred for potential fraud">
+                <label class="govuk-label govuk-radios__label" for="outcome-6">
+                  The award was referred for potential fraud
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="govuk-button">Continue</button>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</main>
+{% endblock %}

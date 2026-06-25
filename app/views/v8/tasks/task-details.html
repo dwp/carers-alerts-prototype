@@ -1,0 +1,112 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+{% if data['test'] == "a" %}Manage interests
+{% elif data['test'] == "b" %}Manage requests
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <h1 class="govuk-heading-xl">Task details</h1>
+  
+
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#task-details">
+            Task details
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#task-history">
+            Search by National Insurance number
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#task-alerts">
+            Task Alerts
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#earnings-summary">
+            Task Earnings Summary
+          </a>
+        </li>
+      </ul>
+
+
+      <div class="govuk-tabs__panel" id="task-details">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Assigned to
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Brian Underwood
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Task status
+          </dt>
+          <dd class="govuk-summary-list__value">
+            OPEN
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date task opened
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ "today" | govukDate }}
+          </dd>
+        </div>
+        {% if data.benefitType == "pc" or  data.benefitType == "ca"%}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date alert generate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            3 Apr 2026
+          </dd>
+        </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Notes
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Task opened today
+          </dd>
+        </div>
+
+        <div class="govuk-!-margin-top-3">
+         
+            <a href="../record-outcome/{{data.benefitType}}/outcome" class="govuk-button">
+              Record outcome
+            </a>
+          </br>
+            <a href="" class="govuk-button govuk-button--secondary">
+              Bring forward
+            </a>
+        </div>
+
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="task-alerts">
+
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="earnings-summary">
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+{% endblock %}
