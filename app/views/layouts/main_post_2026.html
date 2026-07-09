@@ -67,6 +67,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
         <a class="govuk-footer__link" href="/ur">UR link</a>
       </li>
       {% endif %}
+      {% if data.version == "v8"%}
+      <li class="govuk-footer__inline-list-item govuk-body-s">
+        <a class="govuk-footer__link" href="./index?journeyDone=false">Restart record outcome scenarion</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </footer>

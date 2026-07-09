@@ -149,6 +149,24 @@ router.post('/' + version + '/record-outcome/hb/cancel-alerts', function (req, r
 //  Pension Credit journey  //
 ///////////////////////////////
 
+router.get('/' + version + '/record-outcome/pc/outcomeClearData', function (req, res) {
+
+    req.session.data["underpaymentAmount"] = null;
+    req.session.data["claimantDeclared"] = null;
+    req.session.data["outcome"] = null;
+    req.session.data["unsetInterest"] = null;
+    req.session.data["resultOfChange"] = null;
+    req.session.data["customerError"] = null;
+    req.session.data["officialError"] = null;
+    req.session.data["civilPenalty"] = null;
+    req.session.data["underpaymentAmount"] = null;
+    req.session.data["fraudReason"] = null;
+    req.session.data["reducedToNil"] = null;
+
+    res.redirect("outcome")
+
+});
+
 router.post('/' + version + '/record-outcome/pc/outcome', function (req, res) {
     if (req.session.data['outcome'] == 'The award increased' || req.session.data['outcome'] == 'The award decreased') {
         res.redirect("claimant-declared")
