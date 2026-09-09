@@ -1,0 +1,135 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+
+{% block pageTitle %}
+Which tasks would you like to transfer?
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {% include '/includes/back' %}
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        <section class="dwp-quick-reference" aria-label="Case information">
+          <dl class="dwp-quick-reference__block">
+            <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Team name:</dt>
+            <dd class="dwp-quick-reference__secondary">{{data['teamName'] | capitalize}}</dd>
+            <dt class="dwp-quick-reference__label govuk-visually-hidden">Section: </dt>
+            <dd class="dwp-quick-reference__primary">Transfer tasks</dd>
+          </dl>
+        </section>
+
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <button class="dwp-side-navigation__button" data-module="dwp-side-navigation"
+          data-target="dwp-side-navigation-panel" data-label-hide="Hide navigation" data-label-show="Show navigation"
+          aria-expanded="false">
+          <span class="dwp-side-navigation__section-toggle-focus">
+            <span class="dwp-side-navigation__chevron dwp-side-navigation__chevron--down"></span>
+            <span class="dwp-side-navigation__section-toggle-text">Show navigation</span>
+          </span>
+        </button>
+        <nav data-module="dwp-side-navigation-panel" class="dwp-side-navigation dwp-side-navigation--mobile"
+          aria-label="Side" role="navigation">
+          <ul class="dwp-side-navigation__list">
+            <li class="dwp-side-navigation__item">
+              <a id="s-item-1" href="teams-view-team-overview" class="dwp-side-navigation__link">
+                Team overview
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item ">
+              <a id="s-item-2" href="teams-view-team-summary" class="dwp-side-navigation__link" aria-current="true">
+                Team summary
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item">
+              <a id="s-item-3" href="teams-view-task-clearance" class="dwp-side-navigation__link">
+                Task clearance
+              </a>
+            </li>
+            <li class="dwp-side-navigation__item dwp-side-navigation__item--selected">
+              <a id="s-item-4" href="teams-view-transfer-task"
+                class="dwp-side-navigation__link dwp-side-navigation__link--selected">
+                Transfer tasks
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+
+        
+        <form method="post">
+          
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Which tasks would you like to transfer?
+                </h1>
+              </legend>
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="selectedTransferTasks" name="selectedTransferTasks" type="checkbox" value="All tasks" data-behaviour="exclusive">
+                  <label class="govuk-label govuk-checkboxes__label" for="selectedTransferTasks">
+                    All tasks
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__divider">or</div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="selectedTransferTasks-1" name="selectedTransferTasks" type="checkbox" value="QQ 12 34 56 A - Angela Apple">
+                  <label class="govuk-label govuk-checkboxes__label" for="selectedTransferTasks-1">
+                    QQ 12 34 56 A - Angela Apple
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="countries-2" name="selectedTransferTasks" type="checkbox" value="QQ 12 34 56 B - Bob Banana">
+                  <label class="govuk-label govuk-checkboxes__label" for="selectedTransferTasks-2">
+                    QQ 12 34 56 B - Bob Banana
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="selectedTransferTasks-3" name="selectedTransferTasks" type="checkbox" value="QQ 12 34 56 C - Caroline Carrot">
+                  <label class="govuk-label govuk-checkboxes__label" for="selectedTransferTasks-3">
+                    QQ 12 34 56 C - Caroline Carrot
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="selectedTransferTasks-4" name="selectedTransferTasks" type="checkbox" value="QQ 12 34 56 D - David Dragon-Fruit">
+                  <label class="govuk-label govuk-checkboxes__label" for="selectedTransferTasks-4">
+                    QQ 12 34 56 D - David Dragon-Fruit
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="selectedTransferTasks-5" name="selectedTransferTasks" type="checkbox" value="QQ 12 34 56 E - Emily Eggplant">
+                  <label class="govuk-label govuk-checkboxes__label" for="selectedTransferTasks-5">
+                    QQ 12 34 56 E - Emily Eggplant
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="selectedTransferTasks-6" name="selectedTransferTasks" type="checkbox" value="QQ 12 34 56 F - Fredrick Fennel">
+                  <label class="govuk-label govuk-checkboxes__label" for="selectedTransferTasks-6">
+                    QQ 12 34 56 F - Fredrick Fennel
+                  </label>
+                </div>
+                
+              </div>
+            </fieldset>
+          </div>
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+</div>
+{% endblock %}

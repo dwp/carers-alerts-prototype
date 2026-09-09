@@ -1,0 +1,64 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+Has the claimant already declared a change of circumstances?
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">My open tasks</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Has the claimant already declared a change of circumstances?</a>
+        </li>
+      </ol>
+    </nav>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Has the claimant already declared a change of circumstances?
+            </h1>
+          </legend>
+          <div class="govuk-inset-text">
+            National Insurance number: QQ123456A, Name: Bob Banana<br>
+            You have selected CA outcome: {{data.outcome}}
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimantDeclared" name="claimantDeclared" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="claimantDeclared">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="claimantDeclared-2" name="claimantDeclared" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="claimantDeclared-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+      </div>
+    </form>
+
+
+  </main>
+</div>
+
+{% endblock %}

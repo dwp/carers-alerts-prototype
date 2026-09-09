@@ -1,0 +1,49 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My teams' %}
+
+
+{% block pageTitle %}
+Allocated tasks
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  {% include '/includes/back' %}
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <span class="govuk-caption-l">{{data['teamName'] | capitalize}}</span>
+        <h1 class="govuk-heading-l">Allocated tasks</h1>
+        <p class="govuk-body">Showing data from {{data.teamViewStart | govukDate }} to {{data.teamViewEnd | govukDate }}
+          &nbsp;&nbsp;<a href="teams-view-team">Change</a></p>
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-visually-hidden">National Insurance number</th>
+              <th scope="col" class="govuk-table__header">Last opened</th>
+              <th scope="col" class="govuk-table__header">Notes</th>
+              <th scope="col" class="govuk-table__header">Age</th>
+              <th scope="col" class="govuk-table__header">Alert type</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for i in range(0, data.n) %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a href="#">QQ 12 34 5{{i}} D</a></th>
+              <td class="govuk-table__cell">{{data.teamViewStart | randomDatePast | govukDate}}</td>
+              <td class="govuk-table__cell">{{["Brought forward until "+ data.teamViewStart | randomDateFuture | govukDate," "]|random}}</td>
+              <td class="govuk-table__cell">Up to 4 weeks</td>
+              <td class="govuk-table__cell">{{["Oldest", "Newest", "Standard"] | random}}</td>
+            </tr>
+            {%endfor%}
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

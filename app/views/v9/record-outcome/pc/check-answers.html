@@ -1,0 +1,187 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+Check your answers
+{% endblock %}
+
+{% block content %}
+<main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">Bob Banana</dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National
+            Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">QQ 12 34 56 A</dd>
+        </dl>
+      </section>
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+      <div class="govuk-form-group">
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the outcome of this task?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.outcome}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+
+          {% if data.claimantDeclared %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Have they already told us about the change of income?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.claimantDeclared}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> reason</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data.reducedToNil %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has the reduction resulted in a nil award?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.reducedToNil}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data.unsetInterest %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              
+              Would you like to unset the interest in Bob Banana?
+              
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.unsetInterest}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data.resultOfChange %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What was the result of the income change?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.resultOfChange}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data.customerError %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              How much was customer error?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.customerError | currency}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data.officialError %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              How much was official error?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.officialError | currency}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data.civilPenalty %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Was a civil penalty applied
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.civilPenalty}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data.underpaymentAmount %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What was the underpayment amount?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.underpaymentAmount | currency}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data.fraudReason %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of fraud case was it?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data.fraudReason}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> reason</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          
+          
+          
+      </div>
+      <form method="post">
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Record outcome
+          </button>
+          <a href="../clear-record-sessions" type="submit" class="govuk-button govuk-button--secondary"
+            data-module="govuk-button">
+            Cancel
+            </a>
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+
+{% endblock %}

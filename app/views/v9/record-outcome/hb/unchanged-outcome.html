@@ -1,0 +1,84 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+What is the reason for no action required?
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">My open tasks</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Record task outcome: What is the reason for this award unchanged
+            outcome?</a>
+        </li>
+      </ol>
+    </nav>
+
+    <h1 class="govuk-heading-xl">Record task outcome: What is the reason for this award unchanged outcome?</h1>
+    <div class="govuk-inset-text">
+      National Insurance number: QQ123456A, Name: Bob Banana<br>
+      You have selected CA outcome: {{data.outcome}}
+    </div>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h2 class="govuk-fieldset__heading--l">
+              What is the reason for this award unchanged outcome?
+            </h2>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="unchangedOutcomeReason" name="unchangedOutcomeReason" type="radio"
+                value="Claim updated - award value unchanged">
+              <label class="govuk-label govuk-radios__label" for="noActionReason">
+                Claim updated - award value unchanged
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="unchangedOutcomeReason-2" name="unchangedOutcomeReason" type="radio"
+                value="No claim action required - existing average unchanged">
+              <label class="govuk-label govuk-radios__label" for="unchangedOutcomeReason-2">
+                No claim action required - existing average unchanged
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="unchangedOutcomeReason-3" name="unchangedOutcomeReason" type="radio"
+                value="No claim action required - earnings already declared">
+              <label class="govuk-label govuk-radios__label" for="unchangedOutcomeReason-3">
+                No claim action required - earnings already declared
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="unchangedOutcomeReason-4" name="unchangedOutcomeReason" type="radio"
+                value="Universal Credit SA/TA - award value unchanged">
+              <label class="govuk-label govuk-radios__label" for="unchangedOutcomeReason-4">
+                Universal Credit SA/TA - award value unchanged
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+      </div>
+    </form>
+
+
+  </main>
+</div>
+
+{% endblock %}

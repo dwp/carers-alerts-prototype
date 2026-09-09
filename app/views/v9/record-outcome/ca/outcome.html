@@ -1,0 +1,82 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+What was the outcome of this task?
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">My open tasks</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">Claimant - QQ123456A</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="#">What is the outcome of this task?</a>
+        </li>
+      </ol>
+    </nav>
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              What is the outcome of this task?
+            </h1>
+          </legend>
+          <div class="govuk-inset-text">
+            National Insurance number: QQ123456A, Name: Bob Banana
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="outcome" name="outcome" type="radio" value="Full disallowance">
+              <label class="govuk-label govuk-radios__label" for="outcome">
+                Full disallowance
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="outcome-2" name="outcome" type="radio" value="Partial disallowance">
+              <label class="govuk-label govuk-radios__label" for="outcome-2">
+                Partial disallowance
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="outcome-3" name="outcome" type="radio" value="No change to award">
+              <label class="govuk-label govuk-radios__label" for="outcome-3">
+                No change to award
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="outcome-4" name="outcome" type="radio"
+                value="Outstanding action in CAU">
+              <label class="govuk-label govuk-radios__label" for="outcome-4">
+                Outstanding action in CAU
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="outcome-5" name="outcome" type="radio" value="No action required">
+              <label class="govuk-label govuk-radios__label" for="outcome-5">
+                No action required
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+      </div>
+    </form>
+
+
+  </main>
+</div>
+
+{% endblock %}

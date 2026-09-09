@@ -1,0 +1,69 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'My tasks' %}
+
+{% block pageTitle %}
+What was the result of the income change?
+{% endblock %}
+
+{% block content %}
+<main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">Bob Banana</dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National
+            Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">QQ 12 34 56 A</dd>
+        </dl>
+      </section>
+
+
+
+      <form method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-body">
+              <span class="govuk-caption-l">Record an outcome</span>
+              <h2 class="govuk-fieldset__heading-l">
+                What was the result of the income change?
+              </h2>
+            </legend>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="resultOfChange" name="resultOfChange" type="radio" value="It caused an overpayment">
+                <label class="govuk-label govuk-radios__label" for="resultOfChange">
+                  It caused an overpayment
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="resultOfChange-2" name="resultOfChange" type="radio" value="It caused an underpayment">
+                <label class="govuk-label govuk-radios__label" for="resultOfChange-2">
+                  It caused an underpayment
+                </label>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="resultOfChange-3" name="resultOfChange" type="radio" value="It caused an overpayment and an underpayment">
+                <label class="govuk-label govuk-radios__label" for="resultOfChange-3">
+                  It caused an overpayment and an underpayment
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="govuk-button">Continue</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+
+{% endblock %}

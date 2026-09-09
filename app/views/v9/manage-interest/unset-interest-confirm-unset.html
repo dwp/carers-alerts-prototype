@@ -1,0 +1,49 @@
+{% extends "layouts/main_post_2026.html" %}
+{% set globalNavSection = 'Manage requests' %}
+
+{% block pageTitle %}
+Confirm cancellation of earnings alerts
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% include "includes/back.njk"%}
+    
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Unset an interest</span>
+      Confirm cancellation of earnings alerts
+    </h1>
+
+    <form method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Are you sure you want to unset the interest in {{data.selectedPerson.firstName}} {{data.selectedPerson.lastName}}?
+            </h2>
+          </legend>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="unsetInterestConfirm" name="unsetInterestConfirm" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="unsetInterestConfirm">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="unsetInterestConfirm-2" name="unsetInterestConfirm" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="unsetInterestConfirm-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group">
+        <button type="submit" class="govuk-button">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
