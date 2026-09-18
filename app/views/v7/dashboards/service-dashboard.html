@@ -10,6 +10,21 @@ Service Dashboard
 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
+    {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+    {% if data.error == 'true' %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "The earliest date you can view is 25 April 2026",
+          href: "#"
+        }
+      ]
+    }) }}
+
+    {%endif%}
+
     <h1 class="govuk-heading-xl">Service dashboard</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-third">
@@ -24,8 +39,9 @@ Service Dashboard
           <div class="moj-filter__content">
             <div class="moj-filter__options">
               <form method="post">
-                <div class="govuk-form-group">
+                <div class="govuk-form-group ">
                   <p class="govuk-heading-s">Date range</p>
+                  <div class="govuk-form-group {%if data.error == 'true' %}govuk-form-group--error{%endif%}">
                   <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                       <h1 class="govuk-fieldset__heading">
@@ -35,13 +51,18 @@ Service Dashboard
                     <div id="passport-issued-hint" class="govuk-hint">
                       For example, 27 3 2007
                     </div>
+                    {% if data.error == 'true'%}
+                    <p id="passport-issued-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> The earliest date you can view is 25 April 2026
+                    </p>
+                    {%endif%}
                     <div class="govuk-date-input" id="passport-issued">
                       <div class="govuk-date-input__item">
                         <div class="govuk-form-group">
                           <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-day">
                             Day
                           </label>
-                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2 {%if data.error == 'true' %}govuk-input--error{%endif%}"
                             id="dashboardFilterStart-day" name="dashboardFilterStart-day" type="text"
                             inputmode="numeric" value="20">
                         </div>
@@ -51,7 +72,7 @@ Service Dashboard
                           <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-month">
                             Month
                           </label>
-                          <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2 {%if data.error == 'true' %}govuk-input--error{%endif%}"
                             id="dashboardFilterStart-month" name="dashboardFilterStart-month" type="text"
                             inputmode="numeric" value="4">
                         </div>
@@ -61,14 +82,15 @@ Service Dashboard
                           <label class="govuk-label govuk-date-input__label" for="dashboardFilterStart-year">
                             Year
                           </label>
-                          <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4 {%if data.error == 'true' %}govuk-input--error{%endif%}"
                             id="dashboardFilterStart-year" name="dashboardFilterStart-year" type="text"
                             inputmode="numeric" value="2026">
                         </div>
                       </div>
                     </div>
                   </fieldset>
-
+                </div>
+                <div class="govuk-form-group ">
                   <fieldset class="govuk-fieldset govuk-body govuk-!-margin-top-3" role="group"
                     aria-describedby="passport-issued-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -112,7 +134,7 @@ Service Dashboard
                       </div>
                     </div>
                   </fieldset>
-
+                </div>
 
                 </div>
                 <div class="govuk-form-group">
