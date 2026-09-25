@@ -3,7 +3,7 @@
 
 
 {% block pageTitle %}
-Team summary
+Team members
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@ Team summary
             <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Team name:</dt>
             <dd class="dwp-quick-reference__secondary">{{data['teamName'] | capitalize}}</dd>
             <dt class="dwp-quick-reference__label govuk-visually-hidden">Section: </dt>
-            <dd class="dwp-quick-reference__primary">Team summary</dd>
+            <dd class="dwp-quick-reference__primary">Team members</dd>
           </dl>
         </section>
 
@@ -44,13 +44,19 @@ Team summary
             <li class="dwp-side-navigation__item dwp-side-navigation__item--selected">
               <a id="s-item-2" href="teams-view-team-summary"
                 class="dwp-side-navigation__link dwp-side-navigation__link--selected" aria-current="true">
-                Team summary
+                Team members
               </a>
-            </li>
-            <li class="dwp-side-navigation__item">
-              <a id="s-item-3" href="teams-view-task-clearance" class="dwp-side-navigation__link">
-                Task clearance
-              </a>
+              <ul class="dwp-side-navigation__list dwp-side-navigation__list--sub-item">
+                {% for members in data[data['teamName']]%}
+                <li class="dwp-side-navigation__sub-item">
+                  <a href="teams-view-individual?loop={{loop.index0}}" id="s-sn-item-{{loop.index0}}" class="dwp-side-navigation__link">
+                    {{members.firstName}} {{members.lastName}} 
+                  </a>
+                </li>
+                {%endfor%}
+                
+                </li>
+              </ul>
             </li>
             <li class="dwp-side-navigation__item">
               <a id="s-item-4" href="teams-view-transfer-task" class="dwp-side-navigation__link">
@@ -62,7 +68,7 @@ Team summary
 
       </div>
       <div class="govuk-grid-column-three-quarters">
-        <h1 class="govuk-heading-l">Team members tasks</h1>
+        <h1 class="govuk-heading-l">Overview</h1>
         <p class="govuk-body">Showing data from {{data.teamViewStart | govukDate }} to {{data.teamViewEnd | govukDate }}
           &nbsp;&nbsp;<a href="teams-view-team">Change</a></p>
         <table class="govuk-table">
@@ -83,7 +89,7 @@ Team summary
             {% for members in data[data['teamName']]%}
 
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">{{members.firstName}} {{members.lastName}}</th>
+              <th scope="row" class="govuk-table__header"><a href="teams-view-individual?loop={{loop.index0}}">{{members.firstName}} {{members.lastName}}</a></th>
               <td class="govuk-table__cell"><a href="teams-view-allocated?n={{members.allocatedTasks}}">{{members.allocatedTasks}}</a></td>
               <td class="govuk-table__cell">{{members.allocatedTasks}}</td>
               <td class="govuk-table__cell">0</td>

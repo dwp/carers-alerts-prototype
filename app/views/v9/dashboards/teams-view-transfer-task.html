@@ -12,7 +12,29 @@ Who would you like to transfer the tasks from?
   <main class="govuk-main-wrapper">
     
 
-
+    {% if data.confirmTransfer == "Yes" %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+          aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Success
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <h3 class="govuk-notification-banner__heading">
+              {% if data.selectedTransferTasks.length > 1 or data.selectedTransferTasks == 'All tasks' %}
+                Tasks transferred
+              {% else %}
+                Task transferred
+              {% endif %}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-three-quarters">
@@ -48,12 +70,7 @@ Who would you like to transfer the tasks from?
             </li>
             <li class="dwp-side-navigation__item ">
               <a id="s-item-2" href="teams-view-team-summary" class="dwp-side-navigation__link" aria-current="true">
-                Team summary
-              </a>
-            </li>
-            <li class="dwp-side-navigation__item">
-              <a id="s-item-3" href="teams-view-task-clearance" class="dwp-side-navigation__link">
-                Task clearance
+                Team members
               </a>
             </li>
             <li class="dwp-side-navigation__item dwp-side-navigation__item--selected">
@@ -67,29 +84,7 @@ Who would you like to transfer the tasks from?
 
       </div>
       <div class="govuk-grid-column-two-thirds">
-        {% if data.confirmTransfer == "Yes" %}
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
-          aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Success
-            </h2>
-          </div>
-          <div class="govuk-notification-banner__content">
-            <h3 class="govuk-notification-banner__heading">
-              {% if data.selectedTransferTasks.length > 1 or data.selectedTransferTasks == 'All tasks' %}
-                Tasks transferred
-              {% else %}
-                Task transferred
-              {% endif %}
-            </h3>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
+        
         <form method="post">
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">

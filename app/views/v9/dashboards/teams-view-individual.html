@@ -3,7 +3,7 @@
 
 
 {% block pageTitle %}
-Task Clearance
+Team member's tasks
 {% endblock %}
 
 {% block content %}
@@ -12,15 +12,14 @@ Task Clearance
   <main class="govuk-main-wrapper">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-three-quarters">
-        <section class="dwp-quick-reference" aria-label="Case information">
+       <section class="dwp-quick-reference" aria-label="Case information">
           <dl class="dwp-quick-reference__block">
             <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">Team name:</dt>
             <dd class="dwp-quick-reference__secondary">{{data['teamName'] | capitalize}}</dd>
             <dt class="dwp-quick-reference__label govuk-visually-hidden">Section: </dt>
-            <dd class="dwp-quick-reference__primary">Team clearance</dd>
+            <dd class="dwp-quick-reference__primary">Team overview</dd>
           </dl>
         </section>
-
       </div>
     </div>
     <div class="govuk-grid-row">
@@ -40,16 +39,23 @@ Task Clearance
               <a id="s-item-1" href="teams-view-team-overview" class="dwp-side-navigation__link">
                 Team overview
               </a>
-            </li>
-            <li class="dwp-side-navigation__item ">
-              <a id="s-item-2" href="teams-view-team-summary" class="dwp-side-navigation__link" aria-current="true">
-                Team summary
-              </a>
+              
             </li>
             <li class="dwp-side-navigation__item dwp-side-navigation__item--selected">
-              <a id="s-item-3" href="teams-view-task-clearance" class="dwp-side-navigation__link dwp-side-navigation__link--selected">
-                Task clearance
+              <a id="s-item-2" href="teams-view-team-summary" class="dwp-side-navigation__link " aria-current="true">
+                Team members
               </a>
+              <ul class="dwp-side-navigation__list dwp-side-navigation__list--sub-item">
+                {% for members in data[data['teamName']]%}
+                <li class="dwp-side-navigation__sub-item">
+                  <a href="teams-view-individual?loop={{loop.index0}}" id="s-sn-item-{{loop.index0}}" class="dwp-side-navigation__link {%if loop.index0 == data.loop%} dwp-side-navigation__link--selected{%endif%}">
+                    {{members.firstName}} {{members.lastName}} 
+                  </a>
+                </li>
+                {%endfor%}
+                
+                </li>
+              </ul>
             </li>
             <li class="dwp-side-navigation__item">
               <a id="s-item-4" href="teams-view-transfer-task" class="dwp-side-navigation__link">
@@ -61,14 +67,26 @@ Task Clearance
 
       </div>
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Cleared tasks</h1>
+        <h1 class="govuk-heading-l">{{data[data['teamName']][data.loop].firstName}} {{data[data['teamName']][data.loop].lastName}}'s tasks</h1>
         <p class="govuk-body">Showing data from {{data.teamViewStart | govukDate }} to {{data.teamViewEnd | govukDate }} &nbsp;&nbsp;<a href="teams-view-team">Change</a></p>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Intake</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">{{data[data['teamName']][data.loop].clearedTasks + 2}}</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        
+        <h2 class="govuk-heading-m govuk-!-margin-top-4">Cleared tasks</h2>
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-third">
             <div class="card">
               <div class="card-title">Cleared</div>
               <div class="card-description">&nbsp;</div>
-              <div class="card-headline">{{data.totalClosed}}</div>
+              <div class="card-headline">{{data[data['teamName']][data.loop].clearedTasks}}</div>
               <div class="card-context">&nbsp;</div>
             </div>
           </div>
@@ -94,7 +112,7 @@ Task Clearance
             <div class="card">
               <div class="card-title">Overpayments</div>
               <div class="card-description">&nbsp;</div>
-              {% set overpayment = (data.totalClosed * (1065.24*0.26))*0.72%}
+              {% set overpayment = (data[data['teamName']][data.loop].clearedTasks * (1065.24*0.26))*0.72%}
               <div class="card-headline">£{{ overpayment | moneyFormat }}</div>
               <div class="card-context">&nbsp;</div>
             </div>
@@ -103,12 +121,13 @@ Task Clearance
             <div class="card">
               <div class="card-title">Underpayments</div>
               <div class="card-description">&nbsp;</div>
-              <div class="card-headline">£{{ ((data.totalClosed * (1065.24*0.26))*0.18) | moneyFormat }}</div>
+              <div class="card-headline">£{{ ((data[data['teamName']][data.loop].clearedTasks * (1065.24*0.26))*0.18) | moneyFormat }}</div>
               <div class="card-context">&nbsp;</div>
             </div>
           </div>
         </div>
-        <h2 class="govuk-heading-m govuk-body govuk-!-margin-top-4 govuk-body govuk-!-margin-bottom-1">Overpayment
+        <p><a href="/public/docs/2k.csv">Adjustments over £2000 report</a></p>
+        <h2 class="govuk-heading-m govuk-!-margin-top-4">Overpayment
           details</h2>
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-third">
@@ -129,7 +148,6 @@ Task Clearance
           </div>
         </div>
       </div>
-
     </div>
   </main>
 </div>

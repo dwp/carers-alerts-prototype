@@ -42,12 +42,7 @@ Team overview
             </li>
             <li class="dwp-side-navigation__item ">
               <a id="s-item-2" href="teams-view-team-summary" class="dwp-side-navigation__link" aria-current="true">
-                Team summary
-              </a>
-            </li>
-            <li class="dwp-side-navigation__item">
-              <a id="s-item-3" href="teams-view-task-clearance" class="dwp-side-navigation__link">
-                Task clearance
+                Team members
               </a>
             </li>
             <li class="dwp-side-navigation__item">
@@ -60,7 +55,7 @@ Team overview
 
       </div>
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Team tasks</h1>
+        
         <p class="govuk-body">Showing data from {{data.teamViewStart | govukDate }} to {{data.teamViewEnd | govukDate }} &nbsp;&nbsp;<a href="teams-view-team">Change</a></p>
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-third">
@@ -97,6 +92,75 @@ Team overview
               <div class="card-title">Marked BF</div>
               <div class="card-description">&nbsp;</div>
               <div class="card-headline">{{(data.totalAllocated / 3) | int}}</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <h2 class="govuk-heading-m govuk-!-margin-top-4">Cleared tasks</h2>
+        <p class="govuk-body">Showing data from {{data.teamViewStart | govukDate }} to {{data.teamViewEnd | govukDate }} &nbsp;&nbsp;<a href="teams-view-team">Change</a></p>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Cleared</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">{{data.totalClosed}}</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Award change rate</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">26%</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Award unchanged rate</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">74%</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Overpayments</div>
+              <div class="card-description">&nbsp;</div>
+              {% set overpayment = (data.totalClosed * (1065.24*0.26))*0.72%}
+              <div class="card-headline">£{{ overpayment | moneyFormat }}</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Underpayments</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">£{{ ((data.totalClosed * (1065.24*0.26))*0.18) | moneyFormat }}</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+          
+        </div>
+        <p><a href="/public/docs/2k.csv">Adjustments over £2000 report</a></p>
+        <h2 class="govuk-heading-m govuk-body govuk-!-margin-top-4 govuk-body govuk-!-margin-bottom-1">Overpayment
+          details</h2>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Official error</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">£{{ (overpayment * 0.79) | moneyFormat }}</div>
+              <div class="card-context">&nbsp;</div>
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <div class="card">
+              <div class="card-title">Customer error</div>
+              <div class="card-description">&nbsp;</div>
+              <div class="card-headline">£{{ (overpayment * 0.21) | moneyFormat }}</div>
               <div class="card-context">&nbsp;</div>
             </div>
           </div>

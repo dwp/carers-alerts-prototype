@@ -1,7 +1,7 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-let version = "v8";
+let version = "v9";
 
 router.get('/' + version + '/setupData', function (req, res) {
 
@@ -29,6 +29,17 @@ router.get('/' + version + '/setupData', function (req, res) {
 
     res.redirect('dashboards/service-dashboard')
 })
+
+router.get('/' + version + '/dashboards/teams-create-team', function (req, res) {
+    req.session.data['teams'] = ["Dundee 8"]
+    req.session.data['Dundee 8'] = [
+                                    {firstName:"Meadow", lastName:"Tyler", email:"meadow.tyler1@dwp.gov.uk", staffNumber:"26596386", allocatedTasks:5, clearedTasks:8},
+                                    {firstName:"Meredith", lastName:"Small", email:"meredith.small1@dwp.gov.uk", staffNumber:"31653931", allocatedTasks:2, clearedTasks:3}, 
+                                    {firstName:"Brynlee", lastName:"Hart", email:"brynlee.hart@dwp.gov.uk", staffNumber:"93244303", allocatedTasks:6, clearedTasks:7}
+                                   ]
+    res.redirect('teams-my-teams')
+})
+
 router.post('/' + version + '/dashboards/service-dashboard', function (req, res) {
     res.redirect('service-dashboard')
 })
@@ -37,18 +48,10 @@ router.get('/' + version + '/dashboards/teams-my-teams', function (req, res) {
 
     let lastWorkingDay = new Date();
 
-    if (lastWorkingDay.getDay() == 1) {
-        lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
-    }
-    else {
-        lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
-    }
-
     lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
 
-
     req.session.data['teamViewStart-day'] = lastWorkingDay.getDate()
-    req.session.data['teamViewStart-month'] = lastWorkingDay.getMonth()
+    req.session.data['teamViewStart-month'] = lastWorkingDay.getMonth() + 1
     req.session.data['teamViewStart-year'] = lastWorkingDay.getFullYear()
 
     res.render('/' + version + '/dashboards/teams-my-teams')
